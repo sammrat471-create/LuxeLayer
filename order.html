@@ -1,19 +1,62 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Place Order</title>
+  <title>Place Your Order</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f8f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .order-box {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 350px;
+    }
+    .order-box h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    .order-box input, 
+    .order-box textarea, 
+    .order-box button {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+    .order-box button {
+      background: black;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .order-box button:hover {
+      background: #444;
+    }
+  </style>
 </head>
 <body>
-  <h2>Order Form</h2>
-  <form action="https://formspree.io/f/xjkoqelv" method="POST">
-    <input type="text" name="name" placeholder="Your Name" required><br><br>
-    <input type="text" name="address" placeholder="Address" required><br><br>
-    <input type="tel" name="phone" placeholder="Phone Number" required><br><br>
-    <input type="text" name="product" placeholder="Product Name" required><br><br>
-    <button type="submit">Place Order</button>
-  </form>
+  <div class="order-box">
+    <h2>🛒 Place Your Order</h2>
+    <form action="https://formspree.io/f/xjkoqelv" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <input type="text" name="product" placeholder="Product Name" required>
+      <textarea name="address" rows="3" placeholder="Delivery Address" required></textarea>
+      <button type="submit">Submit Order</button>
+    </form>
+  </div>
 </body>
 </html>
