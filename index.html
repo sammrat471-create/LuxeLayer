@@ -1,169 +1,126 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LuxeLayer</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-  <!-- Navbar -->
-  <nav>
-    <div class="logo">LuxeLayer</div>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="shop.html">Shop</a></li>
-      <li><a href="#">My Orders</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="login.html">Login</a></li>
-      <li><a href="order.html">Buy Now</a>
-    </ul>
-  </nav>
-
-  <!-- Main Section -->
-  <div class="main-content">
-    <h1>Welcome to LuxeLayer</h1>
-    <p>Premium clothing designed for modern lifestyle</p>
-
-    <!-- Product Cards -->
-    <div class="products">
-      <div class="product-card">
-        <h3>Cool Cap</h3>
-        <p>₹299</p>
-      </div>
-      <div class="product-card">
-        <h3>Stylish Hoodie</h3>
-        <p>₹999</p>
-      </div>
-      <div class="product-card">
-        <h3>Classic T-Shirt</h3>
-        <p>₹499</p>
-      </div>
-    </div>
-  </div>
-
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
- <link rel="stylesheet" href="css/style.css">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LuxeLayer - Official Website</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LuxeLayer — Premium Clothing</title>
+  <meta name="description" content="LuxeLayer • Premium clothing designed for modern lifestyle." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Plus Jakarta Sans', 'ui-sans-serif', 'system-ui'] },
+          colors: {
+            brand: { 50:'#eef2ff',100:'#e0e7ff',500:'#111827',600:'#0b0f1a',900:'#0a0a0a' },
+            accent: { 400:'#f59e0b',500:'#f59e0b' }
+          },
+          boxShadow: { 'soft': '0 10px 30px rgba(0,0,0,0.08)' }
+        }
+      }
+    };
+  </script>
   <style>
-    body {
-    <nav style="background-color: #333; padding: 10px; text-align: center;">
-  <a href="index.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: normal;">Home</a>
-  <a href="about.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: normal;">About</a>
-  <a href="shop.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: normal;">Shop</a>
-  <a href="https://docs.google.com/spreadsheets/d/14MCoxSz9Kd5geo1mYvZVf81ruEY5cWNp_V_uXaCflCE/edit?usp=sharing"
-     target="_blank"
-     style="color: #00ffcc; margin: 0 15px; text-decoration: none; font-weight: bold;">
-    📦 My Orders
-  </a>
-</nav>
-
-      
-     font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f9f9f9;
-      color: #333;
-    }
-    header {
-      background: black;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-    header h1 {
-      margin: 0;
-    }
-    nav {
-      background: #444;
-      padding: 10px;
-      text-align: center;
-    }
-    nav a {
-      color: white;
-      margin: 0 15px;
-      text-decoration: none;
-    }
-    .hero {
-      padding: 50px;
-      text-align: center;
-      background: #eee;
-    }
-    .products {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      padding: 30px;
-      flex-wrap: wrap;
-    }
-    .product {
-      background: white;
-      padding: 15px;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      text-align: center;
-      width: 200px;
-    }
-    .product img {
-      width: 100%;
-      border-radius: 8px;
-    }
-    footer {
-      background: #111;
-      color: white;
-      text-align: center;
-      padding: 15px;
-      margin-top: 20px;
-    }
+    html,body{background:#0a0a0a;color:#e5e7eb}
+    .glass{backdrop-filter:saturate(180%) blur(12px); background:rgba(17,24,39,.6);}
   </style>
 </head>
-<body>
-  <header>
-    <h1>LuxeLayer</h1>
-    <p>Fashion Redefined by Alok Kumar</p>
-  </header>
+<body class="font-sans antialiased">
 
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="shop.html">Shop</a>
-    <a href="about.html">About</a>
-    <a href="orders.html" id="myOrdersBtn">My Orders</a>
-    
-    <a href="contact.html">Contact</a>
-    <a href="login.html">Login</a>
-  </nav>
-
-  <div class="hero">
-    <h2>Welcome to LuxeLayer</h2>
-    <p>Premium clothing designed for modern lifestyle.</p>
+  <!-- Top Announcement Bar -->
+  <div class="w-full bg-zinc-900/60 border-b border-white/10 text-xs md:text-sm">
+    <div class="mx-auto max-w-7xl px-4 py-2 text-center">Free shipping on orders over ₹999 • New drops every Friday</div>
   </div>
 
-  <section class="products">
-    <div class="product">
-     <img scr="https://via.placeholder.com"https://m.media-amazon.com/images/I/71vp8Lec9JL._AC_UL960_QL65_.jpg
-      <h3>Classic T-Shirt</h3>
-      <p>₹499</p>
-    </div>
-    <div class="product">
-      <img src="https://via.placeholder.com/200x250.png?text=Hoodie" alt="Hoodie">
-      <h3>Stylish Hoodie</h3>
-      <p>₹999</p>
-    </div>
-    <div class="product">
-      <img src="https://via.placeholder.com/200x250.png?text=Cap" alt="Cap">
-      <h3>Cool Cap</h3>
-      <p>₹299</p>
+  <!-- Navbar -->
+  <header class="sticky top-0 z-50 glass">
+    <nav class="mx-auto max-w-7xl px-4">
+      <div class="flex h-16 items-center justify-between">
+        <a href="#" class="flex items-center gap-2 group">
+          <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-white text-black font-extrabold">Lx</span>
+          <span class="text-lg md:text-xl font-bold tracking-wide">LuxeLayer</span>
+        </a>
+        <button id="menuBtn" class="md:hidden inline-flex items-center justify-center rounded-lg border border-white/10 px-3 py-2">Menu</button>
+        <ul id="menu" class="hidden md:flex items-center gap-6 text-sm">
+          <li><a href="#new" class="hover:text-white/90">New Arrivals</a></li>
+          <li><a href="#shop" class="hover:text-white/90">Shop</a></li>
+          <li><a href="#about" class="hover:text-white/90">About</a></li>
+          <li><a href="#contact" class="hover:text-white/90">Contact</a></li>
+          <li>
+            <a href="#" class="inline-flex items-center gap-2 rounded-xl bg-white text-black px-4 py-2 font-medium shadow-soft hover:shadow md:ml-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 3h2l.4 2M7 13h10l3-8H6.4M7 13l-1.5 6h12.9M7 13L5 5m2 14a1 1 0 100-2 1 1 0 000 2zm10 0a1 1 0 100-2 1 1 0 000 2z"/></svg>
+              Buy Now
+            </a>
+          </li>
+        </ul>
+      </div>
+      <ul id="menuMobile" class="md:hidden hidden flex-col gap-3 pb-4 text-sm">
+        <li><a href="#new" class="block rounded-lg px-3 py-2 hover:bg-white/5">New Arrivals</a></li>
+        <li><a href="#shop" class="block rounded-lg px-3 py-2 hover:bg-white/5">Shop</a></li>
+        <li><a href="#about" class="block rounded-lg px-3 py-2 hover:bg-white/5">About</a></li>
+        <li><a href="#contact" class="block rounded-lg px-3 py-2 hover:bg-white/5">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden">
+    <div class="mx-auto max-w-7xl px-4 py-20 md:py-28 grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <div class="inline-flex items-center gap-2 rounded-full border border-white/10 px-3 py-1 text-xs text-white/70 mb-4">
+          <span class="h-2 w-2 rounded-full bg-emerald-400"></span> Fashion redefined by Alok Kumar
+        </div>
+        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">Premium streetwear for the <span class="bg-gradient-to-r from-white to-white/50 bg-clip-text text-transparent">modern lifestyle</span></h1>
+        <p class="mt-4 text-white/70 max-w-xl">Minimal silhouettes. Elevated details. Built for comfort and everyday flex.</p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="#shop" class="rounded-xl bg-white text-black px-5 py-3 font-semibold shadow-soft hover:shadow">Shop Collection</a>
+          <a href="#new" class="rounded-xl border border-white/20 px-5 py-3 font-semibold hover:bg-white/5">New Drops</a>
+        </div>
+      </div>
+      <div class="relative">
+        <div class="absolute inset-0 -z-10 bg-[radial-gradient(60%_60%_at_70%_30%,rgba(245,158,11,.25),transparent_60%)]"></div>
+        <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?q=80&w=1200&auto=format&fit=crop" alt="Model" class="rounded-3xl shadow-soft object-cover w-full h-[480px] md:h-[560px]"/>
+      </div>
     </div>
   </section>
 
-  <footer>
-    <p>© 2025 LuxeLayer | Designed by Alok Kumar</p>
+  <!-- New Arrivals -->
+  <section id="new" class="mx-auto max-w-7xl px-4 py-12 md:py-16">
+    <h2 class="text-2xl md:text-3xl font-bold">New Arrivals</h2>
+    <div class="mt-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+      <article class="group rounded-2xl border border-white/10 p-2 hover:border-white/30 transition">
+        <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=1200&auto=format&fit=crop" class="h-52 w-full object-cover rounded-xl"/>
+        <div class="p-3 flex justify-between"><span>Classic T-Shirt</span><span>₹499</span></div>
+      </article>
+      <article class="group rounded-2xl border border-white/10 p-2 hover:border-white/30 transition">
+        <img src="https://images.unsplash.com/photo-1520975661595-6453be3f7070?q=80&w=1200&auto=format&fit=crop" class="h-52 w-full object-cover rounded-xl"/>
+        <div class="p-3 flex justify-between"><span>Stylish Hoodie</span><span>₹999</span></div>
+      </article>
+      <article class="group rounded-2xl border border-white/10 p-2 hover:border-white/30 transition">
+        <img src="https://images.unsplash.com/photo-1534215754734-18e55d13e346?q=80&w=1200&auto=format&fit=crop" class="h-52 w-full object-cover rounded-xl"/>
+        <div class="p-3 flex justify-between"><span>Cool Cap</span><span>₹299</span></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact" class="border-t border-white/10 mt-12">
+    <div class="mx-auto max-w-7xl px-4 py-8 text-center text-sm text-white/60">
+      © 2025 LuxeLayer • Designed by Alok Kumar
+    </div>
   </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const menuMobile = document.getElementById('menuMobile');
+    if (menuBtn) {
+      menuBtn.addEventListener('click', () => {
+        menuMobile.classList.toggle('hidden');
+      });
+    }
+  </script>
 </body>
 </html>
