@@ -1,6 +1,68 @@
 /* Login page styling */
 body {
   margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* Horizontal center */
+  justify-content: flex-start; /* Upar se start hoga */
+  min-height: 100vh;
+}
+
+/* Navbar ek line me aajayega */
+nav {
+  width: 100%;
+  background: black;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+}
+
+nav .logo {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Center content */
+.main-content {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.products {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.product-card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}body {
+  margin: 0;
   font-family: Arial, sans-serif;
   background: linear-gradient(135deg, #000000, #222222);
   color: white;
