@@ -1,41 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="stylesheet" href="css/style.css">
   <meta charset="UTF-8">
-  <title>My Orders</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LuxeLayer Order</title>
   <style>
-    body { font-family: Arial, sans-serif; padding: 20px; }
-    .order {
-      border: 1px solid #ccc;
-      padding: 15px;
-      margin-bottom: 10px;
-    }
-    .order h3 {
+    body {
       margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #f9f9f9, #ececec);
+      color: #333;
+    }
+    header {
+      text-align: center;
+      padding: 20px;
+      background: black;
+      color: white;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+      letter-spacing: 2px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 10px;
+    }
+    .product-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+      text-align: center;
+      transition: 0.3s;
+    }
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+    .product-card img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+    }
+    .product-card h3 {
+      margin: 15px 0 5px;
+      font-size: 20px;
+      color: #222;
+    }
+    .product-card p {
+      margin: 0 0 15px;
+      font-size: 14px;
+      color: #666;
+    }
+    .product-card a {
+      display: inline-block;
+      margin-bottom: 20px;
+      padding: 10px 20px;
+      background: #25d366;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: 0.3s;
+    }
+    .product-card a:hover {
+      background: #1ebe57;
     }
   </style>
 </head>
 <body>
+  <header>
+    <h1>✨ LuxeLayer Collection ✨</h1>
+    <p>Fresh Styles for Him & Her</p>
+  </header>
 
-  <h1>My Orders</h1>
+  <div class="container">
+    <!-- Men Shirt -->
+    <div class="product-card">
+      <img src="https://i.ibb.co/2tH1vhD/mens-shirt.jpg" alt="Men Shirt">
+      <h3>Classic Men's Shirt</h3>
+      <p>Premium fabric, perfect fit</p>
+      <a href="https://wa.me/918051731633?text=Hi LuxeLayer,%20I%20want%20to%20order%20the%20Classic%20Men's%20Shirt.">Buy on WhatsApp</a>
+    </div>
 
-  <div class="order">
-    <h3>Order #1001</h3>
-    <p><strong>Date:</strong> 10 August 2025</p>
-    <p><strong>Status:</strong> Shipped</p>
-    <p><strong>Total:</strong> ₹1,299</p>
+    <!-- Women Dress -->
+    <div class="product-card">
+      <img src="https://i.ibb.co/GH8z59J/women-dress.jpg" alt="Women Dress">
+      <h3>Elegant Women's Dress</h3>
+      <p>Trendy & Comfortable</p>
+      <a href="https://wa.me/918051731633?text=Hi LuxeLayer,%20I%20want%20to%20order%20the%20Elegant%20Women's%20Dress.">Buy on WhatsApp</a>
+    </div>
   </div>
-
-  <div class="order">
-    <h3>Order #1002</h3>
-    <p><strong>Date:</strong> 5 August 2025</p>
-    <p><strong>Status:</strong> Delivered</p>
-    <p><strong>Total:</strong> ₹899</p>
-  </div>
-
-  <a href="index.html">⬅ Back to Home</a>
-
 </body>
 </html>
 
