@@ -1,9 +1,8 @@
-/* Page background */
+/* Login page styling */
 body {
   margin: 0;
-  padding: 0;
   font-family: Arial, sans-serif;
-  background: #111;
+  background: linear-gradient(135deg, #000000, #222222);
   color: white;
   display: flex;
   justify-content: center;
@@ -11,15 +10,54 @@ body {
   height: 100vh;
 }
 
-/* Animation text */
-.logo-animation {
+.login-container {
+  background: #111;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  text-align: center;
+  width: 300px;
+}
+
+.login-container h2 {
+  margin-bottom: 20px;
+}
+
+.login-container input {
+  width: 90%;
+  padding: 10px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 8px;
+}
+
+.login-container button {
+  width: 95%;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background: #f5c542;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+.login-container button:hover {
+  background: #ffd966;
+}
+
+/* LuxeLayer animation */
+#brand-animation {
+  display: none;
   font-size: 40px;
   font-weight: bold;
-  opacity: 0;
-  animation: fadeIn 3s forwards;
+  text-align: center;
+  animation: fadeIn 2s ease-in-out infinite alternate;
 }
 
 @keyframes fadeIn {
   from { opacity: 0; transform: scale(0.8); }
-  to { opacity: 1; transform: scale(1); }
+  to { opacity: 1; transform: scale(1.2); }
 }
