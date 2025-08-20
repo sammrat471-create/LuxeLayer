@@ -3,49 +3,183 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About - LuxeLayer</title>
+  <title>About Us | LuxeLayer</title>
+  <link rel="stylesheet" href="style.css"> <!-- agar external css use karte ho -->
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
       padding: 0;
-    }
-    .container {
-      max-width: 800px;
-      margin: auto;
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-    img {
-      max-width: 200px;
-      border-radius: 50%;
-      display: block;
-      margin: 20px auto;
-    }
-    h1, h2 {
-      text-align: center;
+      background: #f8f9fa;
       color: #333;
     }
-    p {
-      line-height: 1.6;
+    header {
+      background: black;
+      color: white;
+      padding: 15px;
       text-align: center;
-      color: #555;
+    }
+    nav {
+      margin-top: 10px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .about-section {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .about-section h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #111;
+    }
+    .about-section p {
+      line-height: 1.7;
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    .highlight {
+      font-weight: bold;
+      color: #111;
+    }
+    .mission-vision {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      margin: 40px 0;
+      gap: 20px;
+    }
+    .card {
+      flex: 1;
+      min-width: 280px;
+      padding: 20px;
+      background: #f4f4f4;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .card h2 {
+      margin-bottom: 10px;
+      color: #111;
+    }
+    .team-section {
+      margin: 50px 0;
+    }
+    .team-section h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .team-members {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+    .member {
+      width: 200px;
+      text-align: center;
+    }
+    .member img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 50%;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    .member h3 {
+      margin: 10px 0 5px;
+    }
+    .member p {
+      font-size: 0.9rem;
+      color: #666;
+    }
+    footer {
+      text-align: center;
+      background: black;
+      color: white;
+      padding: 15px;
+      margin-top: 40px;
     }
   </style>
 </head>
 <body>
-  <div class="container">
+
+  <header>
+    <h2>LuxeLayer</h2>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <section class="about-section">
     <h1>About LuxeLayer</h1>
-    <img src="your-photo.jpg" alt="Founder Photo">
-    <h2>Founder: Alok Sammrat</h2>
-    <p><strong>Date of Birth:</strong> 4 March 2008</p>
-    <p>Alok Sammrat founded LuxeLayer with a passion for fashion and innovation. 
-    Remarkably, he achieved the milestone of earning over ₹1 Crore before the age of 18. 
-    His vision is to bring modern, stylish, and affordable clothing to the youth of India.</p>
-  </div>
+    <p>
+      Welcome to <span class="highlight">LuxeLayer</span> – a fashion brand under <span class="highlight">SAMMRAT GROUP PVT. LTD.</span>  
+      LuxeLayer represents style, confidence, and luxury at affordable prices.
+    </p>
+    <p>
+      Our journey is an inspiration – we achieved <span class="highlight">1 Crore+ revenue before the age of 18</span>,  
+      proving that passion, vision, and hard work can break every limit.
+    </p>
+    <p>
+      Every outfit we create reflects our belief: <em>"Clothing is not just fashion, it’s a lifestyle."</em>
+    </p>
+
+    <!-- Mission & Vision Section -->
+    <div class="mission-vision">
+      <div class="card">
+        <h2>Our Mission</h2>
+        <p>To inspire the youth with bold and innovative fashion, blending comfort and style for every occasion.</p>
+      </div>
+      <div class="card">
+        <h2>Our Vision</h2>
+        <p>To become a global fashion powerhouse under SAMMRAT GROUP PVT. LTD., leading the new era of luxury streetwear.</p>
+      </div>
+    </div>
+
+    <!-- Team Section -->
+    <div class="team-section">
+      <h2>Meet Our Team</h2>
+      <div class="team-members">
+        <div class="member">
+          <img src="https://via.placeholder.com/200" alt="Founder">
+          <h3>Alok Kumar</h3>
+          <p>Founder & CEO</p>
+        </div>
+        <div class="member">
+          <img src="https://via.placeholder.com/200" alt="Designer">
+          <h3>Rohit Sharma</h3>
+          <p>Lead Designer</p>
+        </div>
+        <div class="member">
+          <img src="https://via.placeholder.com/200" alt="Marketing Head">
+          <h3>Anjali Singh</h3>
+          <p>Marketing Head</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 LuxeLayer | A unit of SAMMRAT GROUP PVT. LTD. | All Rights Reserved</p>
+  </footer>
+
 </body>
 </html>
 
