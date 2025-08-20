@@ -3,102 +3,96 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LuxeLayer Shop</title>
+  <title>LuxeLayer Order</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #0f172a;
       margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #f9f9f9, #ececec);
+      color: #333;
+    }
+    header {
+      text-align: center;
       padding: 20px;
+      background: black;
       color: white;
-      text-align: center;
     }
-
-    h1 {
-      margin-bottom: 20px;
-      color: #38bdf8;
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+      letter-spacing: 2px;
     }
-
-    .products {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
+      padding: 10px;
     }
-
     .product-card {
-      background: #1e293b;
+      background: white;
       border-radius: 12px;
-      padding: 15px;
-      width: 220px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      overflow: hidden;
       text-align: center;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-      transition: transform 0.2s;
+      transition: 0.3s;
     }
-
     .product-card:hover {
-      transform: scale(1.05);
+      transform: translateY(-5px);
     }
-
     .product-card img {
       width: 100%;
-      border-radius: 8px;
-      margin-bottom: 10px;
+      height: 280px;
+      object-fit: cover;
     }
-
     .product-card h3 {
-      font-size: 16px;
-      margin: 10px 0 5px;
-      color: #f1f5f9;
+      margin: 15px 0 5px;
+      font-size: 20px;
+      color: #222;
     }
-
     .product-card p {
+      margin: 0 0 15px;
       font-size: 14px;
-      margin: 5px 0;
-      color: #94a3b8;
+      color: #666;
     }
-
-    .product-card button {
-      background: #22c55e;
-      border: none;
+    .product-card a {
+      display: inline-block;
+      margin-bottom: 20px;
+      padding: 10px 20px;
+      background: #25d366;
       color: white;
-      padding: 10px 15px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 14px;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: 0.3s;
     }
-
-    .product-card button:hover {
-      background: #16a34a;
+    .product-card a:hover {
+      background: #1ebe57;
     }
   </style>
 </head>
 <body>
+  <header>
+    <h1>✨ LuxeLayer Collection ✨</h1>
+    <p>Fresh Styles for Him & Her</p>
+  </header>
 
-  <h1>🛍 LuxeLayer Collection</h1>
-
-  <div class="products">
+  <div class="container">
+    <!-- Men Shirt -->
     <div class="product-card">
-      <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500" alt="Premium White Shirt">
-      <h3>Premium White Shirt</h3>
-      <p>₹1299</p>
-      <button>Buy Now</button>
+      <img src="https://i.ibb.co/2tH1vhD/mens-shirt.jpg" alt="Men Shirt">
+      <h3>Classic Men's Shirt</h3>
+      <p>Premium fabric, perfect fit</p>
+      <a href="https://wa.me/918051731633?text=Hi LuxeLayer,%20I%20want%20to%20order%20the%20Classic%20Men's%20Shirt.">Buy on WhatsApp</a>
     </div>
 
+    <!-- Women Dress -->
     <div class="product-card">
-      <img src="https://images.unsplash.com/photo-1520975922071-a17b0515a3a3?w=500" alt="Classic Black Shirt">
-      <h3>Classic Black Shirt</h3>
-      <p>₹999</p>
-      <button>Buy Now</button>
-    </div>
-
-    <div class="product-card">
-      <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=500" alt="Blue Denim Shirt">
-      <h3>Blue Denim Shirt</h3>
-      <p>₹1799</p>
-      <button>Buy Now</button>
+      <img src="https://i.ibb.co/GH8z59J/women-dress.jpg" alt="Women Dress">
+      <h3>Elegant Women's Dress</h3>
+      <p>Trendy & Comfortable</p>
+      <a href="https://wa.me/918051731633?text=Hi LuxeLayer,%20I%20want%20to%20order%20the%20Elegant%20Women's%20Dress.">Buy on WhatsApp</a>
     </div>
   </div>
-
 </body>
 </html>
