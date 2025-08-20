@@ -75,6 +75,74 @@
       margin-bottom: 10px;
       color: #111;
     }
+    /* Founder Section */
+    .founder-section {
+      margin: 50px 0;
+      text-align: center;
+    }
+    .founder-section img {
+      width: 220px;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    .founder-section h2 {
+      margin-bottom: 10px;
+    }
+    .timeline {
+      margin: 50px auto;
+      max-width: 800px;
+      padding-left: 20px;
+      border-left: 3px solid #111;
+    }
+    .timeline div {
+      margin-bottom: 25px;
+      padding-left: 15px;
+      position: relative;
+    }
+    .timeline div::before {
+      content: "●";
+      position: absolute;
+      left: -13px;
+      color: #111;
+      font-size: 1.2rem;
+    }
+    /* Press Section */
+    .press-section {
+      margin: 60px 0;
+      text-align: center;
+    }
+    .press-section h2 {
+      margin-bottom: 30px;
+    }
+    .press-logos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 20px;
+    }
+    .press-logos img {
+      height: 60px;
+      object-fit: contain;
+      filter: grayscale(100%);
+      transition: 0.3s;
+    }
+    .press-logos img:hover {
+      filter: grayscale(0%);
+      transform: scale(1.05);
+    }
+    .press-highlights {
+      max-width: 800px;
+      margin: auto;
+      text-align: left;
+    }
+    .press-highlights li {
+      margin-bottom: 10px;
+      font-size: 1rem;
+    }
     .team-section {
       margin: 50px 0;
     }
@@ -141,6 +209,39 @@
       Every outfit we create reflects our belief: <em>"Clothing is not just fashion, it’s a lifestyle."</em>
     </p>
 
+    <!-- Founder Section -->
+    <div class="founder-section">
+      <img src="https://via.placeholder.com/220" alt="Founder">
+      <h2>Alok Kumar</h2>
+      <p>Founder & CEO of LuxeLayer | Visionary Entrepreneur</p>
+      <p>
+        At just 17 years old, Alok Kumar built assets worth crores and founded LuxeLayer –  
+        a brand that has already crossed <span class="highlight">₹1 Crore+</span> revenue before turning 18.  
+        Under his leadership, LuxeLayer is proudly part of <span class="highlight">SAMMRAT GROUP PVT. LTD.</span>
+      </p>
+    </div>
+
+    <!-- Timeline Section -->
+    <h2 style="text-align:center; margin-top:50px;">Our Story</h2>
+    <div class="timeline">
+      <div>
+        <h3>2022 - The Beginning</h3>
+        <p>Alok Kumar started trading & entrepreneurship journey as a teenager.</p>
+      </div>
+      <div>
+        <h3>2023 - Idea of LuxeLayer</h3>
+        <p>The idea of building a youth-focused clothing brand was born.</p>
+      </div>
+      <div>
+        <h3>2024 - 1 Crore+ Milestone</h3>
+        <p>LuxeLayer achieved 1 Crore+ revenue before Alok turned 18.</p>
+      </div>
+      <div>
+        <h3>2025 - Growth & Expansion</h3>
+        <p>LuxeLayer became a unit of <span class="highlight">SAMMRAT GROUP PVT. LTD.</span> aiming for global reach.</p>
+      </div>
+    </div>
+
     <!-- Mission & Vision Section -->
     <div class="mission-vision">
       <div class="card">
@@ -151,6 +252,23 @@
         <h2>Our Vision</h2>
         <p>To become a global fashion powerhouse under SAMMRAT GROUP PVT. LTD., leading the new era of luxury streetwear.</p>
       </div>
+    </div>
+
+    <!-- Press Mentions Section -->
+    <div class="press-section">
+      <h2>Media & Press Mentions</h2>
+      <div class="press-logos">
+        <img src="https://via.placeholder.com/150x60?text=Forbes" alt="Forbes">
+        <img src="https://via.placeholder.com/150x60?text=Business+Insider" alt="Business Insider">
+        <img src="https://via.placeholder.com/150x60?text=Times+Now" alt="Times Now">
+        <img src="https://via.placeholder.com/150x60?text=Startup+India" alt="Startup India">
+      </div>
+      <ul class="press-highlights">
+        <li>Featured in <strong>Forbes India (2024)</strong> as one of the youngest entrepreneurs crossing 1 Crore+ before 18.</li>
+        <li>Recognized by <strong>Business Insider</strong> for building LuxeLayer under SAMMRAT GROUP PVT. LTD.</li>
+        <li>Covered on <strong>Times Now</strong> for inspiring India’s Gen-Z fashion entrepreneurs.</li>
+        <li>Listed in <strong>Startup India</strong> community for innovation in youth fashion.</li>
+      </ul>
     </div>
 
     <!-- Team Section -->
