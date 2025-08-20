@@ -5,50 +5,57 @@
   <title>About Us - LuxeLayer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- CSS Direct Inside -->
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-    body { line-height: 1.6; background: #fdfdfd; color: #222; }
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;}
+    body{line-height:1.6;background:#fdfdfd;color:#222;}
 
-    /* ===== About Section ===== */
-    .about-section {
-      max-width: 1100px; margin: 60px auto; padding: 20px; text-align: center;
-    }
-    .about-section h1 { font-size: 2.5rem; margin-bottom: 20px; color: #111; }
-    .about-section p { font-size: 1.1rem; color: #555; margin-bottom: 15px; }
+    /* General Section */
+    section{padding:60px 20px;max-width:1100px;margin:auto;}
 
-    /* ===== Team Section ===== */
-    .team-section { padding: 60px 20px; text-align: center; background: #fafafa; }
-    .team-section h2 { font-size: 2rem; margin-bottom: 10px; }
-    .team-section p { color: #555; margin-bottom: 40px; }
-    .team-members { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; justify-items: center; }
-    .member img { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; box-shadow: 0 4px 8px rgba(0,0,0,0.15); }
-    .member h3 { margin-top: 15px; font-size: 1.2rem; }
-    .member p { color: #777; font-size: 0.95rem; }
+    /* About */
+    .about-section{text-align:center;}
+    .about-section h1{font-size:2.5rem;margin-bottom:20px;}
+    .about-section p{font-size:1.1rem;color:#555;margin-bottom:15px;}
 
-    /* ===== News & Articles Section ===== */
-    .news-section { padding: 60px 20px; background: #fff; }
-    .news-section h2 { text-align: center; font-size: 2rem; margin-bottom: 10px; }
-    .news-section p { text-align: center; color: #555; margin-bottom: 40px; }
-    .articles { max-width: 1100px; margin: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-    .article { background: #fafafa; padding: 20px; border-radius: 12px; box-shadow: 0 3px 6px rgba(0,0,0,0.1); }
-    .article img { width: 100%; border-radius: 12px; margin-bottom: 15px; }
-    .article h3 { font-size: 1.2rem; margin-bottom: 10px; color: #111; }
-    .article p { font-size: 0.95rem; color: #555; }
+    /* Founder Story */
+    .story-section{background:#fafafa;border-radius:12px;padding:40px;}
+    .story-section h2{font-size:2rem;margin-bottom:20px;text-align:center;}
+    .story-content{display:flex;flex-wrap:wrap;align-items:center;gap:30px;}
+    .story-content img{width:280px;height:280px;object-fit:cover;border-radius:50%;box-shadow:0 4px 10px rgba(0,0,0,0.15);}
+    .story-text{flex:1;min-width:280px;}
+    .story-text p{margin-bottom:15px;color:#444;font-size:1rem;}
 
-    /* ===== Footer Section ===== */
-    .footer { background: #111; color: #eee; padding: 40px 20px 20px; margin-top: 50px; }
-    .footer-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 20px; }
-    .footer h3, .footer h4 { margin-bottom: 15px; }
-    .footer-about p { font-size: 0.95rem; line-height: 1.6; color: #bbb; }
-    .footer-links ul { list-style: none; padding: 0; }
-    .footer-links ul li { margin: 8px 0; }
-    .footer-links ul li a { color: #bbb; text-decoration: none; transition: color 0.3s; }
-    .footer-links ul li a:hover { color: #fff; }
-    .social-icons { display: flex; gap: 12px; }
-    .social-icons img { width: 28px; height: 28px; filter: invert(1); transition: transform 0.3s ease; }
-    .social-icons img:hover { transform: scale(1.2); }
-    .footer-bottom { border-top: 1px solid #333; text-align: center; padding-top: 15px; font-size: 0.9rem; color: #888; }
+    /* Team */
+    .team-section{text-align:center;}
+    .team-section h2{font-size:2rem;margin-bottom:10px;}
+    .team-section p{color:#555;margin-bottom:40px;}
+    .team-members{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:30px;justify-items:center;}
+    .member img{width:200px;height:200px;border-radius:50%;object-fit:cover;box-shadow:0 4px 8px rgba(0,0,0,0.15);}
+    .member h3{margin-top:15px;font-size:1.2rem;}
+    .member p{color:#777;font-size:0.95rem;}
+
+    /* News */
+    .news-section h2{text-align:center;font-size:2rem;margin-bottom:10px;}
+    .news-section p{text-align:center;color:#555;margin-bottom:40px;}
+    .articles{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px;}
+    .article{background:#fafafa;padding:20px;border-radius:12px;box-shadow:0 3px 6px rgba(0,0,0,0.1);}
+    .article img{width:100%;border-radius:12px;margin-bottom:15px;}
+    .article h3{font-size:1.2rem;margin-bottom:10px;}
+    .article p{font-size:0.95rem;color:#555;}
+
+    /* Footer */
+    .footer{background:#111;color:#eee;padding:40px 20px 20px;margin-top:50px;}
+    .footer-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:40px;margin-bottom:20px;}
+    .footer h3,.footer h4{margin-bottom:15px;}
+    .footer-about p{font-size:0.95rem;line-height:1.6;color:#bbb;}
+    .footer-links ul{list-style:none;padding:0;}
+    .footer-links ul li{margin:8px 0;}
+    .footer-links ul li a{color:#bbb;text-decoration:none;}
+    .footer-links ul li a:hover{color:#fff;}
+    .social-icons{display:flex;gap:12px;}
+    .social-icons img{width:28px;height:28px;filter:invert(1);transition:transform 0.3s;}
+    .social-icons img:hover{transform:scale(1.2);}
+    .footer-bottom{border-top:1px solid #333;text-align:center;padding-top:15px;font-size:0.9rem;color:#888;}
   </style>
 </head>
 <body>
@@ -57,9 +64,21 @@
   <section class="about-section">
     <h1>About LuxeLayer</h1>
     <p><strong>LuxeLayer</strong> is a premium clothing brand under <strong>SAMMRAT GROUP PVT. LTD.</strong></p>
-    <p>Founded by <strong>Alok Kumar</strong>, LuxeLayer redefines fashion with a vision to make luxury accessible to everyone. 
-    By the age of just 18, LuxeLayer had already crossed 1 Crore+ revenue milestone, setting a new benchmark in youth entrepreneurship.</p>
-    <p>Our mission is to provide stylish, high-quality, and comfortable clothing that inspires confidence and elegance in every individual.</p>
+    <p>Founded by <strong>Alok Kumar</strong>, LuxeLayer redefines fashion with a vision to make luxury accessible to everyone.</p>
+    <p>By the age of just 18, LuxeLayer had already crossed 1 Crore+ revenue milestone, setting a new benchmark in youth entrepreneurship.</p>
+  </section>
+
+  <!-- Founder’s Story Section -->
+  <section class="story-section">
+    <h2>Founder’s Story</h2>
+    <div class="story-content">
+      <img src="images/owner.jpg" alt="Alok Kumar - Founder">
+      <div class="story-text">
+        <p>Alok Kumar, a young visionary and entrepreneur, laid the foundation of LuxeLayer even before turning 18. With determination, creativity, and passion for fashion, he built a brand that crossed <strong>1 Crore+ revenue</strong> at a record-breaking age.</p>
+        <p>Growing up with a dream to blend luxury and accessibility, Alok turned his vision into reality by launching LuxeLayer under <strong>SAMMRAT GROUP PVT. LTD.</strong></p>
+        <p>His journey is an inspiration for the youth, proving that age is never a barrier when you have courage, consistency, and creativity. Today, LuxeLayer is not just a brand — it’s a movement to empower young dreamers.</p>
+      </div>
+    </div>
   </section>
 
   <!-- Team Section -->
