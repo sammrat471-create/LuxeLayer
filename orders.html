@@ -1,8 +1,40 @@
-<button id="myOrdersBtn">My Orders</button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Orders</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    .order {
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-bottom: 10px;
+    }
+    .order h3 {
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
 
-<script>
-  document.getElementById('myOrdersBtn').addEventListener('click', function() {
-  
-    window.location.href = 'orders.html';
-  });
-</script>
+  <h1>My Orders</h1>
+
+  <div class="order">
+    <h3>Order #1001</h3>
+    <p><strong>Date:</strong> 10 August 2025</p>
+    <p><strong>Status:</strong> Shipped</p>
+    <p><strong>Total:</strong> ₹1,299</p>
+  </div>
+
+  <div class="order">
+    <h3>Order #1002</h3>
+    <p><strong>Date:</strong> 5 August 2025</p>
+    <p><strong>Status:</strong> Delivered</p>
+    <p><strong>Total:</strong> ₹899</p>
+  </div>
+
+  <a href="index.html">⬅ Back to Home</a>
+
+</body>
+</html>
+
