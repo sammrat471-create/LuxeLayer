@@ -1,128 +1,117 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LuxeLayer – Flipkart-like Store (Clothing Edition)</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LuxeLayer - Clothing Store</title>
   <style>
-    body{margin:0;font-family:Inter,Arial,sans-serif;background:#f5f5f5;color:#111}
-    header{background:#2874f0;color:#fff;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
-    .logo{font-weight:700;font-size:20px}
-    .search{flex:1;margin:0 20px}
-    .search input{width:100%;padding:10px;border-radius:6px;border:none}
-    .btn{background:#fff;color:#2874f0;border:none;padding:10px 14px;border-radius:6px;cursor:pointer;font-weight:600}
-    main{display:grid;grid-template-columns:220px 1fr;gap:20px;padding:20px}
-    aside{background:#fff;border-radius:8px;padding:16px}
-    .products{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
-    .card{background:#fff;border:1px solid #ddd;border-radius:8px;overflow:hidden;display:flex;flex-direction:column}
-    .card img{width:100%;height:200px;object-fit:cover}
-    .card-body{padding:10px;flex:1;display:flex;flex-direction:column}
-    .title{font-weight:600;margin-bottom:6px}
-    .brand{font-size:13px;color:#555;margin-bottom:6px}
-    .price{font-weight:700;color:#111;margin-bottom:8px}
-    .mrp{text-decoration:line-through;font-size:12px;color:#888;margin-left:6px}
-    .stars{font-size:12px;color:#f39c12;margin-bottom:8px}
-    .card-actions{margin-top:auto;display:flex;gap:6px}
-    .card-actions button{flex:1;padding:8px;border:none;border-radius:6px;cursor:pointer}
-    .add{background:#2874f0;color:#fff}
-    .buy{background:#ff5722;color:#fff}
-    footer{text-align:center;padding:20px;background:#fff;border-top:1px solid #ddd;margin-top:20px}
+    * {margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif;}
+    body {background: #f9f9f9; color: #333;}
+    
+    /* Navbar */
+    header {
+      background: #111; color: #fff; padding: 15px 50px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    header .logo {font-size: 1.5rem; font-weight: bold; color: #f4c430;}
+    nav a {
+      color: #fff; margin: 0 15px; text-decoration: none; font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav a:hover {color: #f4c430;}
+    
+    /* Hero Section */
+    .hero {
+      height: 80vh; background: url('https://images.unsplash.com/photo-1521336575822-6da63fb45455') no-repeat center/cover;
+      display: flex; justify-content: center; align-items: center; flex-direction: column; text-align: center;
+      color: #fff;
+    }
+    .hero h1 {font-size: 3rem; margin-bottom: 10px;}
+    .hero p {font-size: 1.2rem; margin-bottom: 20px;}
+    .btn {
+      padding: 12px 30px; background: #f4c430; color: #111; border: none; border-radius: 25px;
+      font-weight: bold; cursor: pointer; text-decoration: none;
+    }
+    .btn:hover {background: #fff; color: #111;}
+    
+    /* Section */
+    section {padding: 60px 50px;}
+    h2 {text-align: center; margin-bottom: 40px; font-size: 2rem;}
+    
+    /* Footer */
+    footer {
+      background: #111; color: #aaa; padding: 30px 50px; text-align: center;
+    }
+    footer a {color: #f4c430; text-decoration: none;}
+    
+    /* My Account / My Orders layout */
+    .account, .orders {
+      max-width: 800px; margin: auto; background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .account h3, .orders h3 {margin-bottom: 20px;}
+    .details p {margin-bottom: 10px;}
+    .order-item {padding: 15px; border-bottom: 1px solid #eee;}
+    .order-item:last-child {border: none;}
   </style>
 </head>
 <body>
+  <!-- Navbar -->
   <header>
-    <div class="logo">ShopSmart</div>
-    <div class="search"><input id="search" placeholder="Search for clothes, brands and more…"></div>
-    <button class="btn" id="cartBtn">🛒 Cart (<span id="cartCount">0</span>)</button>
-  </header>  <main>
-    <aside>
-      <h3>Filters</h3>
-      <p><strong>Category</strong></p>
-      <div id="categoryChips"></div>
-      <p><strong>Price</strong></p>
-      <div class="chip" data-price="0-999">Under ₹999</div>
-      <div class="chip" data-price="1000-1999">₹1,000 – ₹1,999</div>
-      <div class="chip" data-price="2000-4999">₹2,000 – ₹4,999</div>
-    </aside><section class="products" id="productGrid"></section>
+    <div class="logo">LuxeLayer</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">My Orders</a>
+      <a href="#">My Account</a>
+      <a href="#">Login</a>
+    </nav>
+  </header>
 
-  </main>  <footer>© <span id="year"></span> LuxeLayer Clothing Store | Built for demo use</footer>  <script>
-    const WHATSAPP_PHONE = '918051731633'; // replace with your number
+  <!-- Hero -->
+  <div class="hero">
+    <h1>Welcome to LuxeLayer</h1>
+    <p>Luxury Clothing for Every Layer of Life</p>
+    <a href="#" class="btn">Shop Now</a>
+  </div>
 
-    const PRODUCTS = [
-      // ---- Men ----
-      {id:101,title:"Men's Casual Shirt",brand:"UrbanWear",category:"Men",price:699,mrp:1299,rating:4.2,img:"https://images.unsplash.com/photo-1520975922071-6d98c1f1e87d?w=600"},
-      {id:102,title:"Men's Denim Jeans",brand:"DenimPro",category:"Men",price:1199,mrp:1999,rating:4.3,img:"https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?w=600"},
-      {id:103,title:"Men's Jacket",brand:"CoolGuy",category:"Men",price:2299,mrp:3999,rating:4.5,img:"https://images.unsplash.com/photo-1521334884684-d80222895322?w=600"},
-      {id:104,title:"Men's T-Shirt",brand:"Basics",category:"Men",price:499,mrp:899,rating:4.0,img:"https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=600"},
-      {id:105,title:"Men's Formal Pants",brand:"ClassicFit",category:"Men",price:1399,mrp:2299,rating:4.1,img:"https://images.unsplash.com/photo-1516594798947-e65505dbb29d?w=600"},
+  <!-- About -->
+  <section>
+    <h2>About LuxeLayer</h2>
+    <p style="text-align:center; max-width:600px; margin:auto;">
+      LuxeLayer is your ultimate fashion destination. We bring premium quality clothing
+      with a touch of elegance and style for both men & women.
+    </p>
+  </section>
 
-      // ---- Women ----
-      {id:201,title:"Women's Saree",brand:"Ethniq",category:"Women",price:1799,mrp:2999,rating:4.1,img:"https://images.unsplash.com/photo-1610030469971-8f0f0b40def6?w=600"},
-      {id:202,title:"Women's Party Gown",brand:"GlamQueen",category:"Women",price:2499,mrp:3999,rating:4.5,img:"https://images.unsplash.com/photo-1583744946564-b52ac1c3892e?w=600"},
-      {id:203,title:"Women's Kurti",brand:"Traditionals",category:"Women",price:999,mrp:1599,rating:4.2,img:"https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=600"},
-      {id:204,title:"Women's Jeans",brand:"DenimDiva",category:"Women",price:1299,mrp:1999,rating:4.3,img:"https://images.unsplash.com/photo-1483985988355-763728e1935b?w=600"},
-      {id:205,title:"Women's Handbag",brand:"Bella",category:"Women",price:999,mrp:1499,rating:4.3,img:"https://images.unsplash.com/photo-1548036328-76fa0829baf1?w=600"},
+  <!-- My Account (Example) -->
+  <section class="account">
+    <h3>My Account</h3>
+    <div class="details">
+      <p><b>Name:</b> John Doe</p>
+      <p><b>Email:</b> john@example.com</p>
+      <p><b>Phone:</b> +91 9876543210</p>
+      <p><b>Address:</b> Patna, Bihar, India</p>
+    </div>
+  </section>
 
-      // ---- Kids ----
-      {id:301,title:"Kids T-Shirt Set",brand:"TinyTribe",category:"Kids",price:799,mrp:1299,rating:4.2,img:"https://images.unsplash.com/photo-1519238263530-99bdd11df1bf?w=600"},
-      {id:302,title:"Kids Party Dress",brand:"LittleStar",category:"Kids",price:1299,mrp:1999,rating:4.4,img:"https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=600"},
-      {id:303,title:"Kids Casual Wear",brand:"Kiddo",category:"Kids",price:599,mrp:999,rating:4.1,img:"https://images.unsplash.com/photo-1604467794349-0b5d99e5e5c2?w=600"},
-      {id:304,title:"Kids Ethnic Dress",brand:"TinyTradition",category:"Kids",price:1099,mrp:1699,rating:4.2,img:"https://images.unsplash.com/photo-1532372576444-dda954194ad0?w=600"},
-      {id:305,title:"Kids Sneakers",brand:"MiniStride",category:"Kids",price:899,mrp:1499,rating:4.0,img:"https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=600"},
-    ];
+  <!-- My Orders (Example) -->
+  <section class="orders">
+    <h3>My Orders</h3>
+    <div class="order-item">
+      <p><b>Order ID:</b> #12345</p>
+      <p>Status: Shipped</p>
+      <p>Date: 20 Aug 2025</p>
+    </div>
+    <div class="order-item">
+      <p><b>Order ID:</b> #12346</p>
+      <p>Status: Delivered</p>
+      <p>Date: 15 Aug 2025</p>
+    </div>
+  </section>
 
-    const state={q:'',category:'All',price:null,cart:[]};
-    const el=s=>document.querySelector(s);
-    const money=n=>'₹'+n;
-
-    function filterProducts(){
-      return PRODUCTS.filter(p=>{
-        if(state.q && !(p.title+p.brand+p.category).toLowerCase().includes(state.q)) return false;
-        if(state.category!=='All' && p.category!==state.category) return false;
-        if(state.price){const[a,b]=state.price; if(!(p.price>=a&&p.price<=b)) return false;}
-        return true;
-      });
-    }
-
-    function render(){
-      const grid=el('#productGrid');
-      grid.innerHTML=filterProducts().map(p=>`
-        <div class="card">
-          <img src="${p.img}" alt="${p.title}">
-          <div class="card-body">
-            <div class="title">${p.title}</div>
-            <div class="brand">${p.brand} • ${p.category}</div>
-            <div class="price">${money(p.price)} <span class="mrp">${money(p.mrp)}</span></div>
-            <div class="stars">★ ${p.rating}</div>
-            <div class="card-actions">
-              <button class="add" onclick="addToCart(${p.id})">Add</button>
-              <button class="buy" onclick="buyNow(${p.id})">Buy</button>
-            </div>
-          </div>
-        </div>`).join('');
-    }
-
-    function renderCategories(){
-      const cats=['All',...new Set(PRODUCTS.map(p=>p.category))];
-      el('#categoryChips').innerHTML=cats.map(c=>`<div class="chip ${state.category===c?'active':''}" onclick="state.category='${c}';render();renderCategories()">${c}</div>`).join('');
-    }
-
-    function addToCart(id){
-      const item=state.cart.find(i=>i.id===id);
-      if(item){item.qty++}else{const p=PRODUCTS.find(p=>p.id===id);state.cart.push({...p,qty:1})}
-      el('#cartCount').textContent=state.cart.reduce((a,b)=>a+b.qty,0);
-    }
-
-    function buyNow(id){
-      const p=PRODUCTS.find(p=>p.id===id);
-      const msg=encodeURIComponent(`*Buy Now* %0A${p.title} - ${money(p.price)} %0AQty:1`);
-      window.open(`https://wa.me/${WHATSAPP_PHONE}?text=${msg}`,'_blank');
-    }
-
-    document.addEventListener('DOMContentLoaded',()=>{
-      el('#year').textContent=new Date().getFullYear();
-      el('#search').addEventListener('input',e=>{state.q=e.target.value.toLowerCase();render()});
-      render();renderCategories();
-    });
-  </script></body>
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 LuxeLayer | All Rights Reserved | <a href="#">Privacy Policy</a></p>
+  </footer>
+</body>
 </html>
