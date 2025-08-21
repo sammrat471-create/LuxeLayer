@@ -1,99 +1,42 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LuxeLayer Order</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: "Poppins", sans-serif;
-      background: linear-gradient(135deg, #f9f9f9, #ececec);
-      color: #333;
-    }
-    header {
-      text-align: center;
-      padding: 20px;
-      background: black;
-      color: white;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 28px;
-      letter-spacing: 2px;
-    }
-    .container {
-      max-width: 900px;
-      margin: 30px auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      padding: 10px;
-    }
-    .product-card {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      overflow: hidden;
-      text-align: center;
-      transition: 0.3s;
-    }
-    .product-card:hover {
-      transform: translateY(-5px);
-    }
-    .product-card img {
-      width: 100%;
-      height: 280px;
-      object-fit: cover;
-    }
-    .product-card h3 {
-      margin: 15px 0 5px;
-      font-size: 20px;
-      color: #222;
-    }
-    .product-card p {
-      margin: 0 0 15px;
-      font-size: 14px;
-      color: #666;
-    }
-    .product-card a {
-      display: inline-block;
-      margin-bottom: 20px;
-      padding: 10px 20px;
-      background: #25d366;
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
-      transition: 0.3s;
-    }
-    .product-card a:hover {
-      background: #1ebe57;
-    }
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>LuxeLayer — My Orders</title>
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-  <header>
-    <h1>✨ LuxeLayer Collection ✨</h1>
-    <p>Fresh Styles for Him & Her</p>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <div class="brand"><a href="index.html">LuxeLayer</a></div>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="orders.html" id="nav-orders">My Orders</a>
+        <a href="account.html">My Account</a>
+        <a href="login.html" id="nav-login">Login</a>
+      </nav>
+      <button class="hamburger" id="hamburger4" aria-label="menu">☰</button>
+    </div>
   </header>
 
-  <div class="container">
-    <!-- Men Shirt -->
-    <div class="product-card">
-      <img src="https://i.ibb.co/2tH1vhD/mens-shirt.jpg" alt="Men Shirt">
-      <h3>Classic Men's Shirt</h3>
-      <p>Premium fabric, perfect fit</p>
-      <a href="https://wa.me/918051731633?text=Hi LuxeLayer,%20I%20want%20to%20order%20the%20Classic%20Men's%20Shirt.">Buy on WhatsApp</a>
-    </div>
+  <main>
+    <section class="section container">
+      <h2>My Orders</h2>
+      <div id="ordersList" class="orders-list">
+        <!-- JS fills demo orders or shows message -->
+      </div>
+    </section>
+  </main>
 
-    <!-- Women Dress -->
-    <div class="product-card">
-      <img src="https://i.ibb.co/GH8z59J/women-dress.jpg" alt="Women Dress">
-      <h3>Elegant Women's Dress</h3>
-      <p>Trendy & Comfortable</p>
-      <a href="https://wa.me/918051731633?text=Hi LuxeLayer,%20I%20want%20to%20order%20the%20Elegant%20Women's%20Dress.">Buy on WhatsApp</a>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="left">© <span id="year4"></span> LuxeLayer</div>
+      <div class="right"><a href="about.html">About</a></div>
     </div>
-  </div>
+  </footer>
+
+  <script src="js/script.js"></script>
 </body>
 </html>
-
