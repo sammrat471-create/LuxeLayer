@@ -1,126 +1,128 @@
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>LuxeLayer — Premium Clothing</title>
-  <meta name="description" content="LuxeLayer • Premium clothing designed for modern lifestyle." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: { sans: ['Plus Jakarta Sans', 'ui-sans-serif', 'system-ui'] },
-          colors: {
-            brand: { 50:'#eef2ff',100:'#e0e7ff',500:'#111827',600:'#0b0f1a',900:'#0a0a0a' },
-            accent: { 400:'#f59e0b',500:'#f59e0b' }
-          },
-          boxShadow: { 'soft': '0 10px 30px rgba(0,0,0,0.08)' }
-        }
-      }
-    };
-  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ShopSmart – Flipkart-like Store (Clothing Edition)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    html,body{background:#0a0a0a;color:#e5e7eb}
-    .glass{backdrop-filter:saturate(180%) blur(12px); background:rgba(17,24,39,.6);}
+    body{margin:0;font-family:Inter,Arial,sans-serif;background:#f5f5f5;color:#111}
+    header{background:#2874f0;color:#fff;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
+    .logo{font-weight:700;font-size:20px}
+    .search{flex:1;margin:0 20px}
+    .search input{width:100%;padding:10px;border-radius:6px;border:none}
+    .btn{background:#fff;color:#2874f0;border:none;padding:10px 14px;border-radius:6px;cursor:pointer;font-weight:600}
+    main{display:grid;grid-template-columns:220px 1fr;gap:20px;padding:20px}
+    aside{background:#fff;border-radius:8px;padding:16px}
+    .products{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
+    .card{background:#fff;border:1px solid #ddd;border-radius:8px;overflow:hidden;display:flex;flex-direction:column}
+    .card img{width:100%;height:200px;object-fit:cover}
+    .card-body{padding:10px;flex:1;display:flex;flex-direction:column}
+    .title{font-weight:600;margin-bottom:6px}
+    .brand{font-size:13px;color:#555;margin-bottom:6px}
+    .price{font-weight:700;color:#111;margin-bottom:8px}
+    .mrp{text-decoration:line-through;font-size:12px;color:#888;margin-left:6px}
+    .stars{font-size:12px;color:#f39c12;margin-bottom:8px}
+    .card-actions{margin-top:auto;display:flex;gap:6px}
+    .card-actions button{flex:1;padding:8px;border:none;border-radius:6px;cursor:pointer}
+    .add{background:#2874f0;color:#fff}
+    .buy{background:#ff5722;color:#fff}
+    footer{text-align:center;padding:20px;background:#fff;border-top:1px solid #ddd;margin-top:20px}
   </style>
 </head>
-<body class="font-sans antialiased">
+<body>
+  <header>
+    <div class="logo">ShopSmart</div>
+    <div class="search"><input id="search" placeholder="Search for clothes, brands and more…"></div>
+    <button class="btn" id="cartBtn">🛒 Cart (<span id="cartCount">0</span>)</button>
+  </header>  <main>
+    <aside>
+      <h3>Filters</h3>
+      <p><strong>Category</strong></p>
+      <div id="categoryChips"></div>
+      <p><strong>Price</strong></p>
+      <div class="chip" data-price="0-999">Under ₹999</div>
+      <div class="chip" data-price="1000-1999">₹1,000 – ₹1,999</div>
+      <div class="chip" data-price="2000-4999">₹2,000 – ₹4,999</div>
+    </aside><section class="products" id="productGrid"></section>
 
-  <!-- Top Announcement Bar -->
-  <div class="w-full bg-zinc-900/60 border-b border-white/10 text-xs md:text-sm">
-    <div class="mx-auto max-w-7xl px-4 py-2 text-center">Free shipping on orders over ₹999 • New drops every Friday</div>
-  </div>
+  </main>  <footer>© <span id="year"></span> LuxeLayer Clothing Store | Built for demo use</footer>  <script>
+    const WHATSAPP_PHONE = '918051731633'; // replace with your number
 
-  <!-- Navbar -->
-  <header class="sticky top-0 z-50 glass">
-    <nav class="mx-auto max-w-7xl px-4">
-      <div class="flex h-16 items-center justify-between">
-        <a href="#" class="flex items-center gap-2 group">
-          <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-white text-black font-extrabold">Lx</span>
-          <span class="text-lg md:text-xl font-bold tracking-wide">LuxeLayer</span>
-        </a>
-        <button id="menuBtn" class="md:hidden inline-flex items-center justify-center rounded-lg border border-white/10 px-3 py-2">Menu</button>
-        <ul id="menu" class="hidden md:flex items-center gap-6 text-sm">
-          <li><a href="#new" class="hover:text-white/90">New Arrivals</a></li>
-          <li><a href="#shop" class="hover:text-white/90">Shop</a></li>
-          <li><a href="about.html" class="hover:text-white/90">About</a></li>
-          <li><a href="#contact" class="hover:text-white/90">Contact</a></li>
-          <li>
-            <a href="#" class="inline-flex items-center gap-2 rounded-xl bg-white text-black px-4 py-2 font-medium shadow-soft hover:shadow md:ml-2">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 3h2l.4 2M7 13h10l3-8H6.4M7 13l-1.5 6h12.9M7 13L5 5m2 14a1 1 0 100-2 1 1 0 000 2zm10 0a1 1 0 100-2 1 1 0 000 2z"/></svg>
-              Buy Now
-            </a>
-          </li>
-        </ul>
-      </div>
-      <ul id="menuMobile" class="md:hidden hidden flex-col gap-3 pb-4 text-sm">
-        <li><a href="#new" class="block rounded-lg px-3 py-2 hover:bg-white/5">New Arrivals</a></li>
-        <li><a href="shop.html" class="block rounded-lg px-3 py-2 hover:bg-white/5">Shop</a></li>
-        <li><a href="about.html" class="block rounded-lg px-3 py-2 hover:bg-white/5">About</a></li>
-        <li><a href="#contact" class="block rounded-lg px-3 py-2 hover:bg-white/5">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+    const PRODUCTS = [
+      // ---- Men ----
+      {id:101,title:"Men's Casual Shirt",brand:"UrbanWear",category:"Men",price:699,mrp:1299,rating:4.2,img:"https://images.unsplash.com/photo-1520975922071-6d98c1f1e87d?w=600"},
+      {id:102,title:"Men's Denim Jeans",brand:"DenimPro",category:"Men",price:1199,mrp:1999,rating:4.3,img:"https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?w=600"},
+      {id:103,title:"Men's Jacket",brand:"CoolGuy",category:"Men",price:2299,mrp:3999,rating:4.5,img:"https://images.unsplash.com/photo-1521334884684-d80222895322?w=600"},
+      {id:104,title:"Men's T-Shirt",brand:"Basics",category:"Men",price:499,mrp:899,rating:4.0,img:"https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=600"},
+      {id:105,title:"Men's Formal Pants",brand:"ClassicFit",category:"Men",price:1399,mrp:2299,rating:4.1,img:"https://images.unsplash.com/photo-1516594798947-e65505dbb29d?w=600"},
 
-  <!-- Hero Section -->
-  <section class="relative overflow-hidden">
-    <div class="mx-auto max-w-7xl px-4 py-20 md:py-28 grid md:grid-cols-2 gap-10 items-center">
-      <div>
-        <div class="inline-flex items-center gap-2 rounded-full border border-white/10 px-3 py-1 text-xs text-white/70 mb-4">
-          <span class="h-2 w-2 rounded-full bg-emerald-400"></span> Fashion redefined by Alok Kumar
-        </div>
-        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">Premium streetwear for the <span class="bg-gradient-to-r from-white to-white/50 bg-clip-text text-transparent">modern lifestyle</span></h1>
-        <p class="mt-4 text-white/70 max-w-xl">Minimal silhouettes. Elevated details. Built for comfort and everyday flex.</p>
-        <div class="mt-8 flex flex-wrap gap-3">
-          <a href="#shop" class="rounded-xl bg-white text-black px-5 py-3 font-semibold shadow-soft hover:shadow">Shop Collection</a>
-          <a href="#new" class="rounded-xl border border-white/20 px-5 py-3 font-semibold hover:bg-white/5">New Drops</a>
-        </div>
-      </div>
-      <div class="relative">
-        <div class="absolute inset-0 -z-10 bg-[radial-gradient(60%_60%_at_70%_30%,rgba(245,158,11,.25),transparent_60%)]"></div>
-        <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?q=80&w=1200&auto=format&fit=crop" alt="Model" class="rounded-3xl shadow-soft object-cover w-full h-[480px] md:h-[560px]"/>
-      </div>
-    </div>
-  </section>
+      // ---- Women ----
+      {id:201,title:"Women's Saree",brand:"Ethniq",category:"Women",price:1799,mrp:2999,rating:4.1,img:"https://images.unsplash.com/photo-1610030469971-8f0f0b40def6?w=600"},
+      {id:202,title:"Women's Party Gown",brand:"GlamQueen",category:"Women",price:2499,mrp:3999,rating:4.5,img:"https://images.unsplash.com/photo-1583744946564-b52ac1c3892e?w=600"},
+      {id:203,title:"Women's Kurti",brand:"Traditionals",category:"Women",price:999,mrp:1599,rating:4.2,img:"https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=600"},
+      {id:204,title:"Women's Jeans",brand:"DenimDiva",category:"Women",price:1299,mrp:1999,rating:4.3,img:"https://images.unsplash.com/photo-1483985988355-763728e1935b?w=600"},
+      {id:205,title:"Women's Handbag",brand:"Bella",category:"Women",price:999,mrp:1499,rating:4.3,img:"https://images.unsplash.com/photo-1548036328-76fa0829baf1?w=600"},
 
-  <!-- New Arrivals -->
-  <section id="new" class="mx-auto max-w-7xl px-4 py-12 md:py-16">
-    <h2 class="text-2xl md:text-3xl font-bold">New Arrivals</h2>
-    <div class="mt-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-      <article class="group rounded-2xl border border-white/10 p-2 hover:border-white/30 transition">
-        <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=1200&auto=format&fit=crop" class="h-52 w-full object-cover rounded-xl"/>
-        <div class="p-3 flex justify-between"><span>Classic T-Shirt</span><span>₹499</span></div>
-      </article>
-      <article class="group rounded-2xl border border-white/10 p-2 hover:border-white/30 transition">
-        <img src="https://images.unsplash.com/photo-1520975661595-6453be3f7070?q=80&w=1200&auto=format&fit=crop" class="h-52 w-full object-cover rounded-xl"/>
-        <div class="p-3 flex justify-between"><span>Stylish Hoodie</span><span>₹999</span></div>
-      </article>
-      <article class="group rounded-2xl border border-white/10 p-2 hover:border-white/30 transition">
-        <img src="https://images.unsplash.com/photo-1534215754734-18e55d13e346?q=80&w=1200&auto=format&fit=crop" class="h-52 w-full object-cover rounded-xl"/>
-        <div class="p-3 flex justify-between"><span>Cool Cap</span><span>₹299</span></div>
-      </article>
-    </div>
-  </section>
+      // ---- Kids ----
+      {id:301,title:"Kids T-Shirt Set",brand:"TinyTribe",category:"Kids",price:799,mrp:1299,rating:4.2,img:"https://images.unsplash.com/photo-1519238263530-99bdd11df1bf?w=600"},
+      {id:302,title:"Kids Party Dress",brand:"LittleStar",category:"Kids",price:1299,mrp:1999,rating:4.4,img:"https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=600"},
+      {id:303,title:"Kids Casual Wear",brand:"Kiddo",category:"Kids",price:599,mrp:999,rating:4.1,img:"https://images.unsplash.com/photo-1604467794349-0b5d99e5e5c2?w=600"},
+      {id:304,title:"Kids Ethnic Dress",brand:"TinyTradition",category:"Kids",price:1099,mrp:1699,rating:4.2,img:"https://images.unsplash.com/photo-1532372576444-dda954194ad0?w=600"},
+      {id:305,title:"Kids Sneakers",brand:"MiniStride",category:"Kids",price:899,mrp:1499,rating:4.0,img:"https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=600"},
+    ];
 
-  <!-- Footer -->
-  <footer id="contact" class="border-t border-white/10 mt-12">
-    <div class="mx-auto max-w-7xl px-4 py-8 text-center text-sm text-white/60">
-      © 2025 LuxeLayer • Designed by Alok Kumar
-    </div>
-  </footer>
+    const state={q:'',category:'All',price:null,cart:[]};
+    const el=s=>document.querySelector(s);
+    const money=n=>'₹'+n;
 
-  <script>
-    const menuBtn = document.getElementById('menuBtn');
-    const menuMobile = document.getElementById('menuMobile');
-    if (menuBtn) {
-      menuBtn.addEventListener('click', () => {
-        menuMobile.classList.toggle('hidden');
+    function filterProducts(){
+      return PRODUCTS.filter(p=>{
+        if(state.q && !(p.title+p.brand+p.category).toLowerCase().includes(state.q)) return false;
+        if(state.category!=='All' && p.category!==state.category) return false;
+        if(state.price){const[a,b]=state.price; if(!(p.price>=a&&p.price<=b)) return false;}
+        return true;
       });
     }
-  </script>
-</body>
+
+    function render(){
+      const grid=el('#productGrid');
+      grid.innerHTML=filterProducts().map(p=>`
+        <div class="card">
+          <img src="${p.img}" alt="${p.title}">
+          <div class="card-body">
+            <div class="title">${p.title}</div>
+            <div class="brand">${p.brand} • ${p.category}</div>
+            <div class="price">${money(p.price)} <span class="mrp">${money(p.mrp)}</span></div>
+            <div class="stars">★ ${p.rating}</div>
+            <div class="card-actions">
+              <button class="add" onclick="addToCart(${p.id})">Add</button>
+              <button class="buy" onclick="buyNow(${p.id})">Buy</button>
+            </div>
+          </div>
+        </div>`).join('');
+    }
+
+    function renderCategories(){
+      const cats=['All',...new Set(PRODUCTS.map(p=>p.category))];
+      el('#categoryChips').innerHTML=cats.map(c=>`<div class="chip ${state.category===c?'active':''}" onclick="state.category='${c}';render();renderCategories()">${c}</div>`).join('');
+    }
+
+    function addToCart(id){
+      const item=state.cart.find(i=>i.id===id);
+      if(item){item.qty++}else{const p=PRODUCTS.find(p=>p.id===id);state.cart.push({...p,qty:1})}
+      el('#cartCount').textContent=state.cart.reduce((a,b)=>a+b.qty,0);
+    }
+
+    function buyNow(id){
+      const p=PRODUCTS.find(p=>p.id===id);
+      const msg=encodeURIComponent(`*Buy Now* %0A${p.title} - ${money(p.price)} %0AQty:1`);
+      window.open(`https://wa.me/${WHATSAPP_PHONE}?text=${msg}`,'_blank');
+    }
+
+    document.addEventListener('DOMContentLoaded',()=>{
+      el('#year').textContent=new Date().getFullYear();
+      el('#search').addEventListener('input',e=>{state.q=e.target.value.toLowerCase();render()});
+      render();renderCategories();
+    });
+  </script></body>
 </html>
