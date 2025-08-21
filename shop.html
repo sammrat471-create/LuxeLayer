@@ -1,130 +1,102 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LuxeLayer Order</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LuxeLayer — Collection</title>
+  <meta name="description" content="LuxeLayer premium clothing for men and women. Shop shirts, jeans, dresses, and tops." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    body {
-      margin: 0;
-      font-family: "Poppins", sans-serif;
-      background: linear-gradient(135deg, #f9f9f9, #ececec);
-      color: #333;
+    :root{
+      --bg:#0f1115; --card:#171a21; --muted:#aab1c5; --brand:#ffffff; --accent:#4f46e5;
     }
-    header {
-      text-align: center;
-      padding: 20px;
-      background: black;
-      color: white;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 28px;
-      letter-spacing: 2px;
-    }
-    .container {
-      max-width: 1100px;
-      margin: 30px auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      padding: 10px;
-    }
-    .product-card {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      overflow: hidden;
-      text-align: center;
-      transition: 0.3s;
-    }
-    .product-card:hover {
-      transform: translateY(-5px);
-    }
-    .product-card img {
-      width: 100%;
-      height: 280px;
-      object-fit: cover;
-    }
-    .product-card h3 {
-      margin: 15px 0 5px;
-      font-size: 20px;
-      color: #222;
-    }
-    .product-card p {
-      margin: 0 0 15px;
-      font-size: 14px;
-      color: #666;
-    }
-    .product-card a {
-      display: inline-block;
-      margin-bottom: 20px;
-      padding: 10px 20px;
-      background: #25d366;
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
-      transition: 0.3s;
-    }
-    .product-card a:hover {
-      background: #1ebe57;
-    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:#fff;font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Arial}
+    header{padding:28px 20px;text-align:center;position:sticky;top:0;background:linear-gradient(180deg,#0f1115 60%,transparent)}
+    .brand{font-size:28px;font-weight:700;letter-spacing:1px}
+    .sub{color:var(--muted);font-size:14px;margin-top:6px}
+    .toolbar{display:flex;gap:10px;justify-content:center;margin:18px 0 10px}
+    .tab{background:#1f2330;border:1px solid #2a3040;color:#cfd6ea;padding:10px 14px;border-radius:999px;font-weight:600;cursor:pointer;transition:.2s}
+    .tab.active,.tab:hover{background:var(--accent);color:#fff;border-color:transparent}
+    main{max-width:1100px;margin:0 auto;padding:10px 16px 60px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:10px}
+    .card{background:var(--card);border:1px solid #232838;border-radius:20px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,.3);display:flex;flex-direction:column}
+    .img-wrap{position:relative;aspect-ratio:3/4;background:#0c0e13}
+    .img-wrap img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.02)}
+    .badge{position:absolute;left:12px;bottom:12px;background:rgba(0,0,0,.55);backdrop-filter:blur(4px);border:1px solid #2d3347;color:#fff;padding:6px 10px;border-radius:999px;font-size:12px;letter-spacing:.5px}
+    h3{margin:12px 14px 0;font-size:16px;line-height:1.3}
+    .price{margin:6px 14px 12px;color:#98ffa9;font-weight:700}
+    .buy-btn{margin:0 14px 16px;background:var(--accent);color:#fff;text-align:center;padding:12px 14px;border-radius:12px;text-decoration:none;font-weight:700;transition:.2s;border:0;display:inline-block}
+    .buy-btn:hover{transform:translateY(-2px)}
+    footer{text-align:center;color:var(--muted);font-size:12px;padding:30px 0}
+    .note{text-align:center;color:var(--muted);font-size:13px;margin-top:8px}
   </style>
 </head>
 <body>
   <header>
-    <h1>✨ LuxeLayer Collection ✨</h1>
-    <p>Fresh Styles for Him & Her</p>
-  </header>
-
-  <div class="container">
-    <!-- Men Shirt -->
-    <div class="product-card">
-      <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600" alt="Men Shirt">
-      <h3>Classic Men's Shirt</h3>
-      <p>Premium fabric, perfect fit</p>
-      <a href="https://wa.me/918051731633?text=Hi LuxeLayer,%20I%20want%20to%20order%20the%20Classic%20Men's%20Shirt.">Buy on WhatsApp</a>
+    <div class="brand">LUXELAYER</div>
+    <div class="sub">Premium Collection — Men & Women</div>
+    <div class="toolbar">
+      <button class="tab active" data-filter="all">All</button>
+      <button class="tab" data-filter="men">Men</button>
+      <button class="tab" data-filter="women">Women</button>
     </div>
-
-    <!-- Women Dress -->
-    <div class="product-card">
-      <img src="https://images.unsplash.com/photo-1520975918318-8c7b5d3b0d5d?w=600" alt="Women Dress">
-      <h3>Elegant Women's Dress</h3>
-      <p>Trendy & Comfortable</p>
-      <a href="https://wa.me/918051731633?text=Hi LuxeLayer,%20I%20want%20to%20order%20the%20Elegant%20Women's%20Dress.">Buy on WhatsApp</a>
+    <div class="note">Click “Buy on WhatsApp” to order instantly.</div>
+  </header>  <main>
+    <section class="grid" id="grid">
+      <!-- MEN -->
+      <article class="card" data-category="men">
+        <div class="img-wrap">
+          <img src="images/men-shirt.png" alt="LuxeLayer Men’s Shirt" loading="lazy" />
+          <div class="badge">LuxeLayer</div>
+        </div>
+        <h3>LuxeLayer Men’s Shirt</h3>
+        <div class="price">₹899</div>
+        <a class="buy-btn" href="https://wa.me/918051731633?text=I%20want%20to%20buy%20LuxeLayer%20Men%E2%80%99s%20Shirt%20(%E2%82%B9899)%20%E2%80%94%20Product%20ID%20lx-001" target="_blank" rel="noopener">Buy on WhatsApp</a>
+      </article><article class="card" data-category="men">
+    <div class="img-wrap">
+      <img src="images/men-jeans.png" alt="LuxeLayer Men’s Jeans" loading="lazy" />
+      <div class="badge">LuxeLayer</div>
     </div>
+    <h3>LuxeLayer Men’s Jeans</h3>
+    <div class="price">₹1499</div>
+    <a class="buy-btn" href="https://wa.me/918051731633?text=I%20want%20to%20buy%20LuxeLayer%20Men%E2%80%99s%20Jeans%20(%E2%82%B91499)%20%E2%80%94%20Product%20ID%20lx-002" target="_blank" rel="noopener">Buy on WhatsApp</a>
+  </article>
 
-    <!-- Men Hoodie -->
-    <div class="product-card">
-      <img src="https://images.unsplash.com/photo-1618354691249-444e7166b3f9?w=600" alt="Men Hoodie">
-      <h3>Stylish Men's Hoodie</h3>
-      <p>Warm & Stylish Winter Wear</p>
-      <a href="https://wa.me/918051731633?text=Hi LuxeLayer,%20I%20want%20to%20order%20the%20Stylish%20Men's%20Hoodie.">Buy on WhatsApp</a>
+  <!-- WOMEN -->
+  <article class="card" data-category="women">
+    <div class="img-wrap">
+      <img src="images/women-dress.png" alt="LuxeLayer Women’s Dress" loading="lazy" />
+      <div class="badge">LuxeLayer</div>
     </div>
+    <h3>LuxeLayer Women’s Dress</h3>
+    <div class="price">₹1299</div>
+    <a class="buy-btn" href="https://wa.me/918051731633?text=I%20want%20to%20buy%20LuxeLayer%20Women%E2%80%99s%20Dress%20(%E2%82%B91299)%20%E2%80%94%20Product%20ID%20lx-003" target="_blank" rel="noopener">Buy on WhatsApp</a>
+  </article>
 
-    <!-- Women Top -->
-    <div class="product-card">
-      <img src="https://images.unsplash.com/photo-1593032465174-8eebd138ee1d?w=600" alt="Women Top">
-      <h3>Trendy Women's Top</h3>
-      <p>Casual & Party Wear</p>
-      <a href="https://wa.me/918051731633?text=Hi LuxeLayer,%20I%20want%20to%20order%20the%20Trendy%20Women's%20Top.">Buy on WhatsApp</a>
+  <article class="card" data-category="women">
+    <div class="img-wrap">
+      <img src="images/women-top.png" alt="LuxeLayer Women’s Top" loading="lazy" />
+      <div class="badge">LuxeLayer</div>
     </div>
+    <h3>LuxeLayer Women’s Top</h3>
+    <div class="price">₹699</div>
+    <a class="buy-btn" href="https://wa.me/918051731633?text=I%20want%20to%20buy%20LuxeLayer%20Women%E2%80%99s%20Top%20(%E2%82%B9699)%20%E2%80%94%20Product%20ID%20lx-004" target="_blank" rel="noopener">Buy on WhatsApp</a>
+  </article>
+</section>
 
-    <!-- Men Jeans -->
-    <div class="product-card">
-      <img src="https://images.unsplash.com/photo-1533674689012-1360f66d7af8?w=600" alt="Men Jeans">
-      <h3>Denim Men's Jeans</h3>
-      <p>Durable & Comfortable</p>
-      <a href="https://wa.me/918051731633?text=Hi LuxeLayer,%20I%20want%20to%20order%20the%20Denim%20Men's%20Jeans.">Buy on WhatsApp</a>
-    </div>
-
-    <!-- Women T-Shirt -->
-    <div class="product-card">
-      <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=600" alt="Women T-Shirt">
-      <h3>Cool Women's T-Shirt</h3>
-      <p>Soft Cotton, Everyday Comfort</p>
-      <a href="https://wa.me/918051731633?text=Hi LuxeLayer,%20I%20want%20to%20order%20the%20Cool%20Women's%20T-Shirt.">Buy on WhatsApp</a>
-    </div>
-  </div>
-</body>
+  </main>  <footer>© 2025 LuxeLayer. All rights reserved.</footer>  <script>
+    const tabs = document.querySelectorAll('.tab');
+    const cards = document.querySelectorAll('.card');
+    tabs.forEach(t => t.addEventListener('click', () => {
+      tabs.forEach(tb => tb.classList.remove('active'));
+      t.classList.add('active');
+      const f = t.dataset.filter;
+      cards.forEach(c => {
+        const show = (f === 'all') || (c.dataset.category === f);
+        c.style.display = show ? '' : 'none';
+      });
+    }));
+  </script></body>
 </html>
