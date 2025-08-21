@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>LuxeLayer — My Account</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <div class="brand"><a href="index.html">LuxeLayer</a></div>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="orders.html">My Orders</a>
+        <a href="account.html" id="nav-account">My Account</a>
+        <a href="login.html" id="nav-login">Login</a>
+      </nav>
+      <button class="hamburger" id="hamburger3" aria-label="menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="section container auth">
+      <div class="account-card" id="accountCard">
+        <!-- JS will populate if logged in -->
+        <h2>My Account</h2>
+        <div class="account-details">
+          <p><strong>Name:</strong> <span id="uName">—</span></p>
+          <p><strong>Email:</strong> <span id="uEmail">—</span></p>
+          <p><strong>Phone:</strong> <span id="uPhone">—</span></p>
+          <p><strong>Address:</strong> <span id="uAddress">—</span></p>
+        </div>
+        <div class="account-actions">
+          <button class="btn" id="logoutBtn">Logout</button>
+        </div>
+      </div>
+
+      <div class="account-card hidden" id="notLogged">
+        <h3>You are not logged in</h3>
+        <p>Please <a href="login.html">login</a> to view your account details.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="left">© <span id="year3"></span> LuxeLayer</div>
+      <div class="right"><a href="about.html">About</a></div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
