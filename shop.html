@@ -1,19 +1,411 @@
-<div class="product">
-  <img src="https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Classic White Shirt">
-  <h3>Classic White Shirt</h3>
-  <p>₹799</p>
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>LuxeLayer — Premium Men's Collection</title>
+  <meta name="description" content="LuxeLayer — Premium men's wear collection. Shop shirts, kurta, jackets, jeans and more. WhatsApp to buy." />
+  <style>
+    :root{
+      --bg:#fafafa; --card:#ffffff; --muted:#6b7280; --accent:#0f172a; --cta:#16a34a;
+    }
+    *{box-sizing:border-box}
+    body{font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; margin:0; background:#fdfdfd; color:var(--accent);}
+    header{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;border-bottom:1px solid #eef2f7;background:white;position:sticky;top:0;z-index:50}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:52px;height:52px;border-radius:10px;background:linear-gradient(135deg,#0ea5a4,#0f172a);color:white;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px}
+    nav{display:flex;gap:12px;align-items:center}
+    nav a{padding:10px 12px;border-radius:8px;font-weight:600;color:var(--muted);font-size:14px}
+    nav a.cta{background:var(--cta);color:white}
+    .hero{padding:40px 28px;text-align:center;background:linear-gradient(180deg,#fdfdfd 0%,#f3f4f6 100%)}
+    .hero h1{font-size:36px;font-weight:900;margin-bottom:12px}
+    .hero p{color:var(--muted);font-size:16px;max-width:600px;margin:0 auto 20px}
+    .searchbar{display:flex;gap:10px;justify-content:center;margin-top:16px}
+    .searchbar input{padding:12px;border-radius:8px;border:1px solid #ddd;min-width:240px}
+    .searchbar select{padding:12px;border-radius:8px;border:1px solid #ddd}
+    .filters{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:18px 0}
+    .chip{padding:8px 12px;border-radius:999px;background:var(--card);border:1px solid #eef2f7;font-weight:600;cursor:pointer}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px;padding:20px 28px}
+    .card{background:var(--card);border-radius:12px;overflow:hidden;box-shadow:0 8px 22px rgba(2,6,23,0.05);display:flex;flex-direction:column}
+    .img{width:100%;height:260px;object-fit:cover;background:#f3f4f6}
+    .card-body{padding:12px;display:flex;flex-direction:column;gap:6px}
+    .title{font-weight:700;font-size:15px}
+    .cat{font-size:13px;color:var(--muted)}
+    .price{font-weight:800;color:var(--cta);font-size:16px}
+    .actions{display:flex;gap:8px;margin-top:8px}
+    .btn{flex:1;padding:10px;border-radius:10px;border:0;font-weight:800;cursor:pointer}
+    .btn-buy{background:var(--cta);color:white}
+    .btn-view{background:#f3f4f6;color:var(--accent)}
+    footer{padding:18px 28px;color:var(--muted);font-size:14px;border-top:1px solid #eef2f7;background:white;text-align:center}
+    .modal-back{position:fixed;inset:0;background:rgba(2,6,23,0.5);display:flex;align-items:center;justify-content:center;z-index:9999}
+    .modal{width:95%;max-width:800px;background:white;border-radius:12px;padding:18px;display:flex;gap:16px}
+    .modal img{width:100%;height:100%;object-fit:cover;border-radius:8px}
+    .modal .right{flex:1;display:flex;flex-direction:column}
+    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:#eef8f1;color:#0b6b33;font-weight:700;font-size:13px}
+    @media (max-width:520px){ .grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))} .img{height:180px} }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="logo">LL</div>
+      <div>
+        <div style="font-weight:800">LuxeLayer</div>
+        <div style="font-size:13px;color:var(--muted)">Premium Men's Collection</div>
+      </div>
+    </div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Collections</a>
+      <a href="#">About</a>
+      <a class="cta" href="#" onclick="scrollToGrid()">Shop Now</a>
+    </nav>
+  </header>
 
-  <label for="size1">Select Size:</label>
-  <select id="size1" name="size">
-    <option value="S">S</option>
-    <option value="M">M</option>
-    <option value="L">L</option>
-    <option value="XL">XL</option>
-    <option value="XXL">XXL</option>
-  </select>
+  <section class="hero">
+    <h1>Welcome to LuxeLayer</h1>
+    <p>Premium men's fashion curated for every occasion. Shirts, jeans, kurtas, jackets & more. Order directly on WhatsApp.</p>
+    <div class="searchbar">
+      <input id="search" placeholder="Search product..." />
+      <select id="sort">
+        <option value="default">Sort</option>
+        <option value="price-asc">Price: Low → High</option>
+        <option value="price-desc">Price: High → Low</option>
+      </select>
+    </div>
+    <div class="filters">
+      <div class="chip" data-cat="All">All</div>
+      <div class="chip" data-cat="Shirt">Shirts</div>
+      <div class="chip" data-cat="Kurta">Kurtas</div>
+      <div class="chip" data-cat="Jeans">Jeans</div>
+      <div class="chip" data-cat="Jacket">Jackets</div>
+      <div class="chip" data-cat="Formal">Formal</div>
+    </div>
+  </section>
 
-  <div class="buttons">
-    <a href="https://wa.me/918051731633?text=I%20want%20to%20buy%20Classic%20White%20Shirt%20(₹799)" target="_blank" class="buy-btn">Buy on WhatsApp</a>
-    <a href="#" class="pay-btn">Pay Now</a>
-  </div>
-</div>
+  <main>
+    <div id="grid" class="grid"></div>
+  </main>
+
+  <footer>
+    © <span id="year"></span> LuxeLayer | Under SAMMRAT GROUP PVT. LTD
+  </footer>
+
+  <script>
+    // WhatsApp number (final): 918051731633
+    const WA_NUMBER = "918051731633";
+
+    const categories = ["Shirt","T-Shirt","Kurta","Jeans","Trouser","Jacket","Blazer","Sweater","Hoodie","Coat","Formal","Casual","Polo","Shorts","Waistcoat"];
+    const fabrics = ["Cotton","Linen","Denim","Wool Blend","Polyester Blend","Silk Blend"];
+    const colors = ["Black","White","Navy","Maroon","Olive","Beige","Grey","Brown","Mustard","Sky Blue"];
+    function rand(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
+    function formatPrice(n){ return "₹" + n.toLocaleString("en-IN"); }
+
+    const products = [];
+    for(let i=1;i<=100;i++){
+      const cat = rand(categories);
+      const color = rand(colors);
+      const fabric = rand(fabrics);
+      let base = 499;
+      if(cat==="Jacket"||cat==="Coat"||cat==="Blazer") base = 1999;
+      else if(cat==="Jeans"||cat==="Waistcoat") base = 899;
+      else if(cat==="Kurta") base = 799;
+      else if(cat==="Shirt"||cat==="Formal") base = 699;
+      const price = Math.floor(base + Math.random()* (base*2));
+      const name = `${cat} • ${color} • ${fabric} #${i}`;
+      const img = `https://source.unsplash.com/600x600/?mens-${cat}&sig=${i}`;
+      const id = "p" + i;
+      products.push({id,name,price,img,cat});
+    }
+
+    const grid = document.getElementById("grid");
+    function createCard(p){
+      const div = document.createElement("div");
+      div.className = "card";
+      div.innerHTML = `
+        <img loading="lazy" class="img" src="${p.img}" alt="${p.name}" />
+        <div class="card-body">
+          <div class="title">${p.name}</div>
+          <div class="cat">${p.cat}</div>
+          <div class="price">${formatPrice(p.price)}</div>
+          <div class="actions">
+            <button class="btn btn-view" onclick="viewProduct('${p.id}')">View</button>
+            <button class="btn btn-buy" onclick="buyProduct('${p.id}')">Buy</button>
+          </div>
+        </div>`;
+      return div;
+    }
+
+    function render(list){
+      grid.innerHTML = "";
+      list.forEach(p=>grid.appendChild(createCard(p)));
+    }
+    render(products);
+
+    const search = document.getElementById("search");
+    const sort = document.getElementById("sort");
+    const chips = document.querySelectorAll(".chip");
+    let currentCategory = "All";
+
+    function applyFilters(){
+      const q = search.value.trim().toLowerCase();
+      let filtered = products.filter(p=>{
+        if(currentCategory!=="All" && p.cat!==currentCategory) return false;
+        if(q && !p.name.toLowerCase().includes(q)) return false;
+        return true;
+      });
+      if(sort.value==="price-asc") filtered.sort((a,b)=>a.price-b.price);
+      if(sort.value==="price-desc") filtered.sort((a,b)=>b.price-a.price);
+      render(filtered);
+    }
+
+    search.addEventListener("input", applyFilters);
+    sort.addEventListener("change", applyFilters);
+    chips.forEach(ch=>{
+      ch.onclick=()=>{
+        currentCategory=ch.dataset.cat;
+        chips.forEach(c=>c.style.border="1px solid #eef2f7");
+        ch.style.border="1px solid #16a34a";
+        applyFilters();
+      }
+    });
+
+    function viewProduct(id){
+      const p=products.find(x=>x.id===id);
+      if(!p) return;
+      const wrap=document.createElement("div");
+      wrap.className="modal-back"; wrap.id="modal";
+      wrap.innerHTML=`
+        <div class="modal">
+          <div style="flex:0 0 45%"><img src="${p.img}" alt="${p.name}"></div>
+          <div class="right">
+            <h2>${p.name}</h2>
+            <div style="color:var(--muted);margin-bottom:8px">${p.cat}</div>
+            <div style="font-weight:900;font-size:20px;color:var(--cta)}">${formatPrice(p.price)}</div>
+            <p style="color:var(--muted);margin:12px 0">High quality ${p.cat}, available sizes S-XXL. Message us to confirm order.</p>
+            <div style="margin-top:auto;display:flex;gap:8px">
+              <button class="btn btn-buy" onclick="buyProduct('${p.id}')">Buy on WhatsApp</button>
+              <button class="btn btn-view" onclick="closeModal()">Close</button>
+            </div>
+          </div>
+        </div>`;
+      document.body.appendChild(wrap);
+      wrap.onclick=e=>{if(e.target===wrap)closeModal();}
+    }
+    function closeModal(){const m=document.getElementById("modal");if(m)m.remove();}
+    function buyProduct(id){
+      const p=products.find(x=>x.id===id);
+      if(!p)return;
+      const msg=encodeURIComponent(`Hello LuxeLayer, I want to buy *${p.name}* (ID:${p.id}) for ${formatPrice(p.price)}. Please confirm size & payment options.`);
+      window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`,"_blank");
+    }
+    function scrollToGrid(){document.getElementById("grid").scrollIntoView({behavior:"smooth"});}
+    document.getElementById("year").innerText=new Date().getFullYear();
+  </script>
+</body>
+</html><!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>LuxeLayer — Premium Men's Collection</title>
+  <meta name="description" content="LuxeLayer — Premium men's wear collection. Shop shirts, kurta, jackets, jeans and more. WhatsApp to buy." />
+  <style>
+    :root{
+      --bg:#fafafa; --card:#ffffff; --muted:#6b7280; --accent:#0f172a; --cta:#16a34a;
+    }
+    *{box-sizing:border-box}
+    body{font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; margin:0; background:#fdfdfd; color:var(--accent);}
+    header{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;border-bottom:1px solid #eef2f7;background:white;position:sticky;top:0;z-index:50}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:52px;height:52px;border-radius:10px;background:linear-gradient(135deg,#0ea5a4,#0f172a);color:white;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px}
+    nav{display:flex;gap:12px;align-items:center}
+    nav a{padding:10px 12px;border-radius:8px;font-weight:600;color:var(--muted);font-size:14px}
+    nav a.cta{background:var(--cta);color:white}
+    .hero{padding:40px 28px;text-align:center;background:linear-gradient(180deg,#fdfdfd 0%,#f3f4f6 100%)}
+    .hero h1{font-size:36px;font-weight:900;margin-bottom:12px}
+    .hero p{color:var(--muted);font-size:16px;max-width:600px;margin:0 auto 20px}
+    .searchbar{display:flex;gap:10px;justify-content:center;margin-top:16px}
+    .searchbar input{padding:12px;border-radius:8px;border:1px solid #ddd;min-width:240px}
+    .searchbar select{padding:12px;border-radius:8px;border:1px solid #ddd}
+    .filters{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:18px 0}
+    .chip{padding:8px 12px;border-radius:999px;background:var(--card);border:1px solid #eef2f7;font-weight:600;cursor:pointer}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px;padding:20px 28px}
+    .card{background:var(--card);border-radius:12px;overflow:hidden;box-shadow:0 8px 22px rgba(2,6,23,0.05);display:flex;flex-direction:column}
+    .img{width:100%;height:260px;object-fit:cover;background:#f3f4f6}
+    .card-body{padding:12px;display:flex;flex-direction:column;gap:6px}
+    .title{font-weight:700;font-size:15px}
+    .cat{font-size:13px;color:var(--muted)}
+    .price{font-weight:800;color:var(--cta);font-size:16px}
+    .actions{display:flex;gap:8px;margin-top:8px}
+    .btn{flex:1;padding:10px;border-radius:10px;border:0;font-weight:800;cursor:pointer}
+    .btn-buy{background:var(--cta);color:white}
+    .btn-view{background:#f3f4f6;color:var(--accent)}
+    footer{padding:18px 28px;color:var(--muted);font-size:14px;border-top:1px solid #eef2f7;background:white;text-align:center}
+    .modal-back{position:fixed;inset:0;background:rgba(2,6,23,0.5);display:flex;align-items:center;justify-content:center;z-index:9999}
+    .modal{width:95%;max-width:800px;background:white;border-radius:12px;padding:18px;display:flex;gap:16px}
+    .modal img{width:100%;height:100%;object-fit:cover;border-radius:8px}
+    .modal .right{flex:1;display:flex;flex-direction:column}
+    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:#eef8f1;color:#0b6b33;font-weight:700;font-size:13px}
+    @media (max-width:520px){ .grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))} .img{height:180px} }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="logo">LL</div>
+      <div>
+        <div style="font-weight:800">LuxeLayer</div>
+        <div style="font-size:13px;color:var(--muted)">Premium Men's Collection</div>
+      </div>
+    </div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Collections</a>
+      <a href="#">About</a>
+      <a class="cta" href="#" onclick="scrollToGrid()">Shop Now</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Welcome to LuxeLayer</h1>
+    <p>Premium men's fashion curated for every occasion. Shirts, jeans, kurtas, jackets & more. Order directly on WhatsApp.</p>
+    <div class="searchbar">
+      <input id="search" placeholder="Search product..." />
+      <select id="sort">
+        <option value="default">Sort</option>
+        <option value="price-asc">Price: Low → High</option>
+        <option value="price-desc">Price: High → Low</option>
+      </select>
+    </div>
+    <div class="filters">
+      <div class="chip" data-cat="All">All</div>
+      <div class="chip" data-cat="Shirt">Shirts</div>
+      <div class="chip" data-cat="Kurta">Kurtas</div>
+      <div class="chip" data-cat="Jeans">Jeans</div>
+      <div class="chip" data-cat="Jacket">Jackets</div>
+      <div class="chip" data-cat="Formal">Formal</div>
+    </div>
+  </section>
+
+  <main>
+    <div id="grid" class="grid"></div>
+  </main>
+
+  <footer>
+    © <span id="year"></span> LuxeLayer | Under SAMMRAT GROUP PVT. LTD
+  </footer>
+
+  <script>
+    // WhatsApp number (final): 918051731633
+    const WA_NUMBER = "918051731633";
+
+    const categories = ["Shirt","T-Shirt","Kurta","Jeans","Trouser","Jacket","Blazer","Sweater","Hoodie","Coat","Formal","Casual","Polo","Shorts","Waistcoat"];
+    const fabrics = ["Cotton","Linen","Denim","Wool Blend","Polyester Blend","Silk Blend"];
+    const colors = ["Black","White","Navy","Maroon","Olive","Beige","Grey","Brown","Mustard","Sky Blue"];
+    function rand(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
+    function formatPrice(n){ return "₹" + n.toLocaleString("en-IN"); }
+
+    const products = [];
+    for(let i=1;i<=100;i++){
+      const cat = rand(categories);
+      const color = rand(colors);
+      const fabric = rand(fabrics);
+      let base = 499;
+      if(cat==="Jacket"||cat==="Coat"||cat==="Blazer") base = 1999;
+      else if(cat==="Jeans"||cat==="Waistcoat") base = 899;
+      else if(cat==="Kurta") base = 799;
+      else if(cat==="Shirt"||cat==="Formal") base = 699;
+      const price = Math.floor(base + Math.random()* (base*2));
+      const name = `${cat} • ${color} • ${fabric} #${i}`;
+      const img = `https://source.unsplash.com/600x600/?mens-${cat}&sig=${i}`;
+      const id = "p" + i;
+      products.push({id,name,price,img,cat});
+    }
+
+    const grid = document.getElementById("grid");
+    function createCard(p){
+      const div = document.createElement("div");
+      div.className = "card";
+      div.innerHTML = `
+        <img loading="lazy" class="img" src="${p.img}" alt="${p.name}" />
+        <div class="card-body">
+          <div class="title">${p.name}</div>
+          <div class="cat">${p.cat}</div>
+          <div class="price">${formatPrice(p.price)}</div>
+          <div class="actions">
+            <button class="btn btn-view" onclick="viewProduct('${p.id}')">View</button>
+            <button class="btn btn-buy" onclick="buyProduct('${p.id}')">Buy</button>
+          </div>
+        </div>`;
+      return div;
+    }
+
+    function render(list){
+      grid.innerHTML = "";
+      list.forEach(p=>grid.appendChild(createCard(p)));
+    }
+    render(products);
+
+    const search = document.getElementById("search");
+    const sort = document.getElementById("sort");
+    const chips = document.querySelectorAll(".chip");
+    let currentCategory = "All";
+
+    function applyFilters(){
+      const q = search.value.trim().toLowerCase();
+      let filtered = products.filter(p=>{
+        if(currentCategory!=="All" && p.cat!==currentCategory) return false;
+        if(q && !p.name.toLowerCase().includes(q)) return false;
+        return true;
+      });
+      if(sort.value==="price-asc") filtered.sort((a,b)=>a.price-b.price);
+      if(sort.value==="price-desc") filtered.sort((a,b)=>b.price-a.price);
+      render(filtered);
+    }
+
+    search.addEventListener("input", applyFilters);
+    sort.addEventListener("change", applyFilters);
+    chips.forEach(ch=>{
+      ch.onclick=()=>{
+        currentCategory=ch.dataset.cat;
+        chips.forEach(c=>c.style.border="1px solid #eef2f7");
+        ch.style.border="1px solid #16a34a";
+        applyFilters();
+      }
+    });
+
+    function viewProduct(id){
+      const p=products.find(x=>x.id===id);
+      if(!p) return;
+      const wrap=document.createElement("div");
+      wrap.className="modal-back"; wrap.id="modal";
+      wrap.innerHTML=`
+        <div class="modal">
+          <div style="flex:0 0 45%"><img src="${p.img}" alt="${p.name}"></div>
+          <div class="right">
+            <h2>${p.name}</h2>
+            <div style="color:var(--muted);margin-bottom:8px">${p.cat}</div>
+            <div style="font-weight:900;font-size:20px;color:var(--cta)}">${formatPrice(p.price)}</div>
+            <p style="color:var(--muted);margin:12px 0">High quality ${p.cat}, available sizes S-XXL. Message us to confirm order.</p>
+            <div style="margin-top:auto;display:flex;gap:8px">
+              <button class="btn btn-buy" onclick="buyProduct('${p.id}')">Buy on WhatsApp</button>
+              <button class="btn btn-view" onclick="closeModal()">Close</button>
+            </div>
+          </div>
+        </div>`;
+      document.body.appendChild(wrap);
+      wrap.onclick=e=>{if(e.target===wrap)closeModal();}
+    }
+    function closeModal(){const m=document.getElementById("modal");if(m)m.remove();}
+    function buyProduct(id){
+      const p=products.find(x=>x.id===id);
+      if(!p)return;
+      const msg=encodeURIComponent(`Hello LuxeLayer, I want to buy *${p.name}* (ID:${p.id}) for ${formatPrice(p.price)}. Please confirm size & payment options.`);
+      window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`,"_blank");
+    }
+    function scrollToGrid(){document.getElementById("grid").scrollIntoView({behavior:"smooth"});}
+    document.getElementById("year").innerText=new Date().getFullYear();
+  </script>
+</body>
+</html>
