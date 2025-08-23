@@ -4,41 +4,42 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>LuxeLayer — Final Store (100+ Products • WhatsApp • UPI • COD)</title>
-  <meta name="description" content="LuxeLayer clothing store with 120 products, real-looking clothing photos, size & quantity, Buy on WhatsApp, UPI payments and Cash on Delivery requests." />
+  <title>LuxeLayer — Complete Store (Men • Women • Kids)</title>
+  <meta name="description" content="LuxeLayer — Professional clothing store with category-wise catalogue, WhatsApp ordering, UPI payment and COD requests." />
   <style>
-    :root{--bg:#0b0b0c;--panel:#0e0e10;--card:#141419;--muted:#acb0ba;--text:#f7f7fb;--gold:#d6b25e;--gold2:#f1d38a;--accent:#1f2937;--ok:#16a34a}
+    :root{--bg:#0b0b0c;--card:#0f0f12;--muted:#b6bcc6;--text:#f7f7fb;--gold:#d6b25e;--green:#16a34a}
     *{box-sizing:border-box}
-    body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial;background:var(--bg);color:var(--text)}
-    header{position:sticky;top:0;z-index:40;background:linear-gradient(180deg,#0b0b0c 0%,#121216 100%);border-bottom:1px solid #202028}
-    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 18px}
+    body{margin:0;font-family:Inter,system-ui,'Segoe UI',Roboto,Arial;background:linear-gradient(180deg,#0b0b0c,#0f0f12);color:var(--text)}
+    header{position:sticky;top:0;background:#070708;padding:12px 16px;border-bottom:1px solid #17171a;z-index:50}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px}
     .brand{display:flex;align-items:center;gap:12px}
-    .logo{width:46px;height:46px;border-radius:12px;background:radial-gradient(100% 100% at 50% 0%, #f7e7b0 0%, #d6b25e 45%, #8b6a2b 100%);box-shadow:0 4px 20px rgba(214,178,94,.35);display:flex;align-items:center;justify-content:center}
-    .logo svg{filter:drop-shadow(0 3px 8px rgba(0,0,0,.45))}
-    .title{font-weight:900;letter-spacing:.5px}
+    .logo{width:52px;height:52px;border-radius:12px;background:radial-gradient(circle at 30% 20%, #fff2c8, #d6b25e 45%, #8b6a2b);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 30px rgba(214,178,94,.15)}
+    .title{font-weight:900;font-size:18px}
     .subtitle{font-size:12px;color:var(--muted)}
-    .searchbar{display:flex;gap:10px;flex-wrap:wrap}
-    .searchbar input,.searchbar select{background:#0d0d11;border:1px solid #21212a;color:#f7f7fb;border-radius:10px;padding:10px 12px;min-width:220px}.hero{padding:16px 18px;border-top:1px solid #202028;background:linear-gradient(180deg,#121216,#101015)}
-.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
-.chip{padding:8px 12px;border-radius:999px;border:1px solid #2a2a34;background:#0f0f14;color:#d6d9e2;cursor:pointer}
+    .controls{display:flex;gap:8px;align-items:center}
+    input,select{padding:10px;border-radius:10px;border:1px solid #1a1a1d;background:#0c0c0d;color:var(--text)}.hero{padding:18px;text-align:center;border-bottom:1px solid #151519}
+.tabs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:8px}
+.tab{padding:8px 12px;border-radius:999px;background:#0d0d10;border:1px solid #1c1c20;color:var(--muted);cursor:pointer}
+.tab.active{border-color:var(--gold);color:var(--gold);box-shadow:0 6px 22px rgba(214,178,94,.06)}
 
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px;padding:16px}
-.card{background:linear-gradient(180deg,#15151a,#121218);border:1px solid #232332;border-radius:16px;overflow:hidden;box-shadow:0 10px 28px rgba(0,0,0,.25);display:flex;flex-direction:column}
-.img{width:100%;height:250px;object-fit:cover;background:#0f0f12}
-.body{padding:10px 12px;display:flex;flex-direction:column;gap:6px}
-.name{font-weight:800;font-size:14px}
-.meta{font-size:12px;color:var(--muted)}
-.price{font-size:16px;font-weight:900;color:#c7fbb6}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;padding:18px}
+.card{background:linear-gradient(180deg,#0f0f12,#0b0b0c);border:1px solid #1a1a1d;border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.img{width:100%;height:260px;object-fit:cover;background:#0a0a0a}
+.body{padding:12px;display:flex;flex-direction:column;gap:8px}
+.name{font-weight:800}
+.meta{font-size:13px;color:var(--muted)}
+.price{font-weight:900;color:var(--green)}
 .row{display:flex;gap:8px;align-items:center}
-select,input[type=number]{background:#0f0f14;border:1px solid #252533;color:#e8ebf3;border-radius:8px;padding:8px}
-.actions{display:flex;gap:8px;margin-top:8px}
-.btn{flex:1;padding:10px;border-radius:10px;border:0;font-weight:900;cursor:pointer;letter-spacing:.2px}
-.btn-wa{background:#25D366;color:#051b0c}
+select.qty,input[type=number]{padding:8px;border-radius:8px;border:1px solid #1b1b1f;background:#0d0d0f;color:var(--text)}
+.actions{display:flex;gap:8px;margin-top:6px}
+.btn{flex:1;padding:10px;border-radius:10px;border:0;font-weight:800;cursor:pointer}
+.btn-wa{background:#25D366;color:#03290f}
 .btn-upi{background:#111827;color:#fff}
-.btn-cod{background:#d6b25e;color:#0d0a05}
+.btn-cod{background:var(--gold);color:#0b0b0b}
 
-footer{padding:18px;text-align:center;color:#aeb3bf;border-top:1px solid #202028;background:linear-gradient(180deg,#111114,#0d0d11)}
-a{color:#f1d38a}
+footer{padding:16px;text-align:center;color:var(--muted);border-top:1px solid #151519;margin-top:16px}
+
+@media(max-width:640px){.img{height:180px}.controls{flex-direction:column;gap:6px}}
 
   </style>
 </head>
@@ -46,207 +47,157 @@ a{color:#f1d38a}
   <header>
     <div class="nav">
       <div class="brand">
-        <div class="logo" aria-label="LuxeLayer logo">
-          <!-- Gold trendy stylish logo (LL) -->
-          <svg width="28" height="28" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#fff3c4"/>
-                <stop offset="50%" stop-color="#f1d38a"/>
-                <stop offset="100%" stop-color="#8b6a2b"/>
-              </linearGradient>
-            </defs>
-            <path d="M14 10h8v34h20v8H14V10Z" fill="url(#g)"/>
-            <path d="M36 10h8v34h10v8H36V10Z" fill="url(#g)"/>
+        <div class="logo" aria-hidden="true">
+          <!-- minimal gold LL logo -->
+          <svg width="34" height="34" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fff3c4"/><stop offset="60%" stop-color="#f1d38a"/><stop offset="100%" stop-color="#8b6a2b"/></linearGradient>
+            <rect x="6" y="8" width="12" height="44" rx="2" fill="url(#g1)"/>
+            <rect x="30" y="8" width="12" height="44" rx="2" fill="url(#g1)"/>
           </svg>
         </div>
         <div>
-          <div class="title" style="font-size:18px">LuxeLayer</div>
+          <div class="title">LuxeLayer</div>
           <div class="subtitle">A SAMMRAT GROUP PVT. LTD Company</div>
         </div>
       </div>
-      <div class="searchbar">
-        <input id="search" placeholder="Search: shirt, saree, jeans…"/>
-        <select id="sort"><option value="default">Sort</option><option value="price-asc">Price: Low → High</option><option value="price-desc">Price: High → Low</option></select>
+      <div class="controls">
+        <input id="search" placeholder="Search: shirt, saree, jeans..." />
+        <select id="sort"><option value="default">Sort</option><option value="price-asc">Price ↑</option><option value="price-desc">Price ↓</option></select>
       </div>
     </div>
     <div class="hero">
       <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
-        <div><strong>120+ Products</strong> • Men • Women • Kids • Formal • Casual • Ethnic</div>
-        <div style="color:#f1d38a">WhatsApp: <strong>918051731633</strong></div>
+        <div style="color:var(--muted)">120+ Products • Men • Women • Kids</div>
+        <div style="color:var(--gold)">WhatsApp: <strong>918051731633</strong></div>
       </div>
-      <div class="chips">
-        <span class="chip" data-cat="All">All</span>
-        <span class="chip" data-cat="Men">Men</span>
-        <span class="chip" data-cat="Women">Women</span>
-        <span class="chip" data-cat="Kids">Kids</span>
-        <span class="chip" data-cat="Formal">Formal</span>
-        <span class="chip" data-cat="Casual">Casual</span>
-        <span class="chip" data-cat="Ethnic">Ethnic</span>
+      <div class="tabs" id="tabs">
+        <span class="tab active" data-cat="All">All</span>
+        <span class="tab" data-cat="Men">Men</span>
+        <span class="tab" data-cat="Women">Women</span>
+        <span class="tab" data-cat="Kids">Kids</span>
       </div>
     </div>
   </header>  <main>
     <div id="grid" class="grid"></div>
-  </main>  <footer>© <span id="year"></span> LuxeLayer • Buy on WhatsApp • UPI • COD • Under SAMMRAT GROUP PVT. LTD</footer>  <script>
-    // ====== SETTINGS ======
-    const WA = "918051731633";                 // WhatsApp number
-    const UPI_ID = "luxe@upi";                 // Replace with your real UPI ID
-    const MERCHANT = "LuxeLayer";
+  </main>  <footer>© <span id="year"></span> LuxeLayer • WhatsApp Orders • UPI • COD • Under SAMMRAT GROUP PVT. LTD</footer>  <script>
+    // CONFIG
+    const WA = '918051731633';
+    let UPI_ID = 'luxe@upi'; // replace with real UPI id when ready
+    const MERCHANT = 'LuxeLayer';
 
-    // ====== PRODUCT DATA (auto-generate with reliable clothing photos) ======
-    // We'll use deterministic clothing keywords with two sources:
-    // 1) Fixed Pexels links (a few known-good photos)
-    // 2) Clothing-focused loremflickr fallback with lock to keep faces clean & stable
-
-    const FIXED = [
-      "https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg?auto=compress&cs=tinysrgb&w=800", // white shirt (men)
-      "https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg?auto=compress&cs=tinysrgb&w=800",  // denim jacket
-      "https://images.pexels.com/photos/7679729/pexels-photo-7679729.jpeg?auto=compress&cs=tinysrgb&w=800", // red dress
-      "https://images.pexels.com/photos/6311395/pexels-photo-6311395.jpeg?auto=compress&cs=tinysrgb&w=800", // men's suit
-      "https://images.pexels.com/photos/1488463/pexels-photo-1488463.jpeg?auto=compress&cs=tinysrgb&w=800", // saree
-      "https://images.pexels.com/photos/3755706/pexels-photo-3755706.jpeg?auto=compress&cs=tinysrgb&w=800", // hoodie
-      "https://images.pexels.com/photos/2983467/pexels-photo-2983467.jpeg?auto=compress&cs=tinysrgb&w=800", // blue shirt
-      "https://images.pexels.com/photos/1055691/pexels-photo-1055691.jpeg?auto=compress&cs=tinysrgb&w=800", // jeans
-      "https://images.pexels.com/photos/1457983/pexels-photo-1457983.jpeg?auto=compress&cs=tinysrgb&w=800", // kurta
-      "https://images.pexels.com/photos/7679727/pexels-photo-7679727.jpeg?auto=compress&cs=tinysrgb&w=800", // black gown
-      "https://images.pexels.com/photos/3613387/pexels-photo-3613387.jpeg?auto=compress&cs=tinysrgb&w=800", // kids wear
-      "https://images.pexels.com/photos/2534961/pexels-photo-2534961.jpeg?auto=compress&cs=tinysrgb&w=800", // blazer
-      "https://images.pexels.com/photos/10404280/pexels-photo-10404280.jpeg?auto=compress&cs=tinysrgb&w=800", // lehenga
-      "https://images.pexels.com/photos/6311604/pexels-photo-6311604.jpeg?auto=compress&cs=tinysrgb&w=800", // tux
-      "https://images.pexels.com/photos/2980274/pexels-photo-2980274.jpeg?auto=compress&cs=tinysrgb&w=800", // polo tee
-      "https://images.pexels.com/photos/7679713/pexels-photo-7679713.jpeg?auto=compress&cs=tinysrgb&w=800"  // women's jacket
+    // Pre-selected reliable images (category-wise) from Pexels (men/women/kids/clothes)
+    const MEN_IMAGES = [
+      'https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.pexels.com/photos/2983467/pexels-photo-2983467.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.pexels.com/photos/6311395/pexels-photo-6311395.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.pexels.com/photos/10404280/pexels-photo-10404280.jpeg?auto=compress&cs=tinysrgb&w=800'
+    ];
+    const WOMEN_IMAGES = [
+      'https://images.pexels.com/photos/7679729/pexels-photo-7679729.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.pexels.com/photos/1457983/pexels-photo-1457983.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.pexels.com/photos/10404280/pexels-photo-10404280.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.pexels.com/photos/1488463/pexels-photo-1488463.jpeg?auto=compress&cs=tinysrgb&w=800'
+    ];
+    const KIDS_IMAGES = [
+      'https://images.pexels.com/photos/3613387/pexels-photo-3613387.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.pexels.com/photos/3662838/pexels-photo-3662838.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.pexels.com/photos/3771061/pexels-photo-3771061.jpeg?auto=compress&cs=tinysrgb&w=800'
     ];
 
-    const TAGS = {
-      'Shirt':'shirt,clothes,model', 'T-Shirt':'tshirt,shirt,clothes', 'Polo':'polo,shirt', 'Jeans':'jeans,denim,clothes',
-      'Trousers':'trousers,pants,clothes', 'Kurta':'kurta,ethnic,clothes', 'Jacket':'jacket,outerwear,clothes',
-      'Blazer':'blazer,suit,formal', 'Hoodie':'hoodie,clothes', 'Coat':'coat,overcoat', 'Suit':'suit,formal',
-      'Dress':'dress,fashion', 'Gown':'gown,evening', 'Skirt':'skirt,clothes', 'Top':'top,clothes', 'Saree':'saree,ethnic',
-      'Lehenga':'lehenga,ethnic', 'Shorts':'shorts,clothes', 'Waistcoat':'waistcoat,vest', 'Kids Wear':'kids,clothes'
-    };
+    // Types by category (keeps photo matching)
+    const MEN_TYPES = ['Shirt','T-Shirt','Jeans','Trousers','Jacket','Blazer','Hoodie','Coat','Suit','Polo','Waistcoat'];
+    const WOMEN_TYPES = ['Saree','Lehenga','Dress','Gown','Skirt','Top','Salwar Suit','Kurti'];
+    const KIDS_TYPES = ['T-Shirt','Frock','Jeans','Kurta Pajama','Sweater','Shorts'];
 
-    const GENDERS=['Men','Women','Kids'];
-    const TYPES=['Shirt','T-Shirt','Polo','Jeans','Trousers','Kurta','Jacket','Blazer','Hoodie','Coat','Suit','Dress','Gown','Skirt','Top','Saree','Lehenga','Shorts','Waistcoat','Kids Wear'];
-    const COLORS=['Black','White','Navy','Olive','Maroon','Beige','Grey','Brown','Mustard','Sky Blue','Teal'];
+    // helper
+    function rand(a){ return a[Math.floor(Math.random()*a.length)]; }
+    function priceFor(type){ if(['Blazer','Coat','Suit','Lehenga','Gown'].includes(type)) return 1999+Math.floor(Math.random()*2500); if(['Jeans','Trousers','Dress','Kurta'].includes(type)) return 899+Math.floor(Math.random()*1200); return 599+Math.floor(Math.random()*900); }
+    function sizesForCat(cat){ if(cat==='Men') return ['S','M','L','XL','XXL']; if(cat==='Women') return ['S','M','L','XL']; return ['3-4','5-6','7-8','9-10']; }
 
-    const sizesBy={Men:['S','M','L','XL','XXL'],Women:['S','M','L','XL'],Kids:['3-4','5-6','7-8','9-10']};
-
-    function rand(a){return a[Math.floor(Math.random()*a.length)];}
-    function priceFor(type){
-      if(['Blazer','Coat','Suit','Lehenga','Gown','Jacket'].includes(type)) return 1999 + Math.floor(Math.random()*2500);
-      if(['Jeans','Trousers','Dress','Kurta','Waistcoat'].includes(type)) return 899 + Math.floor(Math.random()*1200);
-      return 599 + Math.floor(Math.random()*900);
-    }
-    function catFor(type){
-      if(['Kurta','Saree','Lehenga'].includes(type)) return 'Ethnic';
-      if(['Blazer','Coat','Suit','Shirt','Trousers','Waistcoat'].includes(type)) return 'Formal';
-      return 'Casual';
-    }
-    function pexels(i){ return FIXED[i % FIXED.length]; }
-    function fallback(type,i){ const t=TAGS[type]||'clothes,model'; return `https://loremflickr.com/700/700/${encodeURIComponent(t)}?lock=${i+500}`; }
-
-    const products=[];
-    for(let i=1;i<=120;i++){
-      const type=rand(TYPES); const gender=rand(GENDERS); const color=rand(COLORS);
-      const name=`${type} • ${color}`; const price=priceFor(type); const stock=5+Math.floor(Math.random()*46);
-      const sizes=gender==='Men'?sizesBy.Men:(gender==='Women'?sizesBy.Women:sizesBy.Kids);
-      const img= (i<=60? pexels(i): fallback(type,i)); // first half fixed photos, rest clothing fallback
-      const id='LL'+String(i).padStart(3,'0'); const cat=catFor(type);
-      products.push({id,name,price,gender,stock,sizes,cat,img});
+    // Build products with proper images matching type & category
+    const products = [];
+    let idCounter = 1;
+    function pushProducts(cat, types, images, count){
+      for(let i=0;i<count;i++){
+        const type = types[i % types.length];
+        const color = ['Black','White','Navy','Maroon','Olive','Beige','Grey'][i%7];
+        const name = `${type} • ${color}`;
+        const price = priceFor(type);
+        const stock = 8 + Math.floor(Math.random()*42);
+        const sizes = sizesForCat(cat);
+        const img = images[i % images.length];
+        const id = (cat.charAt(0)+String(idCounter).padStart(3,'0'));
+        const category = cat;
+        products.push({id,name,price,stock,sizes,img,category});
+        idCounter++;
+      }
     }
 
-    // ====== RENDER ======
-    const grid=document.getElementById('grid');
-    function el(html){ const d=document.createElement('div'); d.innerHTML=html.trim(); return d.firstElementChild; }
-    function inr(n){return '₹'+Number(n).toLocaleString('en-IN');}
+    // Create product lists: 40 Men, 40 Women, 30 Kids = 110 (adjustable)
+    pushProducts('Men', MEN_TYPES, MEN_IMAGES, 40);
+    pushProducts('Women', WOMEN_TYPES, WOMEN_IMAGES, 40);
+    pushProducts('Kids', KIDS_TYPES, KIDS_IMAGES, 30);
 
-    function card(p, index){
-      const c=el(`
-        <div class="card">
-          <img class="img" src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.onerror=null;this.src='${fallback('Dress', index)}'"/>
-          <div class="body">
-            <div class="name">${p.name}</div>
-            <div class="meta">${p.gender} • ${p.cat} • Stock: ${p.stock} • ID: ${p.id}</div>
-            <div class="row"><span class="price">${inr(p.price)}</span></div>
-            <div class="row">
-              <select class="size">${p.sizes.map(s=>`<option value="${s}">${s}</option>`).join('')}</select>
-              <input class="qty" type="number" min="1" max="${p.stock}" value="1"/>
-            </div>
-            <div class="actions">
-              <button class="btn btn-wa" onclick="onWA('${p.id}')">Buy on WhatsApp</button>
-              <button class="btn btn-upi" onclick="onUPI('${p.id}')">Pay via UPI</button>
-              <button class="btn btn-cod" onclick="onCOD('${p.id}')">Cash on Delivery</button>
-            </div>
+    // Render
+    const grid = document.getElementById('grid');
+    function formatINR(n){ return '₹'+Number(n).toLocaleString('en-IN'); }
+    function createCard(p){
+      const div = document.createElement('div'); div.className='card';
+      div.innerHTML = `
+        <img class="img" src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.onerror=null;this.src='https://loremflickr.com/700/700/clothes?lock=${Math.floor(Math.random()*1000)}'" />
+        <div class="body">
+          <div class="name">${p.name}</div>
+          <div class="meta">${p.category} • Stock: ${p.stock} • ID: ${p.id}</div>
+          <div class="row"><div class="price">${formatINR(p.price)}</div></div>
+          <div class="row">
+            <select class="size">${p.sizes.map(s=>`<option value="${s}">${s}</option>`).join('')}</select>
+            <input class="qty" type="number" min="1" max="${p.stock}" value="1" />
           </div>
-        </div>`);
-      return c;
+          <div class="actions">
+            <button class="btn btn-wa" onclick="buyWA('${p.id}')">Buy on WhatsApp</button>
+            <button class="btn btn-upi" onclick="payUPI('${p.id}')">Pay via UPI</button>
+            <button class="btn btn-cod" onclick="cod('${p.id}')">Cash on Delivery</button>
+          </div>
+        </div>`;
+      return div;
     }
 
-    function render(list){ grid.innerHTML=''; list.forEach((p,i)=>grid.appendChild(card(p,i))); }
+    function render(list){ grid.innerHTML=''; list.forEach(p=>grid.appendChild(createCard(p))); }
     render(products);
 
-    // ====== SEARCH / SORT / FILTER ======
-    const q=document.getElementById('search'); const sort=document.getElementById('sort'); const chips=document.querySelectorAll('.chip');
-    let active='All';
-    function apply(){
-      const s=(q.value||'').toLowerCase();
-      let list=products.filter(p=>{
-        if(active!=='All' && !(p.cat===active || p.gender===active)) return false;
-        if(s && !(p.name.toLowerCase().includes(s) || p.gender.toLowerCase().includes(s))) return false;
-        return true;
-      });
-      if(sort.value==='price-asc') list.sort((a,b)=>a.price-b.price);
-      if(sort.value==='price-desc') list.sort((a,b)=>b.price-a.price);
-      render(list);
-    }
-    q.addEventListener('input',apply); sort.addEventListener('change',apply);
-    chips.forEach(ch=>ch.addEventListener('click',()=>{active=ch.dataset.cat; chips.forEach(x=>x.style.borderColor='#2a2a34'); ch.style.borderColor='#d6b25e'; apply();}));
+    // Tabs and filtering
+    const tabs = document.querySelectorAll('.tab');
+    tabs.forEach(t=>t.addEventListener('click', ()=>{ tabs.forEach(x=>x.classList.remove('active')); t.classList.add('active'); const cat = t.dataset.cat; if(cat==='All') render(products); else render(products.filter(p=>p.category===cat)); }));
 
-    // ====== ACTIONS (WA / UPI / COD) ======
-    function findCardAndVals(id){
-      // find first visible card with this product id
-      const idx=products.findIndex(p=>p.id===id);
-      // grid order may be filtered/sorted; search by id text
-      for(const card of grid.children){
-        const meta=card.querySelector('.meta').textContent||'';
-        if(meta.includes(id)){
-          return {card, size:card.querySelector('.size').value, qty:card.querySelector('.qty').value};
-        }
-      }
-      // fallback to source idx
-      const card=grid.children[idx];
-      return {card, size: card?card.querySelector('.size').value:'', qty: card?card.querySelector('.qty').value:1};
-    }
+    // Search & sort
+    document.getElementById('search').addEventListener('input', function(){ const q=this.value.toLowerCase(); render(products.filter(p=>p.name.toLowerCase().includes(q)||p.category.toLowerCase().includes(q))); });
+    document.getElementById('sort').addEventListener('change', function(){ const v=this.value; const list = [...products]; if(v==='price-asc') list.sort((a,b)=>a.price-b.price); else if(v==='price-desc') list.sort((a,b)=>b.price-a.price); render(list); });
 
-    function onWA(id){
-      const p=products.find(x=>x.id===id); if(!p) return; const {size,qty}=findCardAndVals(id);
-      const txt=encodeURIComponent(`Namaste LuxeLayer!
-I want to buy *${p.name}* (ID ${p.id}).
+    // Helpers to find card controls by product id (visible grid may be filtered)
+    function findCardElems(id){ for(const card of grid.children){ if(card.querySelector('.meta') && card.querySelector('.meta').textContent.includes(id)){ return card; } } return null; }
+
+    // Actions
+    function buyWA(id){ const p = products.find(x=>x.id===id); const card = findCardElems(id); if(!p||!card) return; const size = card.querySelector('.size').value; const qty = card.querySelector('.qty').value; const msg = encodeURIComponent(`Namaste LuxeLayer!
+I want to buy *${p.name}* (ID: ${p.id})
 Size: ${size}
 Qty: ${qty}
-Price: ${inr(p.price)} each.`);
-      window.open(`https://wa.me/${WA}?text=${txt}`,'_blank');
-    }
+Price: ${formatINR(p.price)} each.`); window.open(`https://wa.me/${WA}?text=${msg}`,'_blank'); }
 
-    function upiLink(pa,pn,am,tn){return `upi://pay?pa=${encodeURIComponent(pa)}&pn=${encodeURIComponent(pn)}&am=${Number(am).toFixed(2)}&cu=INR&tn=${encodeURIComponent(tn)}`}
+    function payUPI(id){ const p = products.find(x=>x.id===id); const card = findCardElems(id); if(!p||!card) return; const size = card.querySelector('.size').value; const qty = card.querySelector('.qty').value; const total = p.price * Number(qty); const tn = `${p.id}-${size}-${qty}`; const link = `upi://pay?pa=${encodeURIComponent(UPI_ID)}&pn=${encodeURIComponent(MERCHANT)}&am=${Number(total).toFixed(2)}&cu=INR&tn=${encodeURIComponent(tn)}`; // open UPI link
+      // open the link (mobile will open UPI app), on desktop it will try handlers
+      window.location.href = link; }
 
-    function onUPI(id){
-      const p=products.find(x=>x.id===id); if(!p) return; const {size,qty}=findCardAndVals(id); const total=p.price*Number(qty); const tn=`${p.id}-${size}-${qty}`; const link=upiLink(UPI_ID,MERCHANT,total,tn);
-      // open UPI link directly; also copy to clipboard for user
-      try{ navigator.clipboard.writeText(link);}catch(e){}
-      window.location.href=link; // mobile-friendly
-    }
-
-    function onCOD(id){
-      const p=products.find(x=>x.id===id); if(!p) return; const {size,qty}=findCardAndVals(id);
-      const txt=encodeURIComponent(`COD Request for *${p.name}* (ID ${p.id})
+    function cod(id){ const p = products.find(x=>x.id===id); const card = findCardElems(id); if(!p||!card) return; const size = card.querySelector('.size').value; const qty = card.querySelector('.qty').value; const msg = encodeURIComponent(`COD Request: *${p.name}* (ID: ${p.id})
 Size: ${size}
 Qty: ${qty}
-Please collect on delivery.`);
-      window.open(`https://wa.me/${WA}?text=${txt}`,'_blank');
-    }
+Please confirm COD availability.`); window.open(`https://wa.me/${WA}?text=${msg}`,'_blank'); }
 
-    // Footer year
-    document.getElementById('year').textContent=new Date().getFullYear();
+    // Set footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Expose function to update UPI ID easily
+    window.updateUPI = function(newId){ UPI_ID = newId; alert('UPI ID updated to: '+newId); }
   </script></body>
 </html>
