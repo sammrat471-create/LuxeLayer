@@ -1,411 +1,224 @@
 <!doctype html>
+
 <html lang="hi">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>LuxeLayer — Premium Men's Collection</title>
-  <meta name="description" content="LuxeLayer — Premium men's wear collection. Shop shirts, kurta, jackets, jeans and more. WhatsApp to buy." />
+  <title>LuxeLayer — 120 Products (Clothing Photos + UPI)</title>
+  <meta name="description" content="LuxeLayer full catalogue with real-looking clothing photos, size selector, WhatsApp order and UPI payment (QR + deep link)." />
   <style>
-    :root{
-      --bg:#fafafa; --card:#ffffff; --muted:#6b7280; --accent:#0f172a; --cta:#16a34a;
-    }
+    :root{--bg:#f7f7fb;--card:#fff;--muted:#6b7280;--accent:#0f172a;--cta:#111827;--green:#16a34a}
     *{box-sizing:border-box}
-    body{font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; margin:0; background:#fdfdfd; color:var(--accent);}
-    header{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;border-bottom:1px solid #eef2f7;background:white;position:sticky;top:0;z-index:50}
-    .brand{display:flex;gap:12px;align-items:center}
-    .logo{width:52px;height:52px;border-radius:10px;background:linear-gradient(135deg,#0ea5a4,#0f172a);color:white;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px}
-    nav{display:flex;gap:12px;align-items:center}
-    nav a{padding:10px 12px;border-radius:8px;font-weight:600;color:var(--muted);font-size:14px}
-    nav a.cta{background:var(--cta);color:white}
-    .hero{padding:40px 28px;text-align:center;background:linear-gradient(180deg,#fdfdfd 0%,#f3f4f6 100%)}
-    .hero h1{font-size:36px;font-weight:900;margin-bottom:12px}
-    .hero p{color:var(--muted);font-size:16px;max-width:600px;margin:0 auto 20px}
-    .searchbar{display:flex;gap:10px;justify-content:center;margin-top:16px}
-    .searchbar input{padding:12px;border-radius:8px;border:1px solid #ddd;min-width:240px}
-    .searchbar select{padding:12px;border-radius:8px;border:1px solid #ddd}
-    .filters{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:18px 0}
-    .chip{padding:8px 12px;border-radius:999px;background:var(--card);border:1px solid #eef2f7;font-weight:600;cursor:pointer}
-    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px;padding:20px 28px}
-    .card{background:var(--card);border-radius:12px;overflow:hidden;box-shadow:0 8px 22px rgba(2,6,23,0.05);display:flex;flex-direction:column}
-    .img{width:100%;height:260px;object-fit:cover;background:#f3f4f6}
-    .card-body{padding:12px;display:flex;flex-direction:column;gap:6px}
-    .title{font-weight:700;font-size:15px}
-    .cat{font-size:13px;color:var(--muted)}
-    .price{font-weight:800;color:var(--cta);font-size:16px}
-    .actions{display:flex;gap:8px;margin-top:8px}
-    .btn{flex:1;padding:10px;border-radius:10px;border:0;font-weight:800;cursor:pointer}
-    .btn-buy{background:var(--cta);color:white}
-    .btn-view{background:#f3f4f6;color:var(--accent)}
-    footer{padding:18px 28px;color:var(--muted);font-size:14px;border-top:1px solid #eef2f7;background:white;text-align:center}
-    .modal-back{position:fixed;inset:0;background:rgba(2,6,23,0.5);display:flex;align-items:center;justify-content:center;z-index:9999}
-    .modal{width:95%;max-width:800px;background:white;border-radius:12px;padding:18px;display:flex;gap:16px}
-    .modal img{width:100%;height:100%;object-fit:cover;border-radius:8px}
-    .modal .right{flex:1;display:flex;flex-direction:column}
-    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:#eef8f1;color:#0b6b33;font-weight:700;font-size:13px}
-    @media (max-width:520px){ .grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))} .img{height:180px} }
+    body{font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial; margin:0; background:var(--bg); color:var(--accent)}
+    header{position:sticky;top:0;z-index:40;background:#fff;border-bottom:1px solid #eceff5;padding:14px 20px;display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;gap:10px;align-items:center}
+    .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,#0ea5a4,#0f172a);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900}
+    .hero{padding:22px 20px;text-align:center;background:linear-gradient(180deg,#fff,#f4f6fb)}
+    .hero h1{margin:0 0 6px 0}
+    .filters{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:12px 0}
+    .chip{padding:8px 12px;border-radius:999px;background:#fff;border:1px solid #e8ecf4;font-weight:700;color:#374151;cursor:pointer}
+    .searchbar{display:flex;gap:8px;justify-content:center;margin-top:10px}
+    .searchbar input,.searchbar select{padding:10px;border-radius:8px;border:1px solid #e1e5ee;min-width:220px}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;padding:18px}
+.card{background:var(--card);border-radius:14px;overflow:hidden;box-shadow:0 10px 24px rgba(15,23,42,0.06);display:flex;flex-direction:column}
+.img{width:100%;height:260px;object-fit:cover;background:#f1f5f9}
+.body{padding:12px;display:flex;flex-direction:column;gap:6px}
+.title{font-weight:800;font-size:15px}
+.meta{font-size:12px;color:var(--muted)}
+.price{font-size:16px;font-weight:900;color:var(--green)}
+.row{display:flex;gap:8px;align-items:center}
+select, input[type=number]{padding:8px;border-radius:8px;border:1px solid #e5e7eb}
+.actions{display:flex;gap:8px;margin-top:8px}
+.btn{flex:1;padding:10px;border-radius:10px;border:0;color:#fff;font-weight:800;cursor:pointer}
+.btn-dark{background:var(--cta)}
+.btn-green{background:var(--green)}
+
+footer{padding:18px 20px;text-align:center;color:var(--muted);border-top:1px solid #eceff5;background:#fff}
+
+/* modals */
+.back{position:fixed;inset:0;background:rgba(2,6,23,0.5);display:flex;align-items:center;justify-content:center;z-index:9999}
+.modal{width:95%;max-width:920px;background:#fff;border-radius:14px;padding:18px;display:flex;gap:16px}
+.modal img{width:100%;height:100%;object-fit:cover;border-radius:10px}
+.right{flex:1;display:flex;flex-direction:column}
+.qr{width:220px;height:220px;border:1px solid #e5e7eb;border-radius:10px;display:flex;align-items:center;justify-content:center;background:#fff}
+@media(max-width:640px){.modal{flex-direction:column}.img{height:200px}.qr{width:160px;height:160px}}
+
   </style>
 </head>
 <body>
   <header>
-    <div class="brand">
-      <div class="logo">LL</div>
-      <div>
-        <div style="font-weight:800">LuxeLayer</div>
-        <div style="font-size:13px;color:var(--muted)">Premium Men's Collection</div>
-      </div>
-    </div>
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">Collections</a>
-      <a href="#">About</a>
-      <a class="cta" href="#" onclick="scrollToGrid()">Shop Now</a>
-    </nav>
-  </header>
-
-  <section class="hero">
-    <h1>Welcome to LuxeLayer</h1>
-    <p>Premium men's fashion curated for every occasion. Shirts, jeans, kurtas, jackets & more. Order directly on WhatsApp.</p>
+    <div class="brand"><div class="logo">LL</div><div><div style="font-weight:900">LuxeLayer</div><div style="font-size:12px;color:#6b7280">A SAMMRAT GROUP PVT. LTD Company</div></div></div>
     <div class="searchbar">
-      <input id="search" placeholder="Search product..." />
-      <select id="sort">
-        <option value="default">Sort</option>
-        <option value="price-asc">Price: Low → High</option>
-        <option value="price-desc">Price: High → Low</option>
-      </select>
+      <input id="search" placeholder="Search: shirt, saree, jeans…"/>
+      <select id="sort"><option value="default">Sort</option><option value="price-asc">Price: Low → High</option><option value="price-desc">Price: High → Low</option></select>
     </div>
+  </header>  <section class="hero">
+    <h1>LuxeLayer — Complete Catalogue (120 items)</h1>
     <div class="filters">
-      <div class="chip" data-cat="All">All</div>
-      <div class="chip" data-cat="Shirt">Shirts</div>
-      <div class="chip" data-cat="Kurta">Kurtas</div>
-      <div class="chip" data-cat="Jeans">Jeans</div>
-      <div class="chip" data-cat="Jacket">Jackets</div>
-      <div class="chip" data-cat="Formal">Formal</div>
+      <span class="chip" data-cat="All">All</span>
+      <span class="chip" data-cat="Men">Men</span>
+      <span class="chip" data-cat="Women">Women</span>
+      <span class="chip" data-cat="Kids">Kids</span>
+      <span class="chip" data-cat="Formal">Formal</span>
+      <span class="chip" data-cat="Casual">Casual</span>
+      <span class="chip" data-cat="Ethnic">Ethnic</span>
     </div>
-  </section>
-
-  <main>
+  </section>  <main>
     <div id="grid" class="grid"></div>
-  </main>
+  </main>  <footer>© <span id="year"></span> LuxeLayer | Under SAMMRAT GROUP PVT. LTD • WhatsApp: 918051731633</footer>  <script>
+    // ===== SETTINGS =====
+    const WA = '918051731633';
+    const UPI_ID = 'luxe@upi'; // ← replace with your real UPI ID (e.g., yourid@okicici)
+    const MERCHANT = 'LuxeLayer';
 
-  <footer>
-    © <span id="year"></span> LuxeLayer | Under SAMMRAT GROUP PVT. LTD
-  </footer>
+    // Map item type → clothing photo tag (LoremFlickr ensures clothing-themed images and the 'lock' param keeps them stable)
+    const TAGS = {
+      'Shirt':'shirt', 'T-Shirt':'tshirt,shirt', 'Jeans':'jeans,denim', 'Kurta':'kurta,ethnic', 'Jacket':'jacket,outerwear',
+      'Blazer':'blazer,suit', 'Hoodie':'hoodie', 'Coat':'coat,overcoat', 'Saree':'saree', 'Lehenga':'lehenga',
+      'Dress':'dress,fashion', 'Gown':'gown,evening', 'Skirt':'skirt,clothes', 'Top':'top,clothes', 'Shorts':'shorts,clothes',
+      'Trousers':'trousers,pants', 'Waistcoat':'waistcoat,vest', 'Polo':'polo,shirt', 'Suit':'suit,formal', 'Kids Wear':'kids,clothes'
+    };
 
-  <script>
-    // WhatsApp number (final): 918051731633
-    const WA_NUMBER = "918051731633";
+    const GENDERS = ['Men','Women','Kids'];
+    const TYPES = ['Shirt','T-Shirt','Polo','Jeans','Trousers','Kurta','Jacket','Blazer','Hoodie','Coat','Suit','Dress','Gown','Skirt','Top','Saree','Lehenga','Shorts','Waistcoat','Kids Wear'];
+    const COLORS = ['Black','White','Navy','Olive','Maroon','Beige','Grey','Brown','Mustard','Sky Blue','Teal'];
 
-    const categories = ["Shirt","T-Shirt","Kurta","Jeans","Trouser","Jacket","Blazer","Sweater","Hoodie","Coat","Formal","Casual","Polo","Shorts","Waistcoat"];
-    const fabrics = ["Cotton","Linen","Denim","Wool Blend","Polyester Blend","Silk Blend"];
-    const colors = ["Black","White","Navy","Maroon","Olive","Beige","Grey","Brown","Mustard","Sky Blue"];
-    function rand(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
-    function formatPrice(n){ return "₹" + n.toLocaleString("en-IN"); }
+    const sizesBy = {
+      Men:['S','M','L','XL','XXL'],
+      Women:['S','M','L','XL'],
+      Kids:['3-4','5-6','7-8','9-10']
+    };
+
+    function rand(a){ return a[Math.floor(Math.random()*a.length)]; }
+    function priceFor(type){
+      if(['Blazer','Coat','Suit','Lehenga','Gown','Jacket'].includes(type)) return 1999 + Math.floor(Math.random()*2500);
+      if(['Jeans','Trousers','Dress','Kurta','Waistcoat'].includes(type)) return 899 + Math.floor(Math.random()*1200);
+      return 599 + Math.floor(Math.random()*900);
+    }
+    function categoryFor(type){
+      if(['Kurta','Saree','Lehenga'].includes(type)) return 'Ethnic';
+      if(['Blazer','Coat','Suit','Shirt','Trousers','Waistcoat'].includes(type)) return 'Formal';
+      return 'Casual';
+    }
+    function imgFor(type, idx){
+      const tag = TAGS[type] || 'clothes';
+      // Stable, clothing-related photo with deterministic lock value
+      return `https://loremflickr.com/600/600/${encodeURIComponent(tag)}?lock=${idx+100}`;
+    }
+    function formatINR(n){ return '₹' + n.toLocaleString('en-IN'); }
 
     const products = [];
-    for(let i=1;i<=100;i++){
-      const cat = rand(categories);
-      const color = rand(colors);
-      const fabric = rand(fabrics);
-      let base = 499;
-      if(cat==="Jacket"||cat==="Coat"||cat==="Blazer") base = 1999;
-      else if(cat==="Jeans"||cat==="Waistcoat") base = 899;
-      else if(cat==="Kurta") base = 799;
-      else if(cat==="Shirt"||cat==="Formal") base = 699;
-      const price = Math.floor(base + Math.random()* (base*2));
-      const name = `${cat} • ${color} • ${fabric} #${i}`;
-      const img = `https://source.unsplash.com/600x600/?mens-${cat}&sig=${i}`;
-      const id = "p" + i;
-      products.push({id,name,price,img,cat});
+    for(let i=1;i<=120;i++){
+      const type = rand(TYPES);
+      const gender = rand(GENDERS);
+      const color = rand(COLORS);
+      const name = `${type} • ${color}`;
+      const price = priceFor(type);
+      const stock = 5 + Math.floor(Math.random()*46);
+      const sizes = gender==='Men'?sizesBy.Men : (gender==='Women'?sizesBy.Women : sizesBy.Kids);
+      const img = imgFor(type, i);
+      const id = 'LL' + String(i).padStart(3,'0');
+      const cat = categoryFor(type);
+      products.push({id,name,price,img,gender,stock,sizes,cat});
     }
 
-    const grid = document.getElementById("grid");
-    function createCard(p){
-      const div = document.createElement("div");
-      div.className = "card";
-      div.innerHTML = `
-        <img loading="lazy" class="img" src="${p.img}" alt="${p.name}" />
-        <div class="card-body">
+    const grid = document.getElementById('grid');
+
+    function card(p){
+      const el = document.createElement('div'); el.className='card';
+      el.innerHTML = `
+        <img class="img" src="${p.img}" alt="${p.name}" loading="lazy"/>
+        <div class="body">
           <div class="title">${p.name}</div>
-          <div class="cat">${p.cat}</div>
-          <div class="price">${formatPrice(p.price)}</div>
+          <div class="meta">${p.gender} • ${p.cat} • Stock: ${p.stock} • ID: ${p.id}</div>
+          <div class="row" style="margin-top:6px"><span class="price">${formatINR(p.price)}</span></div>
+          <div class="row" style="margin-top:6px">
+            <select class="size">${p.sizes.map(s=>`<option value="${s}">${s}</option>`).join('')}</select>
+            <input class="qty" type="number" min="1" max="${p.stock}" value="1"/>
+          </div>
           <div class="actions">
-            <button class="btn btn-view" onclick="viewProduct('${p.id}')">View</button>
-            <button class="btn btn-buy" onclick="buyProduct('${p.id}')">Buy</button>
+            <button class="btn btn-dark" onclick="wa('${p.id}')">Buy on WhatsApp</button>
+            <button class="btn btn-green" onclick="upi('${p.id}')">Pay via UPI</button>
           </div>
         </div>`;
-      return div;
+      return el;
     }
 
-    function render(list){
-      grid.innerHTML = "";
-      list.forEach(p=>grid.appendChild(createCard(p)));
-    }
+    function render(list){ grid.innerHTML=''; list.forEach(p=>grid.appendChild(card(p))); }
     render(products);
 
-    const search = document.getElementById("search");
-    const sort = document.getElementById("sort");
-    const chips = document.querySelectorAll(".chip");
-    let currentCategory = "All";
-
-    function applyFilters(){
-      const q = search.value.trim().toLowerCase();
-      let filtered = products.filter(p=>{
-        if(currentCategory!=="All" && p.cat!==currentCategory) return false;
-        if(q && !p.name.toLowerCase().includes(q)) return false;
+    // Search + Sort + Filter chips
+    const q = document.getElementById('search');
+    const sort = document.getElementById('sort');
+    const chips = document.querySelectorAll('.chip');
+    let activeCat = 'All';
+    function apply(){
+      const text = (q.value||'').toLowerCase();
+      let list = products.filter(p=>{
+        if(activeCat!=='All' && !(p.cat===activeCat || p.gender===activeCat)) return false;
+        if(text && !(p.name.toLowerCase().includes(text) || p.gender.toLowerCase().includes(text))) return false;
         return true;
       });
-      if(sort.value==="price-asc") filtered.sort((a,b)=>a.price-b.price);
-      if(sort.value==="price-desc") filtered.sort((a,b)=>b.price-a.price);
-      render(filtered);
+      if(sort.value==='price-asc') list.sort((a,b)=>a.price-b.price);
+      if(sort.value==='price-desc') list.sort((a,b)=>b.price-a.price);
+      render(list);
+    }
+    q.addEventListener('input', apply); sort.addEventListener('change', apply);
+    chips.forEach(c=>c.addEventListener('click',()=>{activeCat=c.dataset.cat; chips.forEach(x=>x.style.border='1px solid #e8ecf4'); c.style.border='1px solid #16a34a'; apply();}));
+
+    // Helpers to read current selected size/qty for a product from the rendered cards
+    function getCardControls(id){
+      const idx = products.findIndex(p=>p.id===id);
+      const cardEl = grid.children[idx];
+      if(!cardEl) return {size:'',qty:1};
+      return { size: cardEl.querySelector('.size').value, qty: cardEl.querySelector('.qty').value };
     }
 
-    search.addEventListener("input", applyFilters);
-    sort.addEventListener("change", applyFilters);
-    chips.forEach(ch=>{
-      ch.onclick=()=>{
-        currentCategory=ch.dataset.cat;
-        chips.forEach(c=>c.style.border="1px solid #eef2f7");
-        ch.style.border="1px solid #16a34a";
-        applyFilters();
-      }
-    });
+    // WhatsApp deeplink
+    function wa(id){
+      const p = products.find(x=>x.id===id); if(!p) return;
+      const {size, qty} = getCardControls(id);
+      const msg = encodeURIComponent(`Namaste LuxeLayer!
+I want to buy *${p.name}* (ID ${p.id}).
+Size: ${size}
+Qty: ${qty}
+Price: ${formatINR(p.price)} each.`);
+      window.open(`https://wa.me/${WA}?text=${msg}`,'_blank');
+    }
 
-    function viewProduct(id){
-      const p=products.find(x=>x.id===id);
-      if(!p) return;
-      const wrap=document.createElement("div");
-      wrap.className="modal-back"; wrap.id="modal";
-      wrap.innerHTML=`
-        <div class="modal">
-          <div style="flex:0 0 45%"><img src="${p.img}" alt="${p.name}"></div>
-          <div class="right">
-            <h2>${p.name}</h2>
-            <div style="color:var(--muted);margin-bottom:8px">${p.cat}</div>
-            <div style="font-weight:900;font-size:20px;color:var(--cta)}">${formatPrice(p.price)}</div>
-            <p style="color:var(--muted);margin:12px 0">High quality ${p.cat}, available sizes S-XXL. Message us to confirm order.</p>
-            <div style="margin-top:auto;display:flex;gap:8px">
-              <button class="btn btn-buy" onclick="buyProduct('${p.id}')">Buy on WhatsApp</button>
-              <button class="btn btn-view" onclick="closeModal()">Close</button>
-            </div>
+    // UPI: build link + show QR modal
+    function upiLink(payee, name, amount, note){
+      const am = Number(amount).toFixed(2);
+      return `upi://pay?pa=${encodeURIComponent(payee)}&pn=${encodeURIComponent(name)}&am=${am}&cu=INR&tn=${encodeURIComponent(note)}`;
+    }
+
+    function upi(id){
+      const p = products.find(x=>x.id===id); if(!p) return;
+      const {size, qty} = getCardControls(id); const total = p.price * Number(qty);
+      const note = `${p.id}-${size}-${qty}`;
+      const link = upiLink(UPI_ID, MERCHANT, total, note);
+      const wrap = document.createElement('div'); wrap.className='back'; wrap.id='upi-modal';
+      wrap.innerHTML = `
+        <div class="modal" role="dialog" aria-modal="true">
+          <div style="flex:0 0 48%">
+            <div style="font-weight:900">Pay via UPI</div>
+            <div style="color:#6b7280;margin:6px 0">Amount: ${formatINR(total)}</div>
+            <div>UPI ID: <strong>${UPI_ID}</strong></div>
+            <div style="margin:8px 0">Order: ${note}</div>
+            <a href="${link}" class="btn btn-green" style="display:inline-block;margin-top:10px">Open UPI App</a>
+            <button class="btn btn-dark" style="margin-left:8px" onclick="closeUPI()">Close</button>
+          </div>
+          <div style="flex:1;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px">
+            <div class="qr"><img alt="UPI QR" style="width:100%;height:100%;object-fit:contain" src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=${encodeURIComponent(link)}"/></div>
+            <div style="color:#6b7280;font-size:12px;text-align:center">Scan QR in any UPI app (GPay/PhonePe/Paytm) or click Open UPI App.</div>
           </div>
         </div>`;
       document.body.appendChild(wrap);
-      wrap.onclick=e=>{if(e.target===wrap)closeModal();}
+      wrap.addEventListener('click',e=>{ if(e.target===wrap) closeUPI(); });
     }
-    function closeModal(){const m=document.getElementById("modal");if(m)m.remove();}
-    function buyProduct(id){
-      const p=products.find(x=>x.id===id);
-      if(!p)return;
-      const msg=encodeURIComponent(`Hello LuxeLayer, I want to buy *${p.name}* (ID:${p.id}) for ${formatPrice(p.price)}. Please confirm size & payment options.`);
-      window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`,"_blank");
-    }
-    function scrollToGrid(){document.getElementById("grid").scrollIntoView({behavior:"smooth"});}
-    document.getElementById("year").innerText=new Date().getFullYear();
-  </script>
-</body>
-</html><!doctype html>
-<html lang="hi">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>LuxeLayer — Premium Men's Collection</title>
-  <meta name="description" content="LuxeLayer — Premium men's wear collection. Shop shirts, kurta, jackets, jeans and more. WhatsApp to buy." />
-  <style>
-    :root{
-      --bg:#fafafa; --card:#ffffff; --muted:#6b7280; --accent:#0f172a; --cta:#16a34a;
-    }
-    *{box-sizing:border-box}
-    body{font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; margin:0; background:#fdfdfd; color:var(--accent);}
-    header{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;border-bottom:1px solid #eef2f7;background:white;position:sticky;top:0;z-index:50}
-    .brand{display:flex;gap:12px;align-items:center}
-    .logo{width:52px;height:52px;border-radius:10px;background:linear-gradient(135deg,#0ea5a4,#0f172a);color:white;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px}
-    nav{display:flex;gap:12px;align-items:center}
-    nav a{padding:10px 12px;border-radius:8px;font-weight:600;color:var(--muted);font-size:14px}
-    nav a.cta{background:var(--cta);color:white}
-    .hero{padding:40px 28px;text-align:center;background:linear-gradient(180deg,#fdfdfd 0%,#f3f4f6 100%)}
-    .hero h1{font-size:36px;font-weight:900;margin-bottom:12px}
-    .hero p{color:var(--muted);font-size:16px;max-width:600px;margin:0 auto 20px}
-    .searchbar{display:flex;gap:10px;justify-content:center;margin-top:16px}
-    .searchbar input{padding:12px;border-radius:8px;border:1px solid #ddd;min-width:240px}
-    .searchbar select{padding:12px;border-radius:8px;border:1px solid #ddd}
-    .filters{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:18px 0}
-    .chip{padding:8px 12px;border-radius:999px;background:var(--card);border:1px solid #eef2f7;font-weight:600;cursor:pointer}
-    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px;padding:20px 28px}
-    .card{background:var(--card);border-radius:12px;overflow:hidden;box-shadow:0 8px 22px rgba(2,6,23,0.05);display:flex;flex-direction:column}
-    .img{width:100%;height:260px;object-fit:cover;background:#f3f4f6}
-    .card-body{padding:12px;display:flex;flex-direction:column;gap:6px}
-    .title{font-weight:700;font-size:15px}
-    .cat{font-size:13px;color:var(--muted)}
-    .price{font-weight:800;color:var(--cta);font-size:16px}
-    .actions{display:flex;gap:8px;margin-top:8px}
-    .btn{flex:1;padding:10px;border-radius:10px;border:0;font-weight:800;cursor:pointer}
-    .btn-buy{background:var(--cta);color:white}
-    .btn-view{background:#f3f4f6;color:var(--accent)}
-    footer{padding:18px 28px;color:var(--muted);font-size:14px;border-top:1px solid #eef2f7;background:white;text-align:center}
-    .modal-back{position:fixed;inset:0;background:rgba(2,6,23,0.5);display:flex;align-items:center;justify-content:center;z-index:9999}
-    .modal{width:95%;max-width:800px;background:white;border-radius:12px;padding:18px;display:flex;gap:16px}
-    .modal img{width:100%;height:100%;object-fit:cover;border-radius:8px}
-    .modal .right{flex:1;display:flex;flex-direction:column}
-    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:#eef8f1;color:#0b6b33;font-weight:700;font-size:13px}
-    @media (max-width:520px){ .grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))} .img{height:180px} }
-  </style>
-</head>
-<body>
-  <header>
-    <div class="brand">
-      <div class="logo">LL</div>
-      <div>
-        <div style="font-weight:800">LuxeLayer</div>
-        <div style="font-size:13px;color:var(--muted)">Premium Men's Collection</div>
-      </div>
-    </div>
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">Collections</a>
-      <a href="#">About</a>
-      <a class="cta" href="#" onclick="scrollToGrid()">Shop Now</a>
-    </nav>
-  </header>
+    function closeUPI(){ const m=document.getElementById('upi-modal'); if(m) m.remove(); }
 
-  <section class="hero">
-    <h1>Welcome to LuxeLayer</h1>
-    <p>Premium men's fashion curated for every occasion. Shirts, jeans, kurtas, jackets & more. Order directly on WhatsApp.</p>
-    <div class="searchbar">
-      <input id="search" placeholder="Search product..." />
-      <select id="sort">
-        <option value="default">Sort</option>
-        <option value="price-asc">Price: Low → High</option>
-        <option value="price-desc">Price: High → Low</option>
-      </select>
-    </div>
-    <div class="filters">
-      <div class="chip" data-cat="All">All</div>
-      <div class="chip" data-cat="Shirt">Shirts</div>
-      <div class="chip" data-cat="Kurta">Kurtas</div>
-      <div class="chip" data-cat="Jeans">Jeans</div>
-      <div class="chip" data-cat="Jacket">Jackets</div>
-      <div class="chip" data-cat="Formal">Formal</div>
-    </div>
-  </section>
-
-  <main>
-    <div id="grid" class="grid"></div>
-  </main>
-
-  <footer>
-    © <span id="year"></span> LuxeLayer | Under SAMMRAT GROUP PVT. LTD
-  </footer>
-
-  <script>
-    // WhatsApp number (final): 918051731633
-    const WA_NUMBER = "918051731633";
-
-    const categories = ["Shirt","T-Shirt","Kurta","Jeans","Trouser","Jacket","Blazer","Sweater","Hoodie","Coat","Formal","Casual","Polo","Shorts","Waistcoat"];
-    const fabrics = ["Cotton","Linen","Denim","Wool Blend","Polyester Blend","Silk Blend"];
-    const colors = ["Black","White","Navy","Maroon","Olive","Beige","Grey","Brown","Mustard","Sky Blue"];
-    function rand(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
-    function formatPrice(n){ return "₹" + n.toLocaleString("en-IN"); }
-
-    const products = [];
-    for(let i=1;i<=100;i++){
-      const cat = rand(categories);
-      const color = rand(colors);
-      const fabric = rand(fabrics);
-      let base = 499;
-      if(cat==="Jacket"||cat==="Coat"||cat==="Blazer") base = 1999;
-      else if(cat==="Jeans"||cat==="Waistcoat") base = 899;
-      else if(cat==="Kurta") base = 799;
-      else if(cat==="Shirt"||cat==="Formal") base = 699;
-      const price = Math.floor(base + Math.random()* (base*2));
-      const name = `${cat} • ${color} • ${fabric} #${i}`;
-      const img = `https://source.unsplash.com/600x600/?mens-${cat}&sig=${i}`;
-      const id = "p" + i;
-      products.push({id,name,price,img,cat});
-    }
-
-    const grid = document.getElementById("grid");
-    function createCard(p){
-      const div = document.createElement("div");
-      div.className = "card";
-      div.innerHTML = `
-        <img loading="lazy" class="img" src="${p.img}" alt="${p.name}" />
-        <div class="card-body">
-          <div class="title">${p.name}</div>
-          <div class="cat">${p.cat}</div>
-          <div class="price">${formatPrice(p.price)}</div>
-          <div class="actions">
-            <button class="btn btn-view" onclick="viewProduct('${p.id}')">View</button>
-            <button class="btn btn-buy" onclick="buyProduct('${p.id}')">Buy</button>
-          </div>
-        </div>`;
-      return div;
-    }
-
-    function render(list){
-      grid.innerHTML = "";
-      list.forEach(p=>grid.appendChild(createCard(p)));
-    }
-    render(products);
-
-    const search = document.getElementById("search");
-    const sort = document.getElementById("sort");
-    const chips = document.querySelectorAll(".chip");
-    let currentCategory = "All";
-
-    function applyFilters(){
-      const q = search.value.trim().toLowerCase();
-      let filtered = products.filter(p=>{
-        if(currentCategory!=="All" && p.cat!==currentCategory) return false;
-        if(q && !p.name.toLowerCase().includes(q)) return false;
-        return true;
-      });
-      if(sort.value==="price-asc") filtered.sort((a,b)=>a.price-b.price);
-      if(sort.value==="price-desc") filtered.sort((a,b)=>b.price-a.price);
-      render(filtered);
-    }
-
-    search.addEventListener("input", applyFilters);
-    sort.addEventListener("change", applyFilters);
-    chips.forEach(ch=>{
-      ch.onclick=()=>{
-        currentCategory=ch.dataset.cat;
-        chips.forEach(c=>c.style.border="1px solid #eef2f7");
-        ch.style.border="1px solid #16a34a";
-        applyFilters();
-      }
-    });
-
-    function viewProduct(id){
-      const p=products.find(x=>x.id===id);
-      if(!p) return;
-      const wrap=document.createElement("div");
-      wrap.className="modal-back"; wrap.id="modal";
-      wrap.innerHTML=`
-        <div class="modal">
-          <div style="flex:0 0 45%"><img src="${p.img}" alt="${p.name}"></div>
-          <div class="right">
-            <h2>${p.name}</h2>
-            <div style="color:var(--muted);margin-bottom:8px">${p.cat}</div>
-            <div style="font-weight:900;font-size:20px;color:var(--cta)}">${formatPrice(p.price)}</div>
-            <p style="color:var(--muted);margin:12px 0">High quality ${p.cat}, available sizes S-XXL. Message us to confirm order.</p>
-            <div style="margin-top:auto;display:flex;gap:8px">
-              <button class="btn btn-buy" onclick="buyProduct('${p.id}')">Buy on WhatsApp</button>
-              <button class="btn btn-view" onclick="closeModal()">Close</button>
-            </div>
-          </div>
-        </div>`;
-      document.body.appendChild(wrap);
-      wrap.onclick=e=>{if(e.target===wrap)closeModal();}
-    }
-    function closeModal(){const m=document.getElementById("modal");if(m)m.remove();}
-    function buyProduct(id){
-      const p=products.find(x=>x.id===id);
-      if(!p)return;
-      const msg=encodeURIComponent(`Hello LuxeLayer, I want to buy *${p.name}* (ID:${p.id}) for ${formatPrice(p.price)}. Please confirm size & payment options.`);
-      window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`,"_blank");
-    }
-    function scrollToGrid(){document.getElementById("grid").scrollIntoView({behavior:"smooth"});}
-    document.getElementById("year").innerText=new Date().getFullYear();
-  </script>
-</body>
+    // Utilities
+    document.getElementById('year').innerText = new Date().getFullYear();
+    document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeUPI(); });
+  </script></body>
 </html>
