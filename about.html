@@ -2,168 +2,132 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>About Us - LuxeLayer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <title>About Me - LuxeLayer</title>
   <style>
-    *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;}
-    body{line-height:1.6;background:#fdfdfd;color:#222;}
-
-    /* General Section */
-    section{padding:60px 20px;max-width:1100px;margin:auto;}
-
-    /* About */
-    .about-section{text-align:center;}
-    .about-section h1{font-size:2.5rem;margin-bottom:20px;}
-    .about-section p{font-size:1.1rem;color:#555;margin-bottom:15px;}
-
-    /* Founder Story */
-    .story-section{background:#fafafa;border-radius:12px;padding:40px;}
-    .story-section h2{font-size:2rem;margin-bottom:20px;text-align:center;}
-    .story-content{display:flex;flex-wrap:wrap;align-items:center;gap:30px;}
-    .story-content img{width:280px;height:280px;object-fit:cover;border-radius:50%;box-shadow:0 4px 10px rgba(0,0,0,0.15);}
-    .story-text{flex:1;min-width:280px;}
-    .story-text p{margin-bottom:15px;color:#444;font-size:1rem;}
-
-    /* Team */
-    .team-section{text-align:center;}
-    .team-section h2{font-size:2rem;margin-bottom:10px;}
-    .team-section p{color:#555;margin-bottom:40px;}
-    .team-members{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:30px;justify-items:center;}
-    .member img{width:200px;height:200px;border-radius:50%;object-fit:cover;box-shadow:0 4px 8px rgba(0,0,0,0.15);}
-    .member h3{margin-top:15px;font-size:1.2rem;}
-    .member p{color:#777;font-size:0.95rem;}
-
-    /* News */
-    .news-section h2{text-align:center;font-size:2rem;margin-bottom:10px;}
-    .news-section p{text-align:center;color:#555;margin-bottom:40px;}
-    .articles{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px;}
-    .article{background:#fafafa;padding:20px;border-radius:12px;box-shadow:0 3px 6px rgba(0,0,0,0.1);}
-    .article img{width:100%;border-radius:12px;margin-bottom:15px;}
-    .article h3{font-size:1.2rem;margin-bottom:10px;}
-    .article p{font-size:0.95rem;color:#555;}
-
-    /* Footer */
-    .footer{background:#111;color:#eee;padding:40px 20px 20px;margin-top:50px;}
-    .footer-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:40px;margin-bottom:20px;}
-    .footer h3,.footer h4{margin-bottom:15px;}
-    .footer-about p{font-size:0.95rem;line-height:1.6;color:#bbb;}
-    .footer-links ul{list-style:none;padding:0;}
-    .footer-links ul li{margin:8px 0;}
-    .footer-links ul li a{color:#bbb;text-decoration:none;}
-    .footer-links ul li a:hover{color:#fff;}
-    .social-icons{display:flex;gap:12px;}
-    .social-icons img{width:28px;height:28px;filter:invert(1);transition:transform 0.3s;}
-    .social-icons img:hover{transform:scale(1.2);}
-    .footer-bottom{border-top:1px solid #333;text-align:center;padding-top:15px;font-size:0.9rem;color:#888;}
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+    .about-container {
+      max-width: 900px;
+      margin: 50px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    .founder-section {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .founder-section img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 3px solid #444;
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+    .founder-section h2 {
+      margin: 5px 0 0;
+      font-size: 24px;
+      color: #222;
+    }
+    .founder-section p {
+      font-size: 16px;
+      color: #666;
+      margin: 3px 0;
+    }
+    .signature {
+      font-family: "Brush Script MT", cursive;
+      font-size: 28px;
+      color: #444;
+      margin-top: 10px;
+    }
+    .about-text h1 {
+      margin: 0;
+      font-size: 28px;
+      color: #333;
+    }
+    .about-text p {
+      margin-top: 15px;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #555;
+    }
+    .company-story {
+      margin-top: 25px;
+      padding: 15px;
+      background: #f9f9f9;
+      border-left: 4px solid #444;
+      border-radius: 10px;
+    }
+    .company-story h2 {
+      margin: 0;
+      font-size: 22px;
+      color: #222;
+    }
+    .company-story p {
+      font-size: 16px;
+      color: #555;
+      line-height: 1.6;
+    }
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 14px;
+      color: #777;
+    }
   </style>
 </head>
 <body>
+  <div class="about-container">
 
-  <!-- About Section -->
-  <section class="about-section">
-    <h1>About LuxeLayer</h1>
-    <p><strong>LuxeLayer</strong> is a premium clothing brand under <strong>SAMMRAT GROUP PVT. LTD.</strong></p>
-    <p>Founded by <strong>Alok Kumar</strong>, LuxeLayer redefines fashion with a vision to make luxury accessible to everyone.</p>
-    <p>By the age of just 18, LuxeLayer had already crossed 1 Crore+ revenue milestone, setting a new benchmark in youth entrepreneurship.</p>
-  </section>
-
-  <!-- Founder’s Story Section -->
-  <section class="story-section">
-    <h2>Founder’s Story</h2>
-    <div class="story-content">
-      <img src="images/463177221_903679618324192_1185175068109341406_n.jpg" alt="Alok Kumar - Founder">
-      <div class="story-text">
-        <p>Alok Kumar, a young visionary and entrepreneur, laid the foundation of LuxeLayer even before turning 18. With determination, creativity, and passion for fashion, he built a brand that crossed <strong>1 Crore+ revenue</strong> at a record-breaking age.</p>
-        <p>Growing up with a dream to blend luxury and accessibility, Alok turned his vision into reality by launching LuxeLayer under <strong>SAMMRAT GROUP PVT. LTD.</strong></p>
-        <p>His journey is an inspiration for the youth, proving that age is never a barrier when you have courage, consistency, and creativity. Today, LuxeLayer is not just a brand — it’s a movement to empower young dreamers.</p>
-      </div>
+    <!-- Founder Section (TOP) -->
+    <div class="founder-section">
+      <img src="images/alok.jpg" alt="Founder - Alok Kumar">
+      <h2>Alok Kumar</h2>
+      <p>Founder & CEO</p>
+      <div class="signature">Alok Kumar</div>
     </div>
-  </section>
 
-  <!-- Team Section -->
-  <section class="team-section">
-    <h2>Our Team</h2>
-    <p>Meet the passionate minds behind LuxeLayer</p>
-    <div class="team-members">
-      <div class="member">
-        <img src="images/owner.jpg" alt="Alok Kumar">
-        <h3>Alok Kumar</h3>
-        <p>Founder & CEO</p>
-      </div>
-      <div class="member">
-        <img src="images/team1.jpg" alt="Creative Director">
-        <h3>Aarav Sharma</h3>
-        <p>Creative Director</p>
-      </div>
-      <div class="member">
-        <img src="images/team2.jpg" alt="Marketing Head">
-        <h3>Riya Patel</h3>
-        <p>Head of Marketing</p>
-      </div>
-      <div class="member">
-        <img src="images/team3.jpg" alt="Operations Manager">
-        <h3>Karan Mehta</h3>
-        <p>Operations Manager</p>
-      </div>
-    </div>
-  </section>
+    <!-- About Content -->
+    <div class="about-text">
+      <h1>About Me</h1>
+      <p>
+        My name is <b>Alok Kumar</b>.  
+        I am a <b>student, trader, and entrepreneur</b>.  
 
-  <!-- News & Articles Section -->
-  <section class="news-section">
-    <h2>News & Articles</h2>
-    <p>Read how LuxeLayer and our founder Alok Kumar are making headlines</p>
-    <div class="articles">
-      <div class="article">
-        <img src="images/news1.jpg" alt="News 1">
-        <h3>Alok Kumar becomes one of the youngest entrepreneurs to cross 1 Crore+ revenue</h3>
-        <p>At just 18, Alok Kumar, founder of LuxeLayer, achieved an extraordinary milestone in the fashion industry, inspiring thousands of young entrepreneurs across India.</p>
-      </div>
-      <div class="article">
-        <img src="images/news2.jpg" alt="News 2">
-        <h3>LuxeLayer under SAMMRAT GROUP PVT. LTD. is redefining youth fashion</h3>
-        <p>Backed by innovation and creativity, LuxeLayer is quickly becoming a trusted clothing brand known for premium quality and modern designs.</p>
-      </div>
-      <div class="article">
-        <img src="images/news3.jpg" alt="News 3">
-        <h3>From a small idea to a big brand: The journey of Alok Kumar</h3>
-        <p>Starting as a young student with a passion for fashion, Alok Kumar’s story proves that determination and vision can transform dreams into reality.</p>
-      </div>
-    </div>
-  </section>
+        At the age of just <b>17</b>, I have built assets worth crores through dedication, learning, and smart work. Business, trading, and exploring new opportunities have always been my passion.  
 
-  <!-- Footer Section -->
-  <footer class="footer">
-    <div class="footer-container">
-      <div class="footer-about">
-        <h3>LuxeLayer</h3>
-        <p>LuxeLayer is a premium clothing brand under 
-        <strong>SAMMRAT GROUP PVT. LTD.</strong> built with passion, style and trust. 
-        Our vision is to make luxury accessible for the youth.</p>
-      </div>
-      <div class="footer-links">
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="shop.html">Shop</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-social">
-        <h4>Follow Us</h4>
-        <div class="social-icons">
-          <a href="#"><img src="icons/instagram.png" alt="Instagram"></a>
-          <a href="#"><img src="icons/facebook.png" alt="Facebook"></a>
-          <a href="#"><img src="icons/twitter.png" alt="Twitter"></a>
-          <a href="#"><img src="icons/linkedin.png" alt="LinkedIn"></a>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2025 LuxeLayer | All Rights Reserved | Powered by SAMMRAT GROUP PVT. LTD.</p>
-    </div>
-  </footer>
+        For me, success is not only about wealth, but also about creating value, achieving dreams, and inspiring others.  
 
+        One of my core principles is <b>giving back to society</b>. Whatever revenue this website generates will be donated to people in need. Helping others and making a positive impact matters to me more than anything.  
+
+        My vision is to inspire the young generation to chase their goals fearlessly, work hard, and achieve greatness, while never forgetting the importance of kindness and contribution to society.  
+      </p>
+    </div>
+
+    <!-- Company Story -->
+    <div class="company-story">
+      <h2>Our Company Journey</h2>
+      <p>
+        The idea of <b>LuxeLayer</b> was first thought of in <b>2022</b>, when I realized that young people can achieve big things with vision and determination.  
+        <br><br>
+        In <b>2023</b>, I began working on this dream with consistency, learning, and dedication every single day.  
+        <br><br>
+        By <b>2025</b>, this dream turned into reality — <b>LuxeLayer</b>, a brand built under <b>SAMMRAT GROUP.PVT.LTD</b>, with the mission to create value while giving back to society.  
+      </p>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      &copy; 2025 LuxeLayer | A brand of SAMMRAT GROUP.PVT.LTD | All Rights Reserved
+    </footer>
+
+  </div>
 </body>
 </html>
