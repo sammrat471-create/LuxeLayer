@@ -1,148 +1,350 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zara-Style Clothing Store</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-</head>
-<body class="bg-white text-gray-800" x-data="storeApp()">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LuxeLayer — Minimal Fashion</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #111111;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --accent: #111111;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin:0; padding:0; background:var(--bg); color:var(--text); font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+    a { color: inherit; text-decoration: none; }
+    img { display:block; width:100%; height:auto; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
 
-  <!-- Header -->
-  <header class="flex justify-between items-center p-4 shadow">
-    <h1 class="text-2xl font-bold">Alok Clothing</h1>
-    <nav class="space-x-6">
-      <a href="#home" class="hover:text-gray-500">Home</a>
-      <a href="#about" class="hover:text-gray-500">About</a>
-      <a href="#products" class="hover:text-gray-500">Products</a>
-      <a href="#contact" class="hover:text-gray-500">Contact</a>
-    </nav>
-    <div>
-      <button class="relative" @click="toggleCart()">
-        🛒
-        <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-1 rounded-full" x-text="cart.length"></span>
-      </button>
+    /* Header */
+    header { position: sticky; top:0; z-index:30; background: rgba(255,255,255,.8); backdrop-filter: blur(10px); border-bottom:1px solid var(--border); }
+    .nav { display:flex; align-items:center; justify-content:space-between; height:64px; }
+    .brand { font-weight:700; letter-spacing:.08em; font-size:22px; }
+    .menu { display:flex; gap:20px; align-items:center; }
+    .menu a { font-size:14px; color:var(--muted); }
+    .menu a:hover { color:var(--text); }
+    .cart { position:relative; }
+    .badge { position:absolute; top:-6px; right:-10px; background:#111; color:#fff; font-size:11px; padding:2px 6px; border-radius:999px; }
+    .hamburger { display:none; border:1px solid var(--border); padding:8px 10px; border-radius:10px; }
+
+    /* Hero */
+    .hero { display:grid; grid-template-columns: 1.2fr .8fr; gap:24px; padding:32px 0 16px; align-items:stretch; }
+    .hero-card { position:relative; border-radius:18px; overflow:hidden; border:1px solid var(--border); }
+    .hero-card img { height:100%; object-fit:cover; }
+    .hero-overlay { position:absolute; inset:0; display:flex; align-items:flex-end; background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,.55)); color:#fff; padding:24px; }
+    .hero h1 { font-size:40px; margin:0 0 8px; letter-spacing:.02em; }
+    .hero p { margin:0 0 16px; color:#e5e7eb; }
+    .btn { display:inline-block; border:1px solid #fff; padding:10px 16px; border-radius:999px; font-size:14px; }
+    .btn.dark { border-color:#111; color:#fff; background:#111; }
+
+    /* Categories */
+    .section { padding:40px 0; }
+    .section-title { font-size:22px; font-weight:600; margin-bottom:16px; display:flex; align-items:center; justify-content:space-between; }
+    .grid { display:grid; gap:16px; }
+    .grid.cat { grid-template-columns: repeat(3, 1fr); }
+    .card { border:1px solid var(--border); border-radius:16px; overflow:hidden; background:#fff; transition: transform .25s ease; }
+    .card:hover { transform: translateY(-3px); }
+    .card-body { padding:12px 14px; }
+    .card-title { font-size:15px; font-weight:600; }
+    .card-sub { font-size:13px; color:var(--muted); }
+
+    /* Products */
+    .grid.products { grid-template-columns: repeat(4, 1fr); }
+    .price { display:flex; align-items:center; gap:8px; margin-top:8px; }
+    .price .mrp { color:var(--muted); text-decoration:line-through; font-size:13px; }
+    .price .now { font-weight:600; }
+    .actions { margin-top:10px; display:flex; gap:8px; }
+    .button { flex:1; display:inline-flex; align-items:center; justify-content:center; border:1px solid var(--border); border-radius:12px; padding:10px 12px; font-size:14px; }
+    .button.primary { background:#111; color:#fff; border-color:#111; }
+    .button:hover { opacity:.9; }
+
+    /* About */
+    .about { border:1px solid var(--border); border-radius:18px; padding:24px; background:#fafafa; line-height:1.7; }
+    .about h3 { margin-top:0; font-size:22px; }
+
+    /* Footer */
+    footer { border-top:1px solid var(--border); padding:32px 0; color:var(--muted); }
+    .foot { display:grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap:24px; }
+    .foot a { color:var(--muted); font-size:14px; }
+    .foot a:hover { color:#111; }
+    .copyright { margin-top:16px; font-size:13px; text-align:center; color:#9ca3af; }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .grid.products { grid-template-columns: repeat(3, 1fr); }
+      .hero { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .menu { display:none; }
+      .hamburger { display:block; }
+      .grid.cat { grid-template-columns: 1fr 1fr; }
+      .grid.products { grid-template-columns: 1fr 1fr; }
+      .foot { grid-template-columns: 1fr 1fr; }
+      .hero h1 { font-size:32px; }
+    }
+    @media (max-width: 420px) {
+      .grid.cat, .grid.products { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="#" class="brand">LUXELAYER</a>
+      <nav class="menu">
+        <a href="#new">New In</a>
+        <a href="#women">Women</a>
+        <a href="#men">Men</a>
+        <a href="#about">About</a>
+      </nav>
+      <button class="hamburger" aria-label="Toggle Menu" onclick="toggleMobile()">☰</button>
+      <a href="#" class="cart" aria-label="Cart">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 6h15l-1.5 9h-12L6 6z" stroke="#111"/><circle cx="9" cy="20" r="1.5" fill="#111"/><circle cx="18" cy="20" r="1.5" fill="#111"/></svg>
+        <span id="cart-count" class="badge">0</span>
+      </a>
     </div>
   </header>
 
-  <!-- Hero -->
-  <section id="home" class="text-center py-20 bg-gray-100">
-    <h2 class="text-4xl font-bold mb-4">New Fashion Arrivals</h2>
-    <p class="text-gray-600">Discover the latest trends in clothing with premium quality</p>
-    <a href="#products" class="mt-6 inline-block bg-black text-white px-6 py-2 rounded hover:bg-gray-800">Shop Now</a>
-  </section>
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="hero-card">
+        <img src="https://source.unsplash.com/1600x900/?fashion,runway" alt="Minimal fashion banner" loading="eager">
+        <div class="hero-overlay">
+          <div>
+            <h1>New Season Essentials</h1>
+            <p>Clean silhouettes. Premium feel. Everyday luxury.</p>
+            <a class="btn" href="#new">Shop New Arrivals</a>
+          </div>
+        </div>
+      </div>
+      <div class="hero-card">
+        <img src="https://source.unsplash.com/1200x900/?clothes,store" alt="Editorial fashion" loading="lazy">
+        <div class="hero-overlay">
+          <div>
+            <h1>Wardrobe Staples</h1>
+            <p>Crafted basics that go with everything.</p>
+            <a class="btn" href="#women">Explore Collection</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <!-- About -->
-  <section id="about" class="py-16 px-6 max-w-4xl mx-auto">
-    <h2 class="text-3xl font-bold mb-6 text-center">About Us</h2>
-    <p class="text-gray-600 text-center">We bring you the finest collection of modern clothing inspired by Zara's minimal style. Our aim is to provide stylish, affordable and quality outfits for everyone. Explore our store and experience premium fashion with us.</p>
-  </section>
+    <!-- CATEGORIES -->
+    <section class="section" id="new">
+      <div class="section-title">
+        <span>Shop by Category</span>
+        <a href="#" style="font-size:14px; color:var(--muted)">View all →</a>
+      </div>
+      <div class="grid cat">
+        <a class="card" href="#women">
+          <img src="https://source.unsplash.com/800x900/?women,fashion" alt="Women">
+          <div class="card-body">
+            <div class="card-title">Women</div>
+            <div class="card-sub">Dresses, tops, denim</div>
+          </div>
+        </a>
+        <a class="card" href="#men">
+          <img src="https://source.unsplash.com/800x900/?men,style" alt="Men">
+          <div class="card-body">
+            <div class="card-title">Men</div>
+            <div class="card-sub">Shirts, tees, trousers</div>
+          </div>
+        </a>
+        <a class="card" href="#accessories">
+          <img src="https://source.unsplash.com/800x900/?accessories,fashion" alt="Accessories">
+          <div class="card-body">
+            <div class="card-title">Accessories</div>
+            <div class="card-sub">Bags, belts, caps</div>
+          </div>
+        </a>
+      </div>
+    </section>
 
-  <!-- Products -->
-  <section id="products" class="py-16 px-6">
-    <h2 class="text-3xl font-bold mb-10 text-center">Our Collection</h2>
-    <div class="grid md:grid-cols-3 gap-8">
-      <template x-for="product in products" :key="product.id">
-        <div class="border rounded-lg overflow-hidden shadow hover:shadow-lg">
-          <img :src="product.image" class="w-full h-64 object-cover" alt="product">
-          <div class="p-4">
-            <h3 class="text-lg font-semibold" x-text="product.name"></h3>
-            <p class="text-gray-600" x-text="'$' + product.price"></p>
-            <div class="flex justify-between mt-4">
-              <button class="bg-black text-white px-3 py-1 rounded hover:bg-gray-800" @click="addToCart(product)">Add to Cart</button>
-              <button class="bg-gray-200 px-3 py-1 rounded hover:bg-gray-300" @click="viewProduct(product)">Quick View</button>
+    <!-- PRODUCTS: WOMEN -->
+    <section class="section" id="women">
+      <div class="section-title"><span>Women — New Arrivals</span><a href="#">Shop all →</a></div>
+      <div class="grid products">
+        <!-- Product 1 -->
+        <div class="card">
+          <img src="https://source.unsplash.com/800x1000/?dress,minimal" alt="Minimal Midi Dress">
+          <div class="card-body">
+            <div class="card-title">Minimal Midi Dress</div>
+            <div class="card-sub">Soft-touch jersey</div>
+            <div class="price"><span class="now">₹1,999</span> <span class="mrp">₹2,499</span></div>
+            <div class="actions">
+              <button class="button" onclick="quickView('Minimal Midi Dress')">Quick view</button>
+              <button class="button primary" onclick="addToCart('Minimal Midi Dress', 1999)">Add</button>
             </div>
           </div>
         </div>
-      </template>
-    </div>
-  </section>
+        <!-- Product 2 -->
+        <div class="card">
+          <img src="https://source.unsplash.com/800x1000/?blazer,women" alt="Relaxed Blazer">
+          <div class="card-body">
+            <div class="card-title">Relaxed Blazer</div>
+            <div class="card-sub">Tailored fit</div>
+            <div class="price"><span class="now">₹2,499</span> <span class="mrp">₹2,999</span></div>
+            <div class="actions">
+              <button class="button" onclick="quickView('Relaxed Blazer')">Quick view</button>
+              <button class="button primary" onclick="addToCart('Relaxed Blazer', 2499)">Add</button>
+            </div>
+          </div>
+        </div>
+        <!-- Product 3 -->
+        <div class="card">
+          <img src="https://source.unsplash.com/800x1000/?denim,jacket" alt="Cropped Denim Jacket">
+          <div class="card-body">
+            <div class="card-title">Cropped Denim Jacket</div>
+            <div class="card-sub">Light wash</div>
+            <div class="price"><span class="now">₹1,499</span> <span class="mrp">₹1,899</span></div>
+            <div class="actions">
+              <button class="button" onclick="quickView('Cropped Denim Jacket')">Quick view</button>
+              <button class="button primary" onclick="addToCart('Cropped Denim Jacket', 1499)">Add</button>
+            </div>
+          </div>
+        </div>
+        <!-- Product 4 -->
+        <div class="card">
+          <img src="https://source.unsplash.com/800x1000/?top,white" alt="Essential Tank Top">
+          <div class="card-body">
+            <div class="card-title">Essential Tank Top</div>
+            <div class="card-sub">100% cotton</div>
+            <div class="price"><span class="now">₹699</span> <span class="mrp">₹899</span></div>
+            <div class="actions">
+              <button class="button" onclick="quickView('Essential Tank Top')">Quick view</button>
+              <button class="button primary" onclick="addToCart('Essential Tank Top', 699)">Add</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <!-- Contact -->
-  <section id="contact" class="py-16 px-6 bg-gray-100">
-    <h2 class="text-3xl font-bold mb-6 text-center">Contact Us</h2>
-    <div class="text-center text-gray-600">
-      <p>Email: support@alokclothing.com</p>
-      <p>Phone: +91 8051731633</p>
-    </div>
-  </section>
+    <!-- PRODUCTS: MEN -->
+    <section class="section" id="men">
+      <div class="section-title"><span>Men — Best Sellers</span><a href="#">Shop all →</a></div>
+      <div class="grid products">
+        <!-- Product 1 -->
+        <div class="card">
+          <img src="https://source.unsplash.com/800x1000/?shirt,men" alt="Oxford Shirt">
+          <div class="card-body">
+            <div class="card-title">Oxford Shirt</div>
+            <div class="card-sub">Slim fit</div>
+            <div class="price"><span class="now">₹1,299</span> <span class="mrp">₹1,699</span></div>
+            <div class="actions">
+              <button class="button" onclick="quickView('Oxford Shirt')">Quick view</button>
+              <button class="button primary" onclick="addToCart('Oxford Shirt', 1299)">Add</button>
+            </div>
+          </div>
+        </div>
+        <!-- Product 2 -->
+        <div class="card">
+          <img src="https://source.unsplash.com/800x1000/?tshirt,black" alt="Premium Tee">
+          <div class="card-body">
+            <div class="card-title">Premium Tee</div>
+            <div class="card-sub">Heavyweight 240 GSM</div>
+            <div class="price"><span class="now">₹799</span> <span class="mrp">₹999</span></div>
+            <div class="actions">
+              <button class="button" onclick="quickView('Premium Tee')">Quick view</button>
+              <button class="button primary" onclick="addToCart('Premium Tee', 799)">Add</button>
+            </div>
+          </div>
+        </div>
+        <!-- Product 3 -->
+        <div class="card">
+          <img src="https://source.unsplash.com/800x1000/?trousers,men" alt="Tailored Trousers">
+          <div class="card-body">
+            <div class="card-title">Tailored Trousers</div>
+            <div class="card-sub">Tapered leg</div>
+            <div class="price"><span class="now">₹1,799</span> <span class="mrp">₹2,199</span></div>
+            <div class="actions">
+              <button class="button" onclick="quickView('Tailored Trousers')">Quick view</button>
+              <button class="button primary" onclick="addToCart('Tailored Trousers', 1799)">Add</button>
+            </div>
+          </div>
+        </div>
+        <!-- Product 4 -->
+        <div class="card">
+          <img src="https://source.unsplash.com/800x1000/?hoodie,men" alt="Fleece Hoodie">
+          <div class="card-body">
+            <div class="card-title">Fleece Hoodie</div>
+            <div class="card-sub">Brushed interior</div>
+            <div class="price"><span class="now">₹1,299</span> <span class="mrp">₹1,599</span></div>
+            <div class="actions">
+              <button class="button" onclick="quickView('Fleece Hoodie')">Quick view</button>
+              <button class="button primary" onclick="addToCart('Fleece Hoodie', 1299)">Add</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <!-- Footer -->
-  <footer class="text-center py-6 bg-black text-white">
-    <p>© 2025 Alok Clothing. All rights reserved.</p>
+    <!-- ABOUT -->
+    <section class="section" id="about">
+      <div class="about">
+        <h3>About LuxeLayer</h3>
+        <p>LuxeLayer is a minimalist clothing label focused on timeless silhouettes and premium everyday wear. We believe in fewer, better pieces — designed to mix, match, and last season after season.</p>
+        <p>Our garments are crafted with responsibly sourced fabrics and a commitment to quality. From essential tees to tailored outerwear, every piece is made to feel good and look effortless.</p>
+        <p><strong>Contact:</strong> support@luxelayer.example • Bounsi, Banka, Bihar</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container">
+    <div class="foot">
+      <div>
+        <div class="brand" style="margin-bottom:8px;">LUXELAYER</div>
+        <p style="color:var(--muted); max-width:420px;">Minimal, modern, and made to last. Discover essentials that elevate your everyday wardrobe.</p>
+      </div>
+      <div>
+        <strong style="font-size:14px;">Shop</strong>
+        <div style="margin-top:10px; display:grid; gap:8px;">
+          <a href="#women">Women</a>
+          <a href="#men">Men</a>
+          <a href="#accessories">Accessories</a>
+        </div>
+      </div>
+      <div>
+        <strong style="font-size:14px;">Help</strong>
+        <div style="margin-top:10px; display:grid; gap:8px;">
+          <a href="#">Shipping</a>
+          <a href="#">Returns</a>
+          <a href="#about">About</a>
+        </div>
+      </div>
+      <div>
+        <strong style="font-size:14px;">Follow</strong>
+        <div style="margin-top:10px; display:grid; gap:8px;">
+          <a href="#">Instagram</a>
+          <a href="#">Facebook</a>
+          <a href="#">Twitter</a>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">© <span id="year"></span> LuxeLayer. Built for demo purposes. Images via Unsplash (free).</div>
   </footer>
 
-  <!-- Quick View Modal -->
-  <div x-show="showModal" 
-       class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50" 
-       x-transition>
-    <div class="bg-white p-6 rounded-lg max-w-lg w-full relative">
-      <button class="absolute top-2 right-2 text-gray-600" @click="showModal=false">✖</button>
-      <img :src="selectedProduct.image" class="w-full h-64 object-cover mb-4" alt="view">
-      <h3 class="text-2xl font-bold mb-2" x-text="selectedProduct.name"></h3>
-      <p class="text-gray-600 mb-4" x-text="'$' + selectedProduct.price"></p>
-      <button class="bg-black text-white px-4 py-2 rounded hover:bg-gray-800" @click="addToCart(selectedProduct)">Add to Cart</button>
-    </div>
-  </div>
-
-  <!-- Cart Sidebar -->
-  <div x-show="cartOpen" 
-       class="fixed top-0 right-0 w-80 h-full bg-white shadow-lg p-4 overflow-y-auto z-50" 
-       x-transition>
-    <h2 class="text-2xl font-bold mb-4">Your Cart</h2>
-    <template x-for="item in cart" :key="item.id">
-      <div class="flex justify-between items-center border-b py-2">
-        <span x-text="item.name"></span>
-        <span x-text="'$' + item.price"></span>
-        <button class="text-red-500" @click="removeFromCart(item)">Remove</button>
-      </div>
-    </template>
-    <div class="mt-4 font-bold">Total: $<span x-text="cartTotal"></span></div>
-    <button class="mt-4 w-full bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700" @click="checkout()">Checkout</button>
-  </div>
-
-  <!-- Store Script -->
   <script>
-    function storeApp() {
-      return {
-        products: [
-          {id: 1, name: 'White Shirt', price: 40, image: 'https://source.unsplash.com/400x400/?shirt'},
-          {id: 2, name: 'Blue Denim', price: 60, image: 'https://source.unsplash.com/400x400/?jeans'},
-          {id: 3, name: 'Black Dress', price: 80, image: 'https://source.unsplash.com/400x400/?dress'},
-          {id: 4, name: 'Jacket', price: 100, image: 'https://source.unsplash.com/400x400/?jacket'},
-          {id: 5, name: 'Sneakers', price: 70, image: 'https://source.unsplash.com/400x400/?sneakers'},
-          {id: 6, name: 'T-shirt', price: 30, image: 'https://source.unsplash.com/400x400/?tshirt'},
-        ],
-        cart: [],
-        showModal: false,
-        selectedProduct: {},
-        cartOpen: false,
-
-        addToCart(product) {
-          this.cart.push(product);
-          this.showModal = false; // add karne ke baad modal close
-        },
-        removeFromCart(product) {
-          this.cart = this.cart.filter(p => p.id !== product.id);
-        },
-        get cartTotal() {
-          return this.cart.reduce((sum, item) => sum + item.price, 0);
-        },
-        viewProduct(product) {
-          this.selectedProduct = product;
-          this.showModal = true;
-        },
-        toggleCart() {
-          this.cartOpen = !this.cartOpen;
-        },
-        checkout() {
-          alert('Checkout complete! Thank you for shopping with us.');
-          this.cart = [];
-          this.cartOpen = false;
-        }
-      }
+    const cart = { items: [], total: 0 };
+    function addToCart(name, price) {
+      cart.items.push({ name, price });
+      cart.total += price;
+      document.getElementById('cart-count').textContent = cart.items.length;
+      alert(`${name} added to cart (₹${price}). Items: ${cart.items.length}`);
     }
+    function quickView(name){
+      alert(`${name}\n\nClean, minimal design — Zara-style aesthetic without copying branding.`);
+    }
+    function toggleMobile(){
+      const nav = document.querySelector('.menu');
+      if(getComputedStyle(nav).display === 'none'){ nav.style.display = 'flex'; } else { nav.style.display = 'none'; }
+    }
+    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
