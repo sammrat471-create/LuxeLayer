@@ -1,268 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>About the Founder — LuxeLayer</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About the Founder - Alok Kumar</title>
   <style>
-    :root{
-      --bg:#f5f7fb;
-      --card:#ffffff;
-      --muted:#6b7280;
-      --accent:#0f172a;
-      --radius:14px;
-      --maxw:1000px;
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
     }
-    html,body{height:100%;margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;}
-    body{
-      background:var(--bg);
-      color:var(--accent);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      padding:40px 20px;
-      display:flex;
-      justify-content:center;
-      align-items:flex-start;
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
     }
-
-    /* Page container */
-    .page {
-      width:100%;
-      max-width:var(--maxw);
-      position:relative;
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #222;
     }
-
-    /* Light watermark behind content */
-    .page::before{
-      content: "LuxeLayer";
-      position:absolute;
-      left:50%;
-      top:40%;
-      transform:translate(-50%,-50%) rotate(-30deg);
-      font-size:110px;
-      font-weight:700;
-      color:rgba(15,23,42,0.05);
-      letter-spacing:6px;
-      pointer-events:none;
-      z-index:0;
-      user-select:none;
+    .profile {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
     }
-
-    /* Card */
-    .card{
-      position:relative;
-      background:var(--card);
-      border-radius:var(--radius);
-      box-shadow:0 10px 30px rgba(15,23,42,0.08);
-      padding:34px;
-      z-index:1;
-      overflow:hidden;
-    }
-
-    /* Header (logo + title) */
-    .header{
-      display:flex;
-      align-items:center;
-      gap:18px;
-      margin-bottom:18px;
-    }
-    .logo {
-      width:72px;
-      height:72px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:linear-gradient(135deg,#fff 0%, #f8fafc 100%);
-      border-radius:12px;
-      box-shadow:0 6px 18px rgba(2,6,23,0.06);
-      flex:0 0 72px;
-    }
-    .brand {
-      line-height:1;
-    }
-    .brand h2{margin:0;font-size:1.25rem;letter-spacing:0.2px;}
-    .brand p{margin:0;font-size:0.85rem;color:var(--muted);}
-
-    /* layout: profile + text */
-    .profile-wrap{
-      display:flex;
-      gap:28px;
-      align-items:flex-start;
-      flex-wrap:wrap;
-    }
-
-    .photo {
-      flex:0 0 260px;
-      border-radius:12px;
-      overflow:hidden;
-      box-shadow:0 8px 24px rgba(2,6,23,0.08);
-      background:#eee;
-      position:relative;
-    }
-    .photo img{
-      display:block;
-      width:100%;
-      height:auto;
-    }
-
-    .info {
-      flex:1 1 420px;
-      min-width:260px;
-    }
-    .info h3{
-      margin:0 0 8px 0;
-      font-size:1.35rem;
-    }
-    .muted {
-      color:var(--muted);
-      margin:6px 0 18px 0;
-      font-size:0.95rem;
+    .profile img {
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
     .bio {
-      font-size:1rem;
-      line-height:1.65;
-      text-align:justify;
-      color:#222;
+      flex: 1;
+      min-width: 280px;
     }
-
-    /* signature */
+    .bio p {
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+    }
     .signature {
-      margin-top:20px;
-      display:flex;
-      align-items:center;
-      gap:16px;
+      margin-top: 20px;
+      text-align: right;
     }
-    .sig-img {
-      width:190px;
-      height:auto;
-      display:block;
+    .signature img {
+      height: 80px;
     }
-    .sig-note{
-      font-size:0.92rem;
-      color:var(--muted);
-    }
-
-    /* Key facts box */
-    .facts{
-      margin-top:20px;
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-    }
-    .fact{
-      background:#fbfdff;
-      border:1px solid rgba(15,23,42,0.03);
-      padding:12px 14px;
-      border-radius:10px;
-      min-width:160px;
-      box-shadow:0 6px 18px rgba(2,6,23,0.02);
-      font-size:0.95rem;
-    }
-    .fact strong{display:block;font-size:1.05rem;color:var(--accent);}
-
-    /* Footer / copyright */
-    footer.site-footer{
-      margin-top:18px;
-      background:#0b1220;
-      color:#fff;
-      padding:16px 18px;
-      border-radius:10px;
-      text-align:center;
-      font-size:0.92rem;
-    }
-    footer.site-footer a{color:#cfe6ff;text-decoration:none; font-weight:600;}
-    footer.small{font-size:0.82rem; color:rgba(255,255,255,0.78); margin-top:6px;}
-
-    /* responsive */
-    @media (max-width:820px){
-      .photo{flex:0 0 220px;}
-      .logo{width:60px;height:60px}
-    }
-    @media (max-width:520px){
-      body{padding:20px 12px;}
-      .profile-wrap{flex-direction:column;}
-      .photo{width:100%;}
-      .logo{display:none;}
-    }
-
   </style>
 </head>
 <body>
-  <div class="page">
-    <div class="card" role="main" aria-labelledby="about-title">
-      <header class="header">
-        <!-- Inline SVG Logo: edit text/color if you want -->
-        <div class="logo" aria-hidden="true">
-          <!-- Simple luxe monogram -->
-          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="LuxeLayer logo">
-            <rect width="48" height="48" rx="10" fill="#0f172a"/>
-            <path d="M15 31V17L24 24L33 17V31" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+  <div class="container">
+    <h1>About the Founder</h1>
+    <div class="profile">
+      <!-- Founder Photo -->
+      <img src="https://raw.githubusercontent.com/sammrat471-create/LuxeLayer/main/images/463177221_903679618324192_1185175068109341406_n.jpg" alt="Alok Kumar" width="250"/>
+
+      <!-- Bio -->
+      <div class="bio">
+        <p><strong>Alok Kumar</strong>, born on <strong>4th March 2008</strong>, is the young and dynamic founder of <strong>LuxeLayer</strong>, a brand operating under <strong>SAMMRAT GROUP.PVT.LTD</strong>. </p>
+        <p>A student, trader, and entrepreneur, Alok had the vision of creating this company in 2023. He began the journey in 2024, and by 2025 LuxeLayer became a reality. At just 17 years of age, he achieved extraordinary success, earning more than crores through his ventures.</p>
+        <p>With a deep sense of responsibility, Alok has pledged that all company revenue will be donated towards causes like <strong>education</strong> and <strong>health</strong>, empowering communities and creating lasting impact.</p>
+        
+        <!-- Signature -->
+        <div class="signature">
+          <img src="https://raw.githubusercontent.com/sammrat471-create/LuxeLayer/main/images/alok_kumar_signature.jpg" alt="Signature of Alok Kumar"/>
         </div>
-
-        <div class="brand">
-          <h2 id="about-title">LuxeLayer — About the Founder</h2>
-          <p>Under <strong>SAMMRAT GROUP PVT. LTD.</strong> · Fashion • Social Impact • Quality</p>
-        </div>
-      </header>
-
-      <section class="profile-wrap" aria-describedby="bio-text">
-        <!-- Founder Photo: replace URL with your preferred image if needed -->
-        <figure class="photo" aria-hidden="false">
-          <img src="https://raw.githubusercontent.com/sammrat471-create/LuxeLayer/main/images/463177221_903679618324192_1185175068109341406_n.jpg" alt="Alok Kumar — Founder of LuxeLayer">
-        </figure>
-
-        <div class="info">
-          <h3>Alok Kumar</h3>
-          <p class="muted">Born 4 March 2008 · Student · Trader · Entrepreneur</p>
-
-          <div id="bio-text" class="bio">
-            <p><strong>Alok Kumar</strong> is the founder of <strong>LuxeLayer</strong>, a contemporary fashion brand operating under <strong>SAMMRAT GROUP PVT. LTD.</strong> The concept for LuxeLayer originated in 2023, operations were initiated in 2024, and the brand officially launched in 2025. Driven by vision and persistence, Alok built the company while still a student and reached a major personal milestone — earning over one crore before turning 18.</p>
-
-            <p>LuxeLayer is committed to delivering premium, trend-forward clothing while creating measurable social impact. Alok has pledged that the company's revenue will be directed toward public-benefit initiatives — primarily in <strong>education</strong> and <strong>healthcare</strong> — to ensure the brand's success benefits the wider community.</p>
-          </div>
-
-          <!-- signature + small note -->
-          <div class="signature" aria-hidden="false">
-            <!-- Replace the signature image URL with your actual digital signature PNG -->
-            <img class="sig-img" src="Alok kumar" alt="Digital signature of Alok Kumar">            
-            <div class="sig-note">
-              <div><strong>Alok Kumar</strong></div>
-              <div style="color:var(--muted);">Founder, LuxeLayer</div>
-            </div>
-          </div>
-
-          <!-- Facts / quick highlights -->
-          <div class="facts" role="list">
-            <div class="fact" role="listitem"><strong>Founded</strong><span> Idea 2023 · Started 2024 · Launched 2025</span></div>
-            <div class="fact" role="listitem"><strong>Mission</strong><span>Premium fashion made accessible + philanthropic giving</span></div>
-            <div class="fact" role="listitem"><strong>Giving</strong><span>All company revenue pledged to education & health causes</span></div>
-          </div>
-
-        </div>
-      </section>
-
-      <!-- Optional small legal / trademark line -->
-      <div style="margin-top:18px; color:var(--muted); font-size:0.92rem;">
-        <em>LuxeLayer™ is a brand of SAMMRAT GROUP PVT. LTD.</em>
       </div>
-
     </div>
-
-    <!-- Footer: copyright (copy-paste ready) -->
-    <footer class="site-footer" role="contentinfo" aria-label="copyright">
-      © 2025 <strong>LuxeLayer</strong>. All Rights Reserved. &nbsp;|&nbsp; LuxeLayer is a registered brand under <strong>SAMMRAT GROUP PVT. LTD.</strong>
-      <div class="small">Unauthorized use, reproduction, or distribution of content, designs, images, or materials from this site is prohibited.</div>
-    </footer>
   </div>
-
-  <!--
-    HOW TO EDIT:
-    - Replace the founder photo: change the src on the <img> inside .photo
-    - Replace the digital signature: change the src on the <img class="sig-img">
-    - Change logo: edit the inline SVG in .logo
-    - To remove watermark: delete the .page::before CSS rule
-    - To add a trademark symbol after LuxeLayer in headings, add ™ or ® as needed
-  -->
 </body>
-  </html>m
+</html>
