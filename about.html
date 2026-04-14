@@ -10,218 +10,90 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        /* Shared Styling with index.html */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --bg-color: #050505; --text-main: #ffffff; --gold: #d4af37; --nav-bg: rgba(5, 5, 5, 0.95); }
+        body { font-family: 'Montserrat', sans-serif; background-color: var(--bg-color); color: var(--text-main); line-height: 1.8; overflow-x: hidden; }
+        h1, h2, h3, .quote-text, .logo { font-family: 'Playfair Display', serif; }
+        .gold-text { color: var(--gold); }
 
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #050505;
-            color: #ffffff;
-            line-height: 1.8;
-            overflow-x: hidden;
-        }
+        /* Navbar */
+        header { position: fixed; top: 0; width: 100%; padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; background: var(--nav-bg); backdrop-filter: blur(15px); z-index: 1000; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        .logo { font-size: 24px; font-weight: 700; letter-spacing: 5px; color: var(--gold); text-transform: uppercase; text-decoration: none;}
+        .nav-links { display: flex; list-style: none; gap: 35px; }
+        .nav-links a { color: var(--text-main); text-decoration: none; font-size: 12px; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; }
+        .nav-links a:hover { color: var(--gold); }
+        .menu-toggle { display: none; font-size: 24px; color: var(--gold); cursor: pointer; }
 
-        h1, h2, h3, .quote-text {
-            font-family: 'Playfair Display', serif;
-        }
+        /* About Hero */
+        .about-hero { padding: 180px 5% 80px; text-align: center; background: linear-gradient(to bottom, #050505, #0a0a0a); border-bottom: 1px solid rgba(212, 175, 55, 0.1); }
+        .about-hero h1 { font-size: 4rem; margin-bottom: 20px; letter-spacing: 2px; }
+        .about-hero p { max-width: 800px; margin: 0 auto; color: #aaa; font-size: 16px; }
 
-        .gold-text {
-            color: #d4af37;
-        }
+        /* Content Structure */
+        .container { max-width: 1200px; margin: 0 auto; padding: 80px 5%; }
+        
+        .founder-section { display: flex; align-items: center; gap: 60px; margin-bottom: 80px; }
+        .founder-image-wrapper { flex: 1; text-align: center; }
+        .founder-image-wrapper img.profile { width: 100%; max-width: 450px; border-radius: 8px; filter: grayscale(20%) contrast(110%); box-shadow: -15px 15px 0px rgba(212, 175, 55, 0.1); }
+        .signature { margin-top: 30px; width: 250px; filter: invert(1); opacity: 0.9; }
+        
+        .founder-content { flex: 1; }
+        .founder-content h2 { font-size: 3rem; margin-bottom: 10px; }
+        .founder-meta { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--gold); margin-bottom: 30px; display: block; }
+        .founder-content p { margin-bottom: 20px; color: #bbb; font-size: 15px; }
 
-        /* Hero Section */
-        .about-hero {
-            padding: 150px 5% 80px;
-            text-align: center;
-            background: linear-gradient(to bottom, rgba(5,5,5,1), rgba(15,15,15,1));
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-        }
+        /* Grid Cards */
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 80px; }
+        .info-card { background: #0a0a0a; padding: 50px; border: 1px solid rgba(255, 255, 255, 0.05); transition: 0.3s; }
+        .info-card:hover { transform: translateY(-5px); border-color: rgba(212, 175, 55, 0.3); }
+        .info-card h3 { font-size: 2rem; margin-bottom: 20px; color: var(--gold); }
+        .info-card ul { list-style: none; margin-top: 20px; }
+        .info-card ul li { position: relative; padding-left: 20px; margin-bottom: 15px; color: #bbb; font-size: 15px; }
+        .info-card ul li::before { content: '•'; color: var(--gold); position: absolute; left: 0; font-size: 1.5rem; top: -5px; }
 
-        .about-hero h1 {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            letter-spacing: 2px;
-        }
-
-        .about-hero p {
-            max-width: 800px;
-            margin: 0 auto;
-            color: #aaa;
-            font-size: 16px;
-        }
-
-        /* Container & Layout */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 80px 5%;
-        }
-
-        /* Founder Section */
-        .founder-section {
-            display: flex;
-            align-items: center;
-            gap: 60px;
-            margin-bottom: 100px;
-        }
-
-        .founder-image-wrapper {
-            flex: 1;
-            text-align: center;
-        }
-
-        .founder-image-wrapper img.profile {
-            width: 100%;
-            max-width: 400px;
-            border-radius: 8px;
-            filter: grayscale(20%) contrast(120%);
-            box-shadow: -15px 15px 0px rgba(212, 175, 55, 0.1);
-        }
-
-        .signature {
-            margin-top: 30px;
-            width: 250px;
-            filter: invert(1); /* Makes black signature white for dark theme */
-            opacity: 0.8;
-        }
-
-        .founder-content {
-            flex: 1;
-        }
-
-        .founder-content h2 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-
-        .founder-meta {
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #d4af37;
-            margin-bottom: 30px;
-            display: block;
-        }
-
-        /* Mission & Vision Grid */
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-bottom: 80px;
-        }
-
-        .info-card {
-            background: #0a0a0a;
-            padding: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: transform 0.3s ease;
-        }
-
-        .info-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(212, 175, 55, 0.3);
-        }
-
-        .info-card h3 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            color: #d4af37;
-        }
-
-        .info-card ul {
-            list-style: none;
-            margin-top: 15px;
-        }
-
-        .info-card ul li {
-            position: relative;
-            padding-left: 20px;
-            margin-bottom: 12px;
-            color: #bbb;
-        }
-
-        .info-card ul li::before {
-            content: '•';
-            color: #d4af37;
-            position: absolute;
-            left: 0;
-            font-size: 1.2rem;
-        }
-
-        /* Quote Section */
-        .quote-section {
-            text-align: center;
-            padding: 80px 5%;
-            background: #0a0a0a;
-            border-top: 1px solid rgba(212, 175, 55, 0.2);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-        }
-
-        .quote-text {
-            font-size: 2rem;
-            font-style: italic;
-            color: #fff;
-            max-width: 900px;
-            margin: 0 auto 20px;
-            line-height: 1.5;
-        }
+        /* Quote */
+        .quote-section { text-align: center; padding: 100px 5%; background: #0a0a0a; border-top: 1px solid rgba(212, 175, 55, 0.2); border-bottom: 1px solid rgba(212, 175, 55, 0.2); }
+        .quote-text { font-size: 2.2rem; font-style: italic; color: #fff; max-width: 900px; margin: 0 auto 30px; line-height: 1.5; }
 
         /* Footer */
-        footer {
-            background-color: #020202;
-            padding: 60px 5% 30px;
-            text-align: center;
-            font-size: 14px;
-            color: #888;
-        }
+        footer { background-color: #020202; padding: 60px 5% 30px; text-align: center; font-size: 13px; color: #666; }
+        footer .brand-name { color: var(--text-main); font-size: 18px; letter-spacing: 2px; margin-bottom: 10px; font-family: 'Playfair Display', serif; }
+        footer hr { border: none; border-top: 1px solid #222; margin: 30px auto; width: 70%; }
+        footer a { color: var(--gold); text-decoration: none; }
 
-        footer hr {
-            border: none;
-            border-top: 1px solid #222;
-            margin: 30px auto;
-            width: 80%;
-        }
-
-        footer a {
-            color: #d4af37;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        footer a:hover {
-            color: #fff;
-        }
-
-        /* Responsive */
         @media (max-width: 768px) {
             .founder-section { flex-direction: column; }
             .grid-2 { grid-template-columns: 1fr; }
-            .about-hero h1 { font-size: 2.8rem; }
-            .quote-text { font-size: 1.5rem; }
+            .about-hero h1 { font-size: 3rem; }
+            .quote-text { font-size: 1.6rem; }
+            .menu-toggle { display: block; }
+            nav { position: absolute; top: 70px; left: 0; width: 100%; background: var(--bg-color); border-bottom: 1px solid #333; display: none; }
+            nav.active { display: block; }
+            .nav-links { flex-direction: column; align-items: center; padding: 30px 0; gap: 25px; }
         }
     </style>
 </head>
 <body>
 
-    <header style="padding: 30px 5%; display: flex; justify-content: space-between; position: absolute; width: 100%;">
-        <div class="logo" style="font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; letter-spacing: 5px; color: #d4af37;">LUXELAYER</div>
-        <nav style="display: flex; gap: 30px;">
-            <a href="index.html" style="color: #fff; text-decoration: none; font-size: 12px; letter-spacing: 2px; text-transform: uppercase;">Home</a>
-            <a href="#" style="color: #d4af37; text-decoration: none; font-size: 12px; letter-spacing: 2px; text-transform: uppercase;">About Us</a>
+    <header>
+        <a href="index.html" class="logo">LUXELAYER</a>
+        <nav id="navMenu">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#" style="color: #d4af37;">About Us</a></li>
+                <li><a href="index.html#collection">Collection</a></li>
+            </ul>
         </nav>
+        <div class="menu-toggle" onclick="document.getElementById('navMenu').classList.toggle('active')">☰</div>
     </header>
 
     <section class="about-hero">
-        <h1>The Story of <span class="gold-text">LuxeLayer</span></h1>
+        <h1>The Heritage of <span class="gold-text">LuxeLayer</span></h1>
         <p>A premium fashion and lifestyle brand proudly established under <b>SAMMRAT GROUP PVT. LTD.</b> Born from an idea in 2023, meticulously crafted through 2024, and brought to life in 2025 to redefine the boundaries of luxury, comfort, and accessibility.</p>
     </section>
 
     <div class="container">
-        
         <section class="founder-section">
             <div class="founder-image-wrapper">
                 <img src="https://raw.githubusercontent.com/sammrat471-create/LuxeLayer/main/images/463177221_903679618324192_1185175068109341406_n.jpg" alt="Alok Sammrat - Founder" class="profile">
@@ -233,26 +105,19 @@
                 <h2>Alok Sammrat</h2>
                 <span class="founder-meta">Founder & CEO | Born: 4 March 2008</span>
                 
-                <p style="margin-bottom: 20px; color: #bbb;">
-                    Behind the elegance of LuxeLayer stands a visionary who defied the conventional timelines of success. Alok Sammrat is a prodigy entrepreneur, an astute trader, and a dedicated student who achieved total financial independence at the remarkable age of 17. 
-                </p>
-                <p style="margin-bottom: 20px; color: #bbb;">
-                    Generating revenue in crores through strategic trading and business acumen, his journey is a masterclass in hard work, unyielding dedication, and the profound belief that age is never a barrier to monumental success.
-                </p>
-                <p style="color: #bbb;">
-                    At LuxeLayer, he believes fashion is an extension of identity. Every collection under his direction is engineered with meticulous attention to detail, ensuring top-tier fabrics, architectural designs, and an unmatched sensory experience.
-                </p>
+                <p>Behind the elegance of LuxeLayer stands a visionary who defied the conventional timelines of success. Alok Sammrat is a prodigy entrepreneur, an astute trader, and a dedicated student who achieved total financial independence at the remarkable age of 17.</p>
+                <p>Generating revenue in crores through strategic trading and business acumen, his journey is a masterclass in hard work, unyielding dedication, and the profound belief that age is never a barrier to monumental success.</p>
+                <p>At LuxeLayer, he believes fashion is an extension of identity. Every collection under his direction is engineered with meticulous attention to detail, ensuring top-tier fabrics, architectural designs, and an unmatched sensory experience.</p>
             </div>
         </section>
-
     </div>
 
     <section class="quote-section">
         <p class="quote-text">“My mission is not just to build a successful company, but to create an enduring impact. 100% of the revenue generated by LuxeLayer is dedicated to helping people in need—specifically advancing healthcare and education.”</p>
-        <span style="color: #d4af37; text-transform: uppercase; letter-spacing: 3px; font-size: 12px;">— Alok Sammrat</span>
+        <span style="color: #d4af37; text-transform: uppercase; letter-spacing: 3px; font-size: 13px;">— Alok Sammrat</span>
     </section>
 
-    <div class="container" style="padding-top: 80px;">
+    <div class="container">
         <div class="grid-2">
             <div class="info-card">
                 <h3>Our Mission</h3>
@@ -263,7 +128,6 @@
                     <li>Fund and support society through dedicated donations to healthcare and education.</li>
                 </ul>
             </div>
-            
             <div class="info-card">
                 <h3>The Future</h3>
                 <p style="color: #bbb; margin-bottom: 15px;">Our roadmap to global recognition while staying rooted in our core values.</p>
@@ -277,17 +141,13 @@
     </div>
 
     <footer>
-        <p style="color: #fff; font-size: 18px; letter-spacing: 2px; margin-bottom: 10px; font-family: 'Playfair Display', serif;">LUXELAYER</p>
+        <p class="brand-name">LUXELAYER</p>
         <p>© 2025 LuxeLayer. All Rights Reserved.</p>
-        <p>A registered trademark proudly under <b>SAMMRAT GROUP PVT. LTD.</b></p>
-        
+        <p>A registered trademark proudly under <b style="color: #aaa;">SAMMRAT GROUP PVT. LTD.</b></p>
         <hr>
-        
-        <p style="margin-bottom: 5px;">No part of this website, branding, designs, or content may be reproduced without prior written permission.</p>
-        
-        <div style="margin-top: 30px; display: flex; justify-content: center; gap: 40px;">
-            <span>📧 Direct: <a href="mailto:aloksammrat12345@gmail.com">aloksammrat12345@gmail.com</a></span>
-            <span>📸 Instagram: <a href="https://instagram.com/aloksammrat983" target="_blank">@aloksammrat983</a></span>
+        <div style="display: flex; justify-content: center; gap: 30px; margin-top: 20px;">
+            <span>📧 <a href="mailto:aloksammrat12345@gmail.com">aloksammrat12345@gmail.com</a></span>
+            <span>📸 <a href="https://instagram.com/aloksammrat983" target="_blank">@aloksammrat983</a></span>
         </div>
     </footer>
 
