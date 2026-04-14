@@ -10,57 +10,63 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     
     <style>
-        /* Base Reset */
+        /* --- BASE RESET & VARIABLES --- */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #050505; /* Deep Black */
-            color: #ffffff;
-            overflow-x: hidden;
+        :root {
+            --bg-color: #050505;
+            --text-main: #ffffff;
+            --gold: #d4af37;
+            --gray: #888888;
         }
 
-        /* Typography */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
         h1, h2, h3, .logo {
             font-family: 'Playfair Display', serif;
         }
 
-        /* Premium Navigation */
+        /* --- NAVIGATION --- */
         header {
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 30px 5%;
+            padding: 25px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(5, 5, 5, 0.6);
-            backdrop-filter: blur(15px); /* Glassmorphism effect */
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(15px);
             z-index: 1000;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.4s ease;
         }
 
         .logo {
-            font-size: 28px;
+            font-size: 26px;
             font-weight: 700;
             letter-spacing: 5px;
+            color: var(--gold);
             text-transform: uppercase;
-            color: #d4af37; /* Luxury Gold */
         }
 
         nav ul {
             display: flex;
             list-style: none;
-            gap: 45px;
+            gap: 40px;
         }
 
         nav a {
-            color: #fff;
+            color: var(--text-main);
             text-decoration: none;
             font-size: 12px;
             text-transform: uppercase;
@@ -69,30 +75,25 @@
         }
 
         nav a:hover {
-            color: #d4af37;
+            color: var(--gold);
         }
 
-        .nav-actions {
+        .cart-container {
             font-size: 12px;
             letter-spacing: 2px;
-            cursor: pointer;
             text-transform: uppercase;
+            cursor: pointer;
+            color: var(--gold);
         }
 
-        .nav-actions span:hover {
-            color: #d4af37;
-        }
-
-        /* Cinematic Hero Section */
+        /* --- HERO SECTION --- */
         .hero {
             height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            /* High-quality Unsplash Fashion Image */
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
-            position: relative;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
         }
 
         .hero-content {
@@ -105,23 +106,23 @@
             font-size: 14px;
             letter-spacing: 8px;
             text-transform: uppercase;
-            color: #d4af37;
+            color: var(--gold);
             margin-bottom: 25px;
             display: block;
         }
 
         .hero h1 {
-            font-size: 5.5rem;
+            font-size: 5rem;
             font-weight: 400;
-            line-height: 1.1;
             margin-bottom: 40px;
+            line-height: 1.1;
         }
 
         .btn-premium {
-            padding: 18px 45px;
+            padding: 16px 40px;
             background-color: transparent;
-            color: #fff;
-            border: 1px solid #d4af37;
+            color: var(--text-main);
+            border: 1px solid var(--gold);
             font-family: 'Montserrat', sans-serif;
             text-transform: uppercase;
             letter-spacing: 3px;
@@ -131,98 +132,203 @@
         }
 
         .btn-premium:hover {
-            background-color: #d4af37;
+            background-color: var(--gold);
             color: #000;
-            transform: translateY(-3px);
         }
 
-        /* Curated Collection Section */
+        /* --- PRODUCTS SECTION --- */
         .collection {
-            padding: 120px 5%;
+            padding: 100px 5%;
             text-align: center;
             background-color: #0a0a0a;
         }
 
         .section-title {
             font-size: 3rem;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             font-weight: 400;
-            color: #fff;
         }
 
         .section-subtitle {
-            font-size: 14px;
-            color: #888;
+            font-size: 13px;
+            color: var(--gray);
             letter-spacing: 3px;
             text-transform: uppercase;
-            margin-bottom: 80px;
+            margin-bottom: 60px;
             display: block;
         }
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 40px;
         }
 
         .card {
             position: relative;
+            background: #111;
             overflow: hidden;
-            cursor: pointer;
+            border: 1px solid rgba(255,255,255,0.05);
+            text-align: left;
+            transition: transform 0.4s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(212, 175, 55, 0.3);
         }
 
         .card img {
             width: 100%;
-            height: 550px;
+            height: 450px;
             object-fit: cover;
-            transition: transform 0.8s ease, filter 0.8s ease;
-            filter: brightness(80%) grayscale(20%);
+            filter: grayscale(20%);
+            transition: filter 0.4s ease, transform 0.8s ease;
         }
 
         .card:hover img {
+            filter: grayscale(0%);
             transform: scale(1.05);
-            filter: brightness(100%) grayscale(0%);
         }
 
         .card-info {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 40px 30px;
-            background: linear-gradient(transparent, rgba(0,0,0,0.95));
-            text-align: left;
-            transition: padding-bottom 0.4s ease;
-        }
-
-        .card:hover .card-info {
-            padding-bottom: 50px;
+            padding: 25px;
+            position: relative;
+            z-index: 2;
+            background: #111;
         }
 
         .card-info h3 {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-            font-weight: 400;
+            font-size: 1.5rem;
+            margin-bottom: 5px;
         }
 
         .card-info p {
-            font-family: 'Montserrat', sans-serif;
             font-size: 14px;
-            color: #d4af37;
-            letter-spacing: 2px;
+            color: var(--gold);
+            letter-spacing: 1px;
+            margin-bottom: 20px;
         }
 
-        /* Animations */
+        .btn-add-cart {
+            width: 100%;
+            padding: 12px;
+            background: transparent;
+            border: 1px solid var(--gray);
+            color: var(--text-main);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 11px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-add-cart:hover {
+            background: var(--text-main);
+            color: #000;
+            border-color: var(--text-main);
+        }
+
+        /* --- VIP FORM SECTION --- */
+        .vip-access {
+            padding: 100px 5%;
+            background: linear-gradient(rgba(5,5,5,0.9), rgba(5,5,5,0.9)), url('https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2070&auto=format&fit=crop') center/cover;
+            text-align: center;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .vip-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .vip-container h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .vip-container p {
+            color: var(--gray);
+            margin-bottom: 40px;
+            font-size: 14px;
+        }
+
+        #vipForm {
+            display: flex;
+            gap: 10px;
+        }
+
+        #vipForm input {
+            flex: 1;
+            padding: 16px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--text-main);
+            font-family: 'Montserrat', sans-serif;
+            outline: none;
+            transition: border 0.3s;
+        }
+
+        #vipForm input:focus {
+            border-color: var(--gold);
+        }
+
+        .btn-submit {
+            background-color: var(--gold);
+            color: #000;
+            font-weight: 500;
+        }
+
+        .form-message {
+            margin-top: 20px;
+            font-size: 14px;
+            display: none;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #020202;
+            padding: 60px 5% 30px;
+            text-align: center;
+            font-size: 13px;
+            color: #666;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        footer .brand-name {
+            color: var(--text-main);
+            font-size: 18px;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        footer hr {
+            border: none;
+            border-top: 1px solid #222;
+            margin: 30px auto;
+            width: 70%;
+        }
+
+        footer a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--text-main);
+        }
+
+        /* --- ANIMATIONS & RESPONSIVE --- */
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(40px); }
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Responsive Design */
         @media (max-width: 768px) {
-            nav ul { display: none; }
-            .hero h1 { font-size: 3.5rem; }
-            .card img { height: 450px; }
+            nav ul { display: none; } /* Hide links on mobile for now */
+            .hero h1 { font-size: 3rem; }
+            #vipForm { flex-direction: column; }
         }
     </style>
 </head>
@@ -232,14 +338,13 @@
         <div class="logo">LUXELAYER</div>
         <nav>
             <ul>
-                <li><a href="#">New Arrivals</a></li>
-                <li><a href="#">Collections</a></li>
-                <li><a href="#">Bespoke</a></li>
-                <li><a href="#">Journal</a></li>
+                <li><a href="#">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="#collection">Collection</a></li>
             </ul>
         </nav>
-        <div class="nav-actions">
-            <span>Search</span> &nbsp;&nbsp;|&nbsp;&nbsp; <span>Cart (0)</span>
+        <div class="cart-container">
+            Cart (<span id="cart-count">0</span>)
         </div>
     </header>
 
@@ -247,38 +352,142 @@
         <div class="hero-content">
             <span class="hero-subtitle">Autumn / Winter '26</span>
             <h1>Redefining Modern Elegance</h1>
-            <button class="btn-premium">Explore Collection</button>
+            <button class="btn-premium" onclick="document.getElementById('collection').scrollIntoView({behavior: 'smooth'})">Explore Collection</button>
         </div>
     </section>
 
-    <section class="collection">
+    <section class="collection" id="collection">
         <h2 class="section-title">The Curated Selection</h2>
         <span class="section-subtitle">Exquisite pieces for the modern visionary</span>
         
-        <div class="grid">
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=1936&auto=format&fit=crop" alt="Luxury Jacket">
-                <div class="card-info">
-                    <h3>Velvet Noir Jacket</h3>
-                    <p>₹ 45,000</p>
-                </div>
+        <div class="grid" id="product-grid">
             </div>
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1584273143981-41c073dfe8f8?q=80&w=1887&auto=format&fit=crop" alt="Silk Dress">
-                <div class="card-info">
-                    <h3>Midnight Silk Gown</h3>
-                    <p>₹ 62,500</p>
-                </div>
-            </div>
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?q=80&w=1780&auto=format&fit=crop" alt="Leather Bag">
-                <div class="card-info">
-                    <h3>Signature Leather Tote</h3>
-                    <p>₹ 28,000</p>
-                </div>
-            </div>
+    </section>
+
+    <section class="vip-access">
+        <div class="vip-container">
+            <h2>Join the Inner Circle</h2>
+            <p>Subscribe for exclusive access to private collections and bespoke services.</p>
+            <form id="vipForm">
+                <input type="email" id="vipEmail" placeholder="Enter your email address" required>
+                <button type="submit" class="btn-premium btn-submit" id="submitBtn">Request Access</button>
+            </form>
+            <div id="formMessage" class="form-message"></div>
         </div>
     </section>
 
+    <footer>
+        <p class="brand-name">LUXELAYER</p>
+        <p>© 2025 LuxeLayer. All Rights Reserved.</p>
+        <p>A registered trademark proudly under <b style="color: #aaa;">SAMMRAT GROUP PVT. LTD.</b></p>
+        
+        <hr>
+        
+        <p style="margin-bottom: 10px;">No part of this website, branding, designs, or content may be reproduced without prior written permission.</p>
+        
+        <div style="display: flex; justify-content: center; gap: 30px; margin-top: 20px;">
+            <span>📧 <a href="mailto:aloksammrat12345@gmail.com">aloksammrat12345@gmail.com</a></span>
+            <span>📸 <a href="https://instagram.com/aloksammrat983" target="_blank">@aloksammrat983</a></span>
+        </div>
+    </footer>
+
+    <script>
+        // 1. REAL WORKING PRODUCT DATA
+        const products = [
+            { 
+                id: 101, 
+                name: "Velvet Noir Jacket", 
+                price: "45,000", 
+                image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=1936&auto=format&fit=crop" 
+            },
+            { 
+                id: 102, 
+                name: "Midnight Silk Gown", 
+                price: "62,500", 
+                image: "https://images.unsplash.com/photo-1584273143981-41c073dfe8f8?q=80&w=1887&auto=format&fit=crop" 
+            },
+            { 
+                id: 103, 
+                name: "Signature Leather Tote", 
+                price: "28,000", 
+                image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?q=80&w=1780&auto=format&fit=crop" 
+            }
+        ];
+
+        let cart = [];
+
+        // 2. DYNAMICALLY RENDER PRODUCTS
+        function renderProducts() {
+            const grid = document.getElementById('product-grid');
+            grid.innerHTML = '';
+
+            products.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}">
+                    <div class="card-info">
+                        <h3>${product.name}</h3>
+                        <p>₹ ${product.price}</p>
+                        <button class="btn-add-cart" onclick="addToCart(${product.id}, this)">Add to Cart</button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // 3. CART LOGIC
+        function addToCart(productId, btnElement) {
+            const product = products.find(p => p.id === productId);
+            if (product) {
+                cart.push(product);
+                document.getElementById('cart-count').innerText = cart.length;
+                
+                // Visual feedback on button
+                const originalText = btnElement.innerText;
+                btnElement.innerText = "Added ✓";
+                btnElement.style.background = "#d4af37";
+                btnElement.style.color = "#000";
+                btnElement.style.borderColor = "#d4af37";
+                
+                setTimeout(() => {
+                    btnElement.innerText = originalText;
+                    btnElement.style.background = "transparent";
+                    btnElement.style.color = "#ffffff";
+                    btnElement.style.borderColor = "#888888";
+                }, 1500);
+            }
+        }
+
+        // 4. VIP FORM LOGIC
+        document.getElementById('vipForm').addEventListener('submit', function(e) {
+            e.preventDefault(); 
+            
+            const emailInput = document.getElementById('vipEmail').value;
+            const submitBtn = document.getElementById('submitBtn');
+            const messageDiv = document.getElementById('formMessage');
+
+            submitBtn.innerText = 'Processing...';
+            submitBtn.disabled = true;
+
+            // Simulating Backend API processing
+            setTimeout(() => {
+                messageDiv.innerHTML = `Thank you. <strong>${emailInput}</strong> has been added to the LuxeLayer inner circle.`;
+                messageDiv.style.color = '#d4af37';
+                messageDiv.style.display = 'block';
+                
+                this.reset();
+                submitBtn.innerText = 'Request Access';
+                submitBtn.disabled = false;
+                
+                setTimeout(() => {
+                    messageDiv.style.display = 'none';
+                }, 5000);
+            }, 1200);
+        });
+
+        // Initialize App
+        window.onload = renderProducts;
+    </script>
 </body>
 </html>
