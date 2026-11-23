@@ -1,320 +1,742 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LUXELAYER | The Epitome of Luxury</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BDG GAME - Luxury Prediction Arcade</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #09090b;
+      color: #ffffff;
+      user-select: none;
+    }
+    .gold-grad {
+      background: linear-gradient(180deg, #fae596 0%, #d4a038 100%);
+    }
+    .gold-btn {
+      background: linear-gradient(90deg, #f6d365 0%, #fda085 100%);
+    }
+    .gold-pill {
+      background: linear-gradient(180deg, #f9e28c 0%, #c9932c 100%);
+    }
+    .gold-text {
+      background: linear-gradient(180deg, #fff1b8 0%, #d4a038 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    /* Hide scrollbar */
+    ::-webkit-scrollbar { display: none; }
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-    
-    <style>
-        /* --- BASE RESET & VARIABLES --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
-            --bg-color: #050505;
-            --bg-alt: #0a0a0a;
-            --text-main: #ffffff;
-            --gold: #d4af37;
-            --gray: #888888;
-            --nav-bg: rgba(5, 5, 5, 0.95);
-        }
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            overflow-x: hidden;
-            line-height: 1.8;
-        }
-        h1, h2, h3, .logo, .quote { font-family: 'Playfair Display', serif; }
-
-        /* --- NAVIGATION --- */
-        header {
-            position: fixed; top: 0; width: 100%; padding: 20px 5%;
-            display: flex; justify-content: space-between; align-items: center;
-            background: var(--nav-bg); backdrop-filter: blur(15px);
-            z-index: 1000; border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        .logo { font-size: 24px; font-weight: 700; letter-spacing: 5px; color: var(--gold); text-transform: uppercase; text-decoration: none; }
-        
-        .nav-links { display: flex; list-style: none; gap: 35px; }
-        .nav-links a {
-            color: var(--text-main); text-decoration: none; font-size: 12px;
-            text-transform: uppercase; letter-spacing: 2px; transition: color 0.3s ease;
-        }
-        .nav-links a:hover { color: var(--gold); }
-        
-        .header-actions { display: flex; align-items: center; gap: 20px; }
-        .cart-container { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; color: var(--gold); }
-        .menu-toggle { display: none; font-size: 24px; color: var(--gold); cursor: pointer; }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
-        }
-        .hero-content { max-width: 900px; padding: 20px; animation: fadeInUp 1.5s ease-out; }
-        .hero-subtitle { font-size: 14px; letter-spacing: 8px; text-transform: uppercase; color: var(--gold); margin-bottom: 25px; display: block; }
-        .hero h1 { font-size: 4.5rem; font-weight: 400; margin-bottom: 40px; line-height: 1.1; }
-        .btn-premium {
-            padding: 16px 40px; background-color: transparent; color: var(--text-main);
-            border: 1px solid var(--gold); font-family: 'Montserrat', sans-serif;
-            text-transform: uppercase; letter-spacing: 3px; font-size: 12px; cursor: pointer; transition: all 0.4s ease;
-        }
-        .btn-premium:hover { background-color: var(--gold); color: #000; }
-
-        /* --- THE PROMISE (FEATURES) --- */
-        .features { display: flex; justify-content: space-around; padding: 60px 5%; background: var(--bg-alt); border-bottom: 1px solid rgba(255,255,255,0.05); flex-wrap: wrap; gap: 30px; text-align: center; }
-        .feature-box { flex: 1; min-width: 250px; }
-        .feature-box h3 { color: var(--gold); font-size: 1.2rem; margin-bottom: 10px; }
-        .feature-box p { font-size: 13px; color: var(--gray); }
-
-        /* --- ABOUT / LEGACY SECTION (Homepage Snippet) --- */
-        .legacy-section {
-            padding: 120px 5%; background-color: var(--bg-color);
-            display: flex; align-items: center; gap: 60px; justify-content: space-between; max-width: 1300px; margin: 0 auto;
-        }
-        .legacy-content { flex: 1; }
-        .legacy-content h2 { font-size: 3rem; margin-bottom: 20px; color: var(--text-main); }
-        .legacy-content p { color: #bbb; margin-bottom: 20px; font-size: 15px; }
-        .quote { font-size: 1.3rem; font-style: italic; color: #fff; margin: 30px 0; border-left: 2px solid var(--gold); padding-left: 20px; }
-        .signature-box { margin-top: 40px; }
-        .signature-img { width: 200px; filter: invert(1) brightness(2); opacity: 0.9; }
-        .founder-name { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 3px; color: var(--gold); margin-top: 10px; }
-        .legacy-image { flex: 1; text-align: center; }
-        .legacy-image img { width: 100%; max-width: 400px; border-radius: 5px; filter: grayscale(30%) contrast(110%); box-shadow: -20px 20px 0px rgba(212, 175, 55, 0.1); }
-
-        /* --- CATEGORIES --- */
-        .categories { padding: 100px 5%; text-align: center; background-color: var(--bg-alt); }
-        .cat-grid { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 40px; }
-        .cat-card { position: relative; width: 30%; min-width: 300px; height: 400px; overflow: hidden; cursor: pointer; }
-        .cat-card img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; filter: brightness(60%); }
-        .cat-card:hover img { transform: scale(1.1); filter: brightness(40%); }
-        .cat-card h3 { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 2rem; letter-spacing: 4px; text-transform: uppercase; pointer-events: none; }
-
-        /* --- PRODUCTS SECTION (8 Items) --- */
-        .collection { padding: 100px 5%; text-align: center; background-color: var(--bg-color); }
-        .section-title { font-size: 3rem; margin-bottom: 10px; font-weight: 400; }
-        .section-subtitle { font-size: 13px; color: var(--gray); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 60px; display: block; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; max-width: 1300px; margin: 0 auto; }
-        .card { background: #111; border: 1px solid rgba(255,255,255,0.05); text-align: left; transition: transform 0.4s ease; overflow: hidden; }
-        .card:hover { transform: translateY(-10px); border-color: rgba(212, 175, 55, 0.3); }
-        .card img { width: 100%; height: 350px; object-fit: cover; filter: grayscale(20%); transition: 0.4s ease; }
-        .card:hover img { filter: grayscale(0%); transform: scale(1.05); }
-        .card-info { padding: 25px; position: relative; z-index: 2; background: #111; }
-        .card-info h3 { font-size: 1.4rem; margin-bottom: 5px; }
-        .card-info p { font-size: 14px; color: var(--gold); letter-spacing: 1px; margin-bottom: 20px; }
-        .btn-add-cart { width: 100%; padding: 12px; background: transparent; border: 1px solid var(--gray); color: var(--text-main); text-transform: uppercase; font-size: 11px; cursor: pointer; transition: 0.3s; }
-        .btn-add-cart:hover { background: var(--text-main); color: #000; }
-
-        /* --- VIP FORM SECTION --- */
-        .vip-access { padding: 100px 5%; background: linear-gradient(rgba(5,5,5,0.9), rgba(5,5,5,0.9)), url('https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2070&auto=format&fit=crop') center/cover; text-align: center; border-top: 1px solid rgba(212, 175, 55, 0.2); }
-        .vip-container { max-width: 600px; margin: 0 auto; }
-        .vip-container h2 { font-size: 2.5rem; margin-bottom: 15px; }
-        .vip-container p { color: var(--gray); margin-bottom: 40px; font-size: 14px; }
-        #vipForm { display: flex; gap: 10px; }
-        #vipForm input { flex: 1; padding: 16px 20px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.2); color: var(--text-main); outline: none; }
-        #vipForm input:focus { border-color: var(--gold); }
-        .btn-submit { background-color: var(--gold); color: #000; font-weight: 500; }
-        .form-message { margin-top: 20px; font-size: 14px; display: none; }
-
-        /* --- FOOTER --- */
-        footer { background-color: #020202; padding: 60px 5% 30px; text-align: center; font-size: 13px; color: #666; border-top: 1px solid rgba(255,255,255,0.05); }
-        footer .brand-name { color: var(--text-main); font-size: 18px; letter-spacing: 2px; margin-bottom: 10px; font-family: 'Playfair Display', serif; }
-        footer hr { border: none; border-top: 1px solid #222; margin: 30px auto; width: 70%; }
-        footer a { color: var(--gold); text-decoration: none; }
-
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* --- MOBILE RESPONSIVE CSS --- */
-        @media (max-width: 900px) {
-            .legacy-section { flex-direction: column; text-align: center; }
-            .quote { border-left: none; border-top: 2px solid var(--gold); border-bottom: 2px solid var(--gold); padding: 20px 0; }
-            .cat-card { width: 100%; }
-        }
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 3rem; }
-            #vipForm { flex-direction: column; }
-            .menu-toggle { display: block; }
-            nav { position: absolute; top: 70px; left: 0; width: 100%; background: var(--bg-color); border-bottom: 1px solid #333; display: none; }
-            nav.active { display: block; animation: fadeInUp 0.3s ease; }
-            .nav-links { flex-direction: column; align-items: center; padding: 30px 0; gap: 25px; }
-        }
-    </style>
+    @keyframes marquee {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+    .animate-marquee {
+      display: inline-block;
+      white-space: nowrap;
+      animation: marquee 16s linear infinite;
+    }
+  </style>
 </head>
-<body>
+<body class="flex justify-center min-h-screen bg-black">
 
-    <header>
-        <a href="index.html" class="logo">LUXELAYER</a>
-        <nav id="navMenu">
-            <ul class="nav-links">
-                <li><a href="#" onclick="toggleMenu()">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="#collection" onclick="toggleMenu()">Collection</a></li>
-            </ul>
-        </nav>
-        <div class="header-actions">
-            <div class="cart-container">Cart (<span id="cart-count">0</span>)</div>
-            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+  <!-- Mobile App Container -->
+  <div id="app" class="w-full max-w-[430px] bg-[#121212] min-h-screen relative pb-24 shadow-2xl border-x border-yellow-600/20 overflow-x-hidden">
+
+    <!-- ================= TOP STICKY HEADER ================= -->
+    <header class="sticky top-0 z-40 bg-[#141414]/95 backdrop-blur-md px-3 py-2 flex items-center justify-between border-b border-yellow-500/20">
+      <div>
+        <div class="flex items-center gap-1">
+          <i class="fa-solid fa-crown text-yellow-400 text-sm"></i>
+          <span class="font-extrabold text-lg tracking-wider gold-text">BDG GAME</span>
         </div>
+        <div class="flex items-center gap-1.5 mt-0.5">
+          <span class="text-xs">🇺🇸</span>
+          <span class="text-[11px] text-yellow-200/80">Welcome to BDG Game</span>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-1.5">
+        <button onclick="openModal('Download App', 'APK v4.2 (18.5 MB) is ready. Add this site to your home screen for instant full-screen app experience!')" class="gold-pill text-black font-bold text-[10px] px-2.5 py-1 rounded flex items-center gap-1 shadow">
+          <i class="fa-solid fa-download"></i> Download APP
+        </button>
+        <button onclick="openModal('24/7 Customer Service', 'Live Support Agent is online. Telegram: @BDG_Support_Official | Ticket ID: #89421')" class="gold-pill text-black font-bold text-[10px] px-2.5 py-1 rounded flex items-center gap-1 shadow">
+          <i class="fa-solid fa-headset"></i> Customer Service
+        </button>
+      </div>
     </header>
 
-    <section class="hero">
-        <div class="hero-content">
-            <span class="hero-subtitle">Autumn / Winter '26</span>
-            <h1>The Epitome of Modern Elegance</h1>
-            <button class="btn-premium" onclick="document.getElementById('collection').scrollIntoView({behavior: 'smooth'})">Discover More</button>
+    <!-- ================= TAB 1: HOME VIEW ================= -->
+    <main id="view-home" class="px-3 pt-2.5 space-y-3">
+      
+      <!-- Hero Banner -->
+      <div class="relative rounded-xl overflow-hidden border border-yellow-500/40 bg-gradient-to-r from-[#2c1e05] via-[#593c08] to-[#1a1203] p-4 shadow-lg">
+        <div class="relative z-10 w-2/3">
+          <span class="bg-yellow-500/20 border border-yellow-400/50 text-yellow-300 text-[10px] px-2 py-0.5 rounded-full font-semibold">VIP EXCLUSIVE</span>
+          <h2 class="text-xl font-extrabold gold-text leading-tight mt-1">Member's First<br/>Deposit Bonus</h2>
+          <p class="text-[11px] text-gray-300 mt-1">Get up to 100% Extra Virtual Coins on your first recharge!</p>
+          <button onclick="switchTab('wallet')" class="mt-2.5 gold-pill text-black text-xs font-bold px-3 py-1 rounded-full shadow">Claim Now</button>
         </div>
+        <i class="fa-solid fa-coins text-7xl text-yellow-400/25 absolute right-3 bottom-2 rotate-12"></i>
+        <i class="fa-solid fa-crown text-4xl text-yellow-300/40 absolute right-6 top-3"></i>
+      </div>
+
+      <!-- Announcement Bar -->
+      <div class="bg-[#1d1d1d] border border-yellow-600/30 rounded-full px-3 py-1.5 flex items-center justify-between gap-2">
+        <i class="fa-solid fa-volume-high text-yellow-400 text-xs"></i>
+        <div class="overflow-hidden flex-1">
+          <p class="animate-marquee text-[11px] text-gray-200">
+            Please Remember The UPI ID Of Your Payment And Fill In The Correct UTR Number. New Win Go 30s & MotoRace 1Min High Payouts Live Now!
+          </p>
+        </div>
+        <button onclick="openModal('Important Notice', 'Always verify the latest UPI ID inside the Wallet -> Deposit tab before transferring. Never reuse old UPI IDs.')" class="gold-pill text-black text-[10px] font-bold px-2.5 py-0.5 rounded-full flex items-center gap-1 shrink-0">
+          <i class="fa-solid fa-fire text-red-600"></i> Detail
+        </button>
+      </div>
+
+      <!-- 8 Main Category Buttons (3-3-2 Grid) -->
+      <section class="space-y-2">
+        <!-- Row 1 -->
+        <div class="grid grid-cols-3 gap-2">
+          <div onclick="scrollToLottery('All')" class="gold-grad rounded-xl p-2 text-center text-black cursor-pointer active:scale-95 transition shadow">
+            <div class="text-2xl my-1">🎱</div>
+            <div class="font-bold text-xs">Lottery</div>
+          </div>
+          <div onclick="openGame('Win Go 30s')" class="gold-grad rounded-xl p-2 text-center text-black cursor-pointer active:scale-95 transition shadow">
+            <div class="text-2xl my-1">✈️</div>
+            <div class="font-bold text-xs">Original</div>
+          </div>
+          <div onclick="openModal('Slots Lobby', '777 Mega Slots & JILI Providers unlocked at VIP Level 2!')" class="gold-grad rounded-xl p-2 text-center text-black cursor-pointer active:scale-95 transition shadow">
+            <div class="text-2xl my-1">🎰</div>
+            <div class="font-bold text-xs">Slots</div>
+          </div>
+        </div>
+        <!-- Row 2 -->
+        <div class="grid grid-cols-3 gap-2">
+          <div onclick="openModal('Sports Book', 'Cricket & Football Live Match Predictions available.')" class="gold-grad rounded-xl p-2 text-center text-black cursor-pointer active:scale-95 transition shadow">
+            <div class="text-2xl my-1">⚽</div>
+            <div class="font-bold text-xs">Sports</div>
+          </div>
+          <div onclick="openGame('Win Go 1Min')" class="gold-grad rounded-xl p-2 text-center text-black cursor-pointer active:scale-95 transition shadow">
+            <div class="text-2xl my-1">👑</div>
+            <div class="font-bold text-xs">Popular</div>
+          </div>
+          <div onclick="openModal('Live Casino', 'Live Baccarat, Roulette & Dragon Tiger tables.')" class="gold-grad rounded-xl p-2 text-center text-black cursor-pointer active:scale-95 transition shadow">
+            <div class="text-2xl my-1">🃏</div>
+            <div class="font-bold text-xs">Casino</div>
+          </div>
+        </div>
+        <!-- Row 3 (2 Wide Buttons) -->
+        <div class="grid grid-cols-2 gap-2">
+          <div onclick="openModal('Rummy Arena', 'Classic Indian Rummy 13-Card Multiplayer Tables.')" class="gold-grad rounded-xl px-4 py-2.5 flex items-center justify-between text-black cursor-pointer active:scale-95 transition shadow">
+            <span class="text-2xl">🂡</span>
+            <span class="font-extrabold text-sm">Rummy</span>
+          </div>
+          <div onclick="openModal('Ocean Fishing', '3D Cannon Fishing Arcade - Shoot Bosses for 500x Coins!')" class="gold-grad rounded-xl px-4 py-2.5 flex items-center justify-between text-black cursor-pointer active:scale-95 transition shadow">
+            <span class="text-2xl">🐠</span>
+            <span class="font-extrabold text-sm">Fishing</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- | Lottery Section & Filter Tabs -->
+      <section id="lottery-section" class="pt-1">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="w-1 h-4 bg-yellow-400 rounded"></span>
+          <h3 class="font-bold text-sm text-white">Lottery</h3>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="bg-[#1f1f1f] rounded-lg p-1 flex justify-between text-[11px] font-semibold mb-2.5">
+          <button onclick="filterGames('All', this)" class="filter-tab px-2.5 py-1 rounded bg-yellow-500 text-black font-bold">All</button>
+          <button onclick="filterGames('Win Go', this)" class="filter-tab px-2.5 py-1 rounded text-gray-400">Win Go</button>
+          <button onclick="filterGames('MotoRace', this)" class="filter-tab px-2.5 py-1 rounded text-gray-400">MotoRace</button>
+          <button onclick="filterGames('Trx Win', this)" class="filter-tab px-2.5 py-1 rounded text-gray-400">Trx Win</button>
+          <button onclick="filterGames('K3', this)" class="filter-tab px-2.5 py-1 rounded text-gray-400">K3</button>
+          <button onclick="filterGames('5D', this)" class="filter-tab px-2.5 py-1 rounded text-gray-400">5D</button>
+        </div>
+
+        <!-- 17 Lottery Game Cards Grid -->
+        <div id="games-grid" class="grid grid-cols-3 gap-2">
+          <!-- Populated dynamically via JS to match exact 17 cards -->
+        </div>
+      </section>
+
+      <!-- | Winning Information Feed -->
+      <section class="pt-2">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="w-1 h-4 bg-yellow-400 rounded"></span>
+          <h3 class="font-bold text-sm text-white">Winning information</h3>
+        </div>
+        <div id="winners-list" class="space-y-2">
+          <!-- Populated via JS -->
+        </div>
+      </section>
+
+      <!-- | Today's Earnings Chart (Podium + Top 10) -->
+      <section class="pt-2">
+        <div class="flex items-center gap-2 mb-6">
+          <span class="w-1 h-4 bg-yellow-400 rounded"></span>
+          <h3 class="font-bold text-sm text-white">Today's earnings chart</h3>
+        </div>
+
+        <!-- Top 3 Podium -->
+        <div class="grid grid-cols-3 gap-1.5 items-end pt-4 px-1">
+          <!-- Rank 2 -->
+          <div class="bg-gradient-to-b from-[#333] to-[#1d1d1d] border border-gray-500/40 rounded-t-xl p-2 text-center relative">
+            <div class="w-11 h-11 rounded-full bg-gray-700 border-2 border-gray-300 mx-auto -mt-7 flex items-center justify-center text-lg">👩🏻</div>
+            <span class="text-[9px] bg-gray-300 text-black font-extrabold px-1.5 rounded-full">NO2</span>
+            <p class="text-[11px] font-semibold mt-1 truncate">Mem***VSH</p>
+            <div class="gold-pill text-black font-bold text-[9px] py-0.5 px-1 rounded-full mt-1">₹4,791,100.00</div>
+          </div>
+
+          <!-- Rank 1 -->
+          <div class="bg-gradient-to-b from-[#664b12] to-[#261c05] border border-yellow-400 rounded-t-xl p-2 text-center relative pb-4">
+            <i class="fa-solid fa-crown text-yellow-400 text-base absolute -top-9 left-1/2 -translate-x-1/2"></i>
+            <div class="w-13 h-13 w-12 h-12 rounded-full bg-yellow-900 border-2 border-yellow-400 mx-auto -mt-6 flex items-center justify-center text-xl">🧑🏽</div>
+            <span class="text-[9px] bg-yellow-400 text-black font-extrabold px-2 rounded-full">NO1</span>
+            <p class="text-xs font-bold mt-1 text-yellow-200 truncate">Se***aj</p>
+            <div class="gold-pill text-black font-extrabold text-[9px] py-0.5 px-1 rounded-full mt-1">₹8,726,445.00</div>
+          </div>
+
+          <!-- Rank 3 -->
+          <div class="bg-gradient-to-b from-[#452c1e] to-[#1d1d1d] border border-amber-600/40 rounded-t-xl p-2 text-center relative">
+            <div class="w-11 h-11 rounded-full bg-amber-900 border-2 border-amber-500 mx-auto -mt-7 flex items-center justify-center text-lg">👩🏼</div>
+            <span class="text-[9px] bg-amber-500 text-black font-extrabold px-1.5 rounded-full">NO3</span>
+            <p class="text-[11px] font-semibold mt-1 truncate">Mem***JJA</p>
+            <div class="gold-pill text-black font-bold text-[9px] py-0.5 px-1 rounded-full mt-1">₹3,502,138.00</div>
+          </div>
+        </div>
+
+        <!-- Ranks 4 to 10 -->
+        <div id="leaderboard-list" class="space-y-1.5 mt-2">
+          <!-- Populated via JS -->
+        </div>
+
+        <!-- Add to Desktop Pill -->
+        <div class="flex justify-center mt-4 mb-2">
+          <button onclick="openModal('Add to Desktop', 'Click your browser menu (⋮) and tap \"Add to Home Screen\" to install BDG Game shortcut!')" class="gold-pill text-black font-bold text-xs px-6 py-2 rounded-full shadow-lg flex items-center gap-2">
+            <i class="fa-solid fa-crown"></i> BDG Add to Desktop
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <!-- ================= TAB 2: ACTIVITY VIEW ================= -->
+    <section id="view-activity" class="hidden px-3 pt-3 space-y-3">
+      <h2 class="text-base font-bold gold-text">Activity & Rewards</h2>
+      <div class="bg-[#1c1c1c] border border-yellow-500/30 rounded-xl p-3 flex justify-between items-center">
+        <div>
+          <h3 class="font-bold text-sm text-yellow-300">Daily Check-In Bonus</h3>
+          <p class="text-xs text-gray-400">Claim free virtual coins every day!</p>
+        </div>
+        <button onclick="claimBonus(50, 'Daily Check-In Bonus')" class="gold-pill text-black font-bold text-xs px-3 py-1.5 rounded-lg">Claim ₹50</button>
+      </div>
+
+      <div class="bg-[#1c1c1c] border border-yellow-500/30 rounded-xl p-3 space-y-2">
+        <h3 class="font-bold text-sm text-yellow-300">Redeem Gift Code</h3>
+        <div class="flex gap-2">
+          <input id="gift-code-input" type="text" placeholder="Enter code (Try: BDG500)" class="flex-1 bg-black border border-gray-700 rounded-lg px-3 py-1.5 text-xs text-white focus:outline-none focus:border-yellow-400" />
+          <button onclick="redeemGiftCode()" class="gold-pill text-black font-bold text-xs px-4 py-1.5 rounded-lg">Redeem</button>
+        </div>
+      </div>
     </section>
 
-    <section class="features">
-        <div class="feature-box">
-            <h3>Bespoke Tailoring</h3>
-            <p>Engineered for the modern visionary with uncompromising precision.</p>
+    <!-- ================= TAB 3: GET ₹500 / PROMOTION VIEW ================= -->
+    <section id="view-promotion" class="hidden px-3 pt-3 space-y-3">
+      <div class="gold-grad rounded-xl p-4 text-black text-center shadow-lg">
+        <p class="text-xs font-bold uppercase">Agency Commission & Invite</p>
+        <h2 class="text-2xl font-extrabold mt-1">Invite & Get ₹500</h2>
+        <p class="text-[11px] font-medium mt-1">Share your invite code and earn 0.6% commission on every subordinate bet!</p>
+      </div>
+
+      <div class="bg-[#1c1c1c] border border-yellow-500/30 rounded-xl p-3 space-y-2">
+        <div class="flex justify-between text-xs">
+          <span class="text-gray-400">Your Invite Code:</span>
+          <span class="font-bold text-yellow-400">BDG9832026</span>
         </div>
-        <div class="feature-box">
-            <h3>Global Delivery</h3>
-            <p>Complimentary secured shipping worldwide for our inner circle.</p>
+        <button onclick="copyInvite()" class="w-full gold-pill text-black font-bold text-xs py-2 rounded-lg">
+          <i class="fa-solid fa-copy mr-1"></i> Copy Invitation Link
+        </button>
+      </div>
+
+      <div class="grid grid-cols-2 gap-2 text-center">
+        <div class="bg-[#1c1c1c] p-3 rounded-xl border border-gray-800">
+          <p class="text-xs text-gray-400">Total Subordinates</p>
+          <p class="text-lg font-bold text-yellow-400 mt-1">24</p>
         </div>
-        <div class="feature-box">
-            <h3>Purpose Driven</h3>
-            <p>100% of revenue dedicated to advancing healthcare and education.</p>
+        <div class="bg-[#1c1c1c] p-3 rounded-xl border border-gray-800">
+          <p class="text-xs text-gray-400">Total Commission</p>
+          <p class="text-lg font-bold text-green-400 mt-1">₹1,450.00</p>
         </div>
+      </div>
     </section>
 
-    <section class="legacy-section" id="legacy">
-        <div class="legacy-content">
-            <span class="section-subtitle" style="margin-bottom: 15px; color: var(--gold); letter-spacing: 3px; font-size: 13px;">The Heritage</span>
-            <h2>The Vision of <span style="color: var(--gold);">Alok Sammrat</span></h2>
-            <p>Achieving financial independence at 17, Alok Sammrat built LuxeLayer under <b>SAMMRAT GROUP PVT. LTD.</b> to bridge the gap between high-end aesthetics and everyday accessibility.</p>
-            <div class="quote">
-                "My mission is not just to build a successful company, but to create an enduring impact."
+    <!-- ================= TAB 4: WALLET & ACCOUNT VIEW ================= -->
+    <section id="view-account" class="hidden px-3 pt-3 space-y-3">
+      <!-- Profile Card -->
+      <div class="bg-[#1c1c1c] border border-yellow-500/30 rounded-xl p-3 flex items-center gap-3">
+        <div class="w-12 h-12 rounded-full gold-grad text-black flex items-center justify-center font-extrabold text-lg">A</div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h3 class="font-bold text-sm">Member_Alok</h3>
+            <span class="bg-yellow-500/20 text-yellow-400 text-[10px] px-2 py-0.5 rounded font-bold">VIP 3</span>
+          </div>
+          <p class="text-xs text-gray-400 mt-0.5">UID: 7845921</p>
+        </div>
+      </div>
+
+      <!-- Main Wallet Card -->
+      <div class="bg-gradient-to-r from-[#2c2008] to-[#1a1a1a] border border-yellow-500/40 rounded-xl p-4">
+        <p class="text-xs text-gray-300">Total Wallet Balance (Demo Coins)</p>
+        <h2 class="text-2xl font-extrabold text-yellow-400 mt-1">₹<span class="wallet-balance">10000.00</span></h2>
+        <div class="grid grid-cols-2 gap-2.5 mt-3">
+          <button onclick="addDemoFunds(1000)" class="gold-pill text-black font-bold text-xs py-2 rounded-lg shadow">
+            + Deposit ₹1,000
+          </button>
+          <button onclick="withdrawDemoFunds()" class="bg-[#2a2a2a] border border-yellow-500/40 text-yellow-300 font-bold text-xs py-2 rounded-lg">
+            Withdraw
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick Menu -->
+      <div class="bg-[#1c1c1c] rounded-xl divide-y divide-gray-800 text-xs">
+        <div onclick="openGame('Win Go 30s')" class="p-3 flex justify-between items-center cursor-pointer">
+          <span><i class="fa-solid fa-gamepad text-yellow-400 mr-2"></i> Play Win Go Live</span>
+          <i class="fa-solid fa-chevron-right text-gray-500"></i>
+        </div>
+        <div onclick="openModal('Transaction History', 'All demo deposits and game payouts are synced with your local session.')" class="p-3 flex justify-between items-center cursor-pointer">
+          <span><i class="fa-solid fa-receipt text-yellow-400 mr-2"></i> Transaction History</span>
+          <i class="fa-solid fa-chevron-right text-gray-500"></i>
+        </div>
+        <div onclick="resetBalance()" class="p-3 flex justify-between items-center cursor-pointer text-red-400">
+          <span><i class="fa-solid fa-rotate-right mr-2"></i> Reset Demo Balance to ₹10,000</span>
+          <i class="fa-solid fa-chevron-right text-gray-500"></i>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PLAYABLE GAME ARENA (WIN GO / K3 / TRX) ================= -->
+    <section id="view-game" class="hidden px-3 pt-3 space-y-3">
+      <div class="flex items-center justify-between">
+        <button onclick="closeGame()" class="bg-[#222] text-yellow-400 px-3 py-1 rounded-lg text-xs font-bold">
+          <i class="fa-solid fa-arrow-left mr-1"></i> Back
+        </button>
+        <h2 id="active-game-title" class="font-extrabold text-sm gold-text">Win Go 30s</h2>
+        <div class="bg-[#222] border border-yellow-500/30 px-2.5 py-1 rounded-lg text-xs font-bold text-yellow-300">
+          ₹<span class="wallet-balance">10000.00</span>
+        </div>
+      </div>
+
+      <!-- Countdown & Period Card -->
+      <div class="gold-grad rounded-xl p-3 text-black flex justify-between items-center shadow-lg">
+        <div>
+          <span class="bg-black/20 text-[10px] font-bold px-2 py-0.5 rounded">How to play</span>
+          <p class="text-xs font-bold mt-1.5">Period ID</p>
+          <p id="period-id" class="text-sm font-extrabold">20261123001</p>
+        </div>
+        <div class="text-right">
+          <p class="text-xs font-bold">Time remaining</p>
+          <div id="countdown-timer" class="text-2xl font-extrabold tracking-widest bg-black text-yellow-400 px-3 py-1 rounded-lg mt-1">
+            00:30
+          </div>
+        </div>
+      </div>
+
+      <!-- Color Buttons -->
+      <div class="bg-[#1c1c1c] p-3 rounded-xl space-y-3 border border-gray-800">
+        <div class="grid grid-cols-3 gap-2">
+          <button onclick="openBetModal('Green', 'bg-green-600')" class="bg-green-600 hover:bg-green-500 text-white font-bold py-2 rounded-lg text-xs shadow">Green (2x)</button>
+          <button onclick="openBetModal('Violet', 'bg-purple-600')" class="bg-purple-600 hover:bg-purple-500 text-white font-bold py-2 rounded-lg text-xs shadow">Violet (4.5x)</button>
+          <button onclick="openBetModal('Red', 'bg-red-600')" class="bg-red-600 hover:bg-red-500 text-white font-bold py-2 rounded-lg text-xs shadow">Red (2x)</button>
+        </div>
+
+        <!-- 0-9 Number Grid -->
+        <div class="grid grid-cols-5 gap-2 bg-[#121212] p-2.5 rounded-xl">
+          <button onclick="openBetModal('Number 0', 'bg-purple-600')" class="h-10 rounded-full bg-gradient-to-tr from-red-600 to-purple-600 font-extrabold text-sm shadow">0</button>
+          <button onclick="openBetModal('Number 1', 'bg-green-600')" class="h-10 rounded-full bg-green-600 font-extrabold text-sm shadow">1</button>
+          <button onclick="openBetModal('Number 2', 'bg-red-600')" class="h-10 rounded-full bg-red-600 font-extrabold text-sm shadow">2</button>
+          <button onclick="openBetModal('Number 3', 'bg-green-600')" class="h-10 rounded-full bg-green-600 font-extrabold text-sm shadow">3</button>
+          <button onclick="openBetModal('Number 4', 'bg-red-600')" class="h-10 rounded-full bg-red-600 font-extrabold text-sm shadow">4</button>
+          <button onclick="openBetModal('Number 5', 'bg-purple-600')" class="h-10 rounded-full bg-gradient-to-tr from-green-600 to-purple-600 font-extrabold text-sm shadow">5</button>
+          <button onclick="openBetModal('Number 6', 'bg-red-600')" class="h-10 rounded-full bg-red-600 font-extrabold text-sm shadow">6</button>
+          <button onclick="openBetModal('Number 7', 'bg-green-600')" class="h-10 rounded-full bg-green-600 font-extrabold text-sm shadow">7</button>
+          <button onclick="openBetModal('Number 8', 'bg-red-600')" class="h-10 rounded-full bg-red-600 font-extrabold text-sm shadow">8</button>
+          <button onclick="openBetModal('Number 9', 'bg-green-600')" class="h-10 rounded-full bg-green-600 font-extrabold text-sm shadow">9</button>
+        </div>
+
+        <!-- Big / Small -->
+        <div class="grid grid-cols-2 gap-2">
+          <button onclick="openBetModal('Big', 'bg-amber-500')" class="bg-amber-500 text-black font-extrabold py-2 rounded-full text-xs">Big (2x)</button>
+          <button onclick="openBetModal('Small', 'bg-blue-500')" class="bg-blue-500 text-white font-extrabold py-2 rounded-full text-xs">Small (2x)</button>
+        </div>
+      </div>
+
+      <!-- Active Bet Alert -->
+      <div id="active-bet-banner" class="hidden bg-yellow-500/20 border border-yellow-400 text-yellow-200 text-xs p-2.5 rounded-lg text-center font-semibold"></div>
+
+      <!-- Game History Table -->
+      <div class="bg-[#1c1c1c] rounded-xl overflow-hidden border border-gray-800">
+        <div class="bg-[#252525] px-3 py-2 text-xs font-bold grid grid-cols-4 text-center text-yellow-400">
+          <span>Period</span>
+          <span>Number</span>
+          <span>Big/Small</span>
+          <span>Color</span>
+        </div>
+        <div id="game-history-rows" class="divide-y divide-gray-800 text-xs text-center">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FIXED BOTTOM NAVIGATION BAR (5 ITEMS) ================= -->
+    <nav class="fixed bottom-0 w-full max-w-[430px] bg-[#181818] border-t border-yellow-600/30 h-16 flex justify-around items-center z-50 px-1">
+      <button onclick="switchTab('home')" class="nav-btn flex flex-col items-center text-yellow-400 text-[10px] font-semibold w-14">
+        <i class="fa-solid fa-house text-base mb-0.5"></i>
+        <span>Home</span>
+      </button>
+
+      <button onclick="switchTab('activity')" class="nav-btn flex flex-col items-center text-gray-400 text-[10px] font-semibold w-14">
+        <i class="fa-solid fa-gift text-base mb-0.5"></i>
+        <span>Activity</span>
+      </button>
+
+      <!-- Center Protruding Get ₹500 Button -->
+      <button onclick="switchTab('promotion')" class="relative -top-3 flex flex-col items-center">
+        <div class="w-13 h-13 w-12 h-12 rounded-full gold-pill border-4 border-[#121212] flex items-center justify-center text-black shadow-lg shadow-yellow-500/30">
+          <i class="fa-solid fa-sack-dollar text-xl"></i>
+        </div>
+        <span class="text-[10px] font-bold text-yellow-400 mt-0.5">Get ₹500</span>
+      </button>
+
+      <button onclick="switchTab('promotion')" class="nav-btn flex flex-col items-center text-gray-400 text-[10px] font-semibold w-14">
+        <i class="fa-solid fa-gem text-base mb-0.5"></i>
+        <span>Promotion</span>
+      </button>
+
+      <button onclick="switchTab('account')" class="nav-btn flex flex-col items-center text-gray-400 text-[10px] font-semibold w-14">
+        <i class="fa-solid fa-user text-base mb-0.5"></i>
+        <span>Account</span>
+      </button>
+    </nav>
+
+    <!-- ================= BETTING MODAL ================= -->
+    <div id="bet-modal" class="hidden fixed inset-0 bg-black/80 z-50 flex items-end justify-center">
+      <div class="w-full max-w-[430px] bg-[#1e1e1e] rounded-t-2xl border-t border-yellow-500 p-4 space-y-3">
+        <div id="bet-modal-header" class="bg-green-600 text-white text-center py-2 rounded-lg font-bold text-sm">
+          Select: Green
+        </div>
+        <div class="flex justify-between items-center text-xs">
+          <span class="text-gray-300">Bet Amount:</span>
+          <div class="flex gap-1.5">
+            <button onclick="setBetAmount(10)" class="bg-yellow-500 text-black font-bold px-2.5 py-1 rounded">₹10</button>
+            <button onclick="setBetAmount(100)" class="bg-[#2c2c2c] text-white font-bold px-2.5 py-1 rounded">₹100</button>
+            <button onclick="setBetAmount(500)" class="bg-[#2c2c2c] text-white font-bold px-2.5 py-1 rounded">₹500</button>
+            <button onclick="setBetAmount(1000)" class="bg-[#2c2c2c] text-white font-bold px-2.5 py-1 rounded">₹1000</button>
+          </div>
+        </div>
+        <div class="flex justify-between items-center text-xs">
+          <span>Selected Total:</span>
+          <span class="text-base font-extrabold text-yellow-400">₹<span id="selected-bet-amount">10</span></span>
+        </div>
+        <div class="grid grid-cols-2 gap-2 pt-2">
+          <button onclick="closeBetModal()" class="bg-gray-700 py-2 rounded-lg text-xs font-bold">Cancel</button>
+          <button onclick="confirmBet()" class="gold-pill text-black py-2 rounded-lg text-xs font-extrabold">Confirm Bet</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= GENERIC INFO MODAL ================= -->
+    <div id="info-modal" class="hidden fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4">
+      <div class="w-full max-w-[360px] bg-[#1e1e1e] border border-yellow-500/50 rounded-2xl p-4 text-center space-y-3">
+        <h3 id="info-modal-title" class="font-extrabold text-base gold-text">Notice</h3>
+        <p id="info-modal-body" class="text-xs text-gray-300 leading-relaxed"></p>
+        <button onclick="closeModal()" class="w-full gold-pill text-black font-bold text-xs py-2 rounded-lg">OK</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ================= APPLICATION LOGIC ================= -->
+  <script>
+    // State
+    let balance = 10000.00;
+    let currentBet = null;
+    let betSelection = "";
+    let betAmount = 10;
+    let timerSeconds = 30;
+    let periodCounter = 20261123005;
+
+    // Exact 17 Lottery Cards from Screenshot
+    const lotteryGames = [
+      { title: "Win Go 30s", cat: "Win Go", icon: "🎱", badge: "1" },
+      { title: "Win Go 1Min", cat: "Win Go", icon: "🎱", badge: "1" },
+      { title: "Win Go 3Min", cat: "Win Go", icon: "🎱", badge: "1" },
+      { title: "Win Go 5Min", cat: "Win Go", icon: "🎱", badge: "1" },
+      { title: "K3 1Min", cat: "K3", icon: "🎲", badge: "K3" },
+      { title: "K3 3Min", cat: "K3", icon: "🎲", badge: "K3" },
+      { title: "K3 5Min", cat: "K3", icon: "🎲", badge: "K3" },
+      { title: "K3 10Min", cat: "K3", icon: "🎲", badge: "K3" },
+      { title: "K3 1Min", cat: "K3", icon: "🎯", badge: "PRO" },
+      { title: "K3 3Min", cat: "K3", icon: "🎯", badge: "PRO" },
+      { title: "K3 5Min", cat: "K3", icon: "🎯", badge: "PRO" },
+      { title: "K3 10Min", cat: "K3", icon: "🎯", badge: "PRO" },
+      { title: "Trx Win Go 1Min", cat: "Trx Win", icon: "🔴", badge: "45" },
+      { title: "Trx Win Go 3Min", cat: "Trx Win", icon: "🔴", badge: "45" },
+      { title: "Trx Win Go 5Min", cat: "Trx Win", icon: "🔴", badge: "45" },
+      { title: "Trx Win Go 10Min", cat: "Trx Win", icon: "🔴", badge: "45" },
+      { title: "MotoRace 1Min", cat: "MotoRace", icon: "🏍️", badge: "RACE" }
+    ];
+
+    // Exact Winners Feed
+    const winners = [
+      { name: "Mem***CQM", amount: "₹196.00", avatar: "👩🏻" },
+      { name: "Mem***HCE", amount: "₹117.60", avatar: "🧑🏽" },
+      { name: "Mem***173", amount: "₹1,960.00", avatar: "👨🏻" },
+      { name: "Mem***VWL", amount: "₹1,960.00", avatar: "👩🏼" },
+      { name: "Mem***QQR", amount: "₹196.00", avatar: "🧑🏻" },
+      { name: "Mem***IYG", amount: "₹196.00", avatar: "👩🏽" }
+    ];
+
+    // Exact Ranks 4 to 10
+    const ranks = [
+      { rank: 4, name: "Mem***JLW", amount: "₹2,895,949.00" },
+      { rank: 5, name: "Mem***GAA", amount: "₹2,756,127.14" },
+      { rank: 6, name: "Mem***GVM", amount: "₹2,156,120.00" },
+      { rank: 7, name: "Mem***PXL", amount: "₹1,606,358.00" },
+      { rank: 8, name: "Mem***BBE", amount: "₹1,568,850.00" },
+      { rank: 9, name: "Mem***SBF", amount: "₹1,489,498.92" },
+      { rank: 10, name: "Mem***648", amount: "₹998,425.00" }
+    ];
+
+    // Render Games
+    function renderGames(filter = "All") {
+      const grid = document.getElementById("games-grid");
+      grid.innerHTML = "";
+      const filtered = filter === "All" ? lotteryGames : lotteryGames.filter(g => g.cat === filter);
+      filtered.forEach(g => {
+        grid.innerHTML += `
+          <div onclick="openGame('${g.title}')" class="gold-grad rounded-xl p-2 text-center text-black cursor-pointer active:scale-95 transition shadow relative overflow-hidden">
+            <span class="absolute top-1 right-1 bg-red-600 text-white text-[9px] font-extrabold px-1.5 rounded-full">${g.badge}</span>
+            <div class="text-3xl my-2">${g.icon}</div>
+            <div class="font-extrabold text-[11px] leading-tight">${g.title}</div>
+          </div>
+        `;
+      });
+    }
+
+    function filterGames(cat, btn) {
+      document.querySelectorAll(".filter-tab").forEach(b => {
+        b.classList.remove("bg-yellow-500", "text-black", "font-bold");
+        b.classList.add("text-gray-400");
+      });
+      btn.classList.add("bg-yellow-500", "text-black", "font-bold");
+      btn.classList.remove("text-gray-400");
+      renderGames(cat);
+    }
+
+    function scrollToLottery(cat) {
+      document.getElementById("lottery-section").scrollIntoView({ behavior: "smooth" });
+      renderGames(cat);
+    }
+
+    // Render Winners & Leaderboard
+    function renderStaticLists() {
+      const wList = document.getElementById("winners-list");
+      winners.forEach(w => {
+        wList.innerHTML += `
+          <div class="bg-[#1c1c1c] rounded-lg px-3 py-2 flex items-center justify-between border border-gray-800/80">
+            <div class="flex items-center gap-2">
+              <div class="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center text-sm">${w.avatar}</div>
+              <span class="text-xs font-medium text-gray-200">${w.name}</span>
             </div>
-            <div class="signature-box">
-                <img src="https://sdmntprnorthcentralus.oaiusercontent.com/files/00000000-e168-622f-9434-bda521556c8d/raw?se=2025-08-27T16%3A01%3A38Z&sp=r&sv=2024-08-04&sr=b&scid=5b8c185a-0302-51ff-a75d-79a18cda9cd6&skoid=03727f49-62d3-42ac-8350-1c0e6559d238&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-26T21%3A25%3A07Z&ske=2025-08-27T21%3A25%3A07Z&sks=b&skv=2024-08-04&sig=6bZA%2BoN3fuXNFG8QCQmCWG1rGyxmAZwtw8w8xRWDxh8%3D" alt="Alok Sammrat Signature" class="signature-img">
-                <span class="founder-name">Alok Sammrat — Founder & CEO</span>
+            <div class="bg-yellow-500/20 border border-yellow-500/40 px-2 py-0.5 rounded text-[10px] text-yellow-300 font-bold">Win Go</div>
+            <div class="text-right">
+              <p class="text-xs font-bold text-white">Receive ${w.amount}</p>
+              <p class="text-[9px] text-gray-400">Winning amount</p>
             </div>
-            <br>
-            <a href="about.html" class="btn-premium" style="text-decoration: none; display: inline-block;">Read Full Story</a>
-        </div>
-        <div class="legacy-image">
-            <img src="https://raw.githubusercontent.com/sammrat471-create/LuxeLayer/main/images/463177221_903679618324192_1185175068109341406_n.jpg" alt="Alok Sammrat">
-        </div>
-    </section>
+          </div>
+        `;
+      });
 
-    <section class="categories">
-        <h2 class="section-title">Shop By Category</h2>
-        <div class="cat-grid">
-            <div class="cat-card">
-                <img src="https://images.unsplash.com/photo-1594938298598-73130d21a221?q=80&w=1964&auto=format&fit=crop" alt="Men">
-                <h3>Men</h3>
+      const lList = document.getElementById("leaderboard-list");
+      ranks.forEach(r => {
+        lList.innerHTML += `
+          <div class="bg-[#1c1c1c] rounded-lg px-3 py-2 flex items-center justify-between">
+            <div class="flex items-center gap-2.5">
+              <span class="text-xs font-bold text-gray-400 w-4">${r.rank}</span>
+              <div class="w-7 h-7 rounded-full bg-gray-700 flex items-center justify-center text-xs">👤</div>
+              <span class="text-xs text-gray-200">${r.name}</span>
             </div>
-            <div class="cat-card">
-                <img src="https://images.unsplash.com/photo-1584273143981-41c073dfe8f8?q=80&w=1887&auto=format&fit=crop" alt="Women">
-                <h3>Women</h3>
-            </div>
-            <div class="cat-card">
-                <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?q=80&w=1780&auto=format&fit=crop" alt="Accessories">
-                <h3>Accessories</h3>
-            </div>
-        </div>
-    </section>
+            <span class="gold-pill text-black font-extrabold text-[10px] px-3 py-1 rounded-full">${r.amount}</span>
+          </div>
+        `;
+      });
+    }
 
-    <section class="collection" id="collection">
-        <h2 class="section-title">The Curated Selection</h2>
-        <span class="section-subtitle">Exquisite pieces for the modern visionary</span>
-        <div class="grid" id="product-grid"></div>
-    </section>
+    // Navigation Tabs
+    function switchTab(tab) {
+      ["home", "activity", "promotion", "account", "game"].forEach(v => {
+        document.getElementById("view-" + v).classList.add("hidden");
+      });
+      document.getElementById("view-" + tab).classList.remove("hidden");
+      window.scrollTo(0, 0);
+    }
 
-    <section class="vip-access">
-        <div class="vip-container">
-            <h2>Join the Inner Circle</h2>
-            <p>Subscribe for exclusive access to private collections and bespoke services.</p>
-            <form id="vipForm">
-                <input type="email" id="vipEmail" placeholder="Enter your email address" required>
-                <button type="submit" class="btn-premium btn-submit" id="submitBtn">Request Access</button>
-            </form>
-            <div id="formMessage" class="form-message"></div>
-        </div>
-    </section>
+    // Game Arena Logic
+    function openGame(title) {
+      document.getElementById("active-game-title").innerText = title;
+      switchTab("game");
+    }
 
-    <footer>
-        <p class="brand-name">LUXELAYER</p>
-        <p>© 2025 LuxeLayer. All Rights Reserved.</p>
-        <p>A registered trademark proudly under <b style="color: #aaa;">SAMMRAT GROUP PVT. LTD.</b></p>
-        <hr>
-        <div style="display: flex; justify-content: center; gap: 30px; margin-top: 20px;">
-            <span>📧 <a href="mailto:aloksammrat12345@gmail.com">aloksammrat12345@gmail.com</a></span>
-            <span>📸 <a href="https://instagram.com/aloksammrat983" target="_blank">@aloksammrat983</a></span>
-        </div>
-    </footer>
+    function closeGame() {
+      switchTab("home");
+    }
 
-    <script>
-        function toggleMenu() { document.getElementById('navMenu').classList.toggle('active'); }
+    function openBetModal(selection, colorClass) {
+      betSelection = selection;
+      const header = document.getElementById("bet-modal-header");
+      header.className = `${colorClass} text-white text-center py-2 rounded-lg font-bold text-sm`;
+      header.innerText = `Predict: ${selection}`;
+      document.getElementById("bet-modal").classList.remove("hidden");
+    }
 
-        // Expanded Products List (8 Products)
-        const products = [
-            { id: 101, name: "Velvet Noir Jacket", price: "45,000", image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=1936&auto=format&fit=crop" },
-            { id: 102, name: "Midnight Silk Gown", price: "62,500", image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?q=80&w=1983&auto=format&fit=crop" },
-            { id: 103, name: "Signature Leather Tote", price: "28,000", image: "https://images.unsplash.com/photo-1584916201218-f4242ceb4809?q=80&w=1915&auto=format&fit=crop" },
-            { id: 104, name: "Onyx Chronograph", price: "85,000", image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1999&auto=format&fit=crop" },
-            { id: 105, name: "Cashmere Overcoat", price: "55,000", image: "https://images.unsplash.com/photo-1539533113208-f6df8cc8b543?q=80&w=1887&auto=format&fit=crop" },
-            { id: 106, name: "Imperial Loafers", price: "22,000", image: "https://images.unsplash.com/photo-1614252209317-dc08eb74fec0?q=80&w=1974&auto=format&fit=crop" },
-            { id: 107, name: "Rose Gold Aviators", price: "18,500", image: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?q=80&w=1780&auto=format&fit=crop" },
-            { id: 108, name: "Noir Essence Parfum", price: "15,000", image: "https://images.unsplash.com/photo-1594035910387-fea47794261f?q=80&w=1887&auto=format&fit=crop" }
-        ];
+    function closeBetModal() {
+      document.getElementById("bet-modal").classList.add("hidden");
+    }
 
-        let cart = [];
+    function setBetAmount(amt) {
+      betAmount = amt;
+      document.getElementById("selected-bet-amount").innerText = amt;
+    }
 
-        function renderProducts() {
-            const grid = document.getElementById('product-grid');
-            products.forEach(product => {
-                const card = document.createElement('div');
-                card.className = 'card';
-                card.innerHTML = `
-                    <img src="${product.image}" alt="${product.name}">
-                    <div class="card-info">
-                        <h3>${product.name}</h3>
-                        <p>₹ ${product.price}</p>
-                        <button class="btn-add-cart" onclick="addToCart(${product.id}, this)">Add to Cart</button>
-                    </div>
-                `;
-                grid.appendChild(card);
-            });
+    function confirmBet() {
+      if (balance < betAmount) {
+        alert("Insufficient Demo Balance! Add funds in Account tab.");
+        return;
+      }
+      balance -= betAmount;
+      updateBalanceUI();
+      currentBet = { selection: betSelection, amount: betAmount };
+      const banner = document.getElementById("active-bet-banner");
+      banner.innerText = `Active Bet: ₹${betAmount} on ${betSelection} — Waiting for timer...`;
+      banner.classList.remove("hidden");
+      closeBetModal();
+    }
+
+    function updateBalanceUI() {
+      document.querySelectorAll(".wallet-balance").forEach(el => {
+        el.innerText = balance.toFixed(2);
+      });
+    }
+
+    // Countdown & Round Settlement
+    function startTimer() {
+      setInterval(() => {
+        timerSeconds--;
+        if (timerSeconds < 0) {
+          resolveRound();
+          timerSeconds = 30;
+          periodCounter++;
+          document.getElementById("period-id").innerText = periodCounter;
         }
+        const formatted = timerSeconds < 10 ? `00:0${timerSeconds}` : `00:${timerSeconds}`;
+        document.getElementById("countdown-timer").innerText = formatted;
+      }, 1000);
+    }
 
-        function addToCart(productId, btnElement) {
-            const product = products.find(p => p.id === productId);
-            if (product) {
-                cart.push(product);
-                document.getElementById('cart-count').innerText = cart.length;
-                const originalText = btnElement.innerText;
-                btnElement.innerText = "Added ✓";
-                btnElement.style.background = "#d4af37";
-                btnElement.style.color = "#000";
-                setTimeout(() => {
-                    btnElement.innerText = originalText;
-                    btnElement.style.background = "transparent";
-                    btnElement.style.color = "#ffffff";
-                }, 1500);
-            }
+    function resolveRound() {
+      const num = Math.floor(Math.random() * 10);
+      const size = num >= 5 ? "Big" : "Small";
+      const color = num === 0 || num === 5 ? "Violet" : (num % 2 === 1 ? "Green" : "Red");
+
+      // Add to history table
+      const rows = document.getElementById("game-history-rows");
+      const colorDot = color === "Green" ? "bg-green-500" : (color === "Red" ? "bg-red-500" : "bg-purple-500");
+      rows.insertAdjacentHTML("afterbegin", `
+        <div class="px-3 py-2 grid grid-cols-4 items-center">
+          <span class="text-gray-400">${periodCounter}</span>
+          <span class="font-extrabold text-yellow-400">${num}</span>
+          <span>${size}</span>
+          <span class="w-3 h-3 rounded-full ${colorDot} mx-auto"></span>
+        </div>
+      `);
+
+      // Check User Bet
+      if (currentBet) {
+        let won = false;
+        let multiplier = 2;
+        if (currentBet.selection === color) won = true;
+        if (currentBet.selection === size) won = true;
+        if (currentBet.selection === `Number ${num}`) { won = true; multiplier = 9; }
+
+        const banner = document.getElementById("active-bet-banner");
+        if (won) {
+          const winAmt = currentBet.amount * multiplier;
+          balance += winAmt;
+          updateBalanceUI();
+          banner.innerText = `🎉 YOU WON ₹${winAmt}! Result: ${num} (${color} / ${size})`;
+        } else {
+          banner.innerText = `Result: ${num} (${color} / ${size}). Better luck next round!`;
         }
+        currentBet = null;
+      }
+    }
 
-        document.getElementById('vipForm').addEventListener('submit', function(e) {
-            e.preventDefault(); 
-            const submitBtn = document.getElementById('submitBtn');
-            const messageDiv = document.getElementById('formMessage');
-            submitBtn.innerText = 'Processing...'; submitBtn.disabled = true;
-            setTimeout(() => {
-                messageDiv.innerHTML = `Welcome to the inner circle.`;
-                messageDiv.style.color = '#d4af37'; messageDiv.style.display = 'block';
-                this.reset(); submitBtn.innerText = 'Request Access'; submitBtn.disabled = false;
-                setTimeout(() => { messageDiv.style.display = 'none'; }, 5000);
-            }, 1200);
-        });
+    // Wallet & Bonus Helpers
+    function addDemoFunds(amt) {
+      balance += amt;
+      updateBalanceUI();
+      openModal("Deposit Successful", `₹${amt} Demo Coins added to your wallet!`);
+    }
+    function withdrawDemoFunds() {
+      openModal("Withdrawal Submitted", "Your demo withdrawal request has been queued for processing.");
+    }
+    function resetBalance() {
+      balance = 10000.00;
+      updateBalanceUI();
+      openModal("Balance Reset", "Your wallet balance has been reset to ₹10,000.00.");
+    }
+    function claimBonus(amt, title) {
+      balance += amt;
+      updateBalanceUI();
+      openModal(title, `Congratulations! ₹${amt} has been credited to your wallet.`);
+    }
+    function redeemGiftCode() {
+      const code = document.getElementById("gift-code-input").value.trim().toUpperCase();
+      if (code === "BDG500") {
+        claimBonus(500, "Gift Code Redeemed");
+      } else {
+        openModal("Invalid Code", "Try entering code: BDG500");
+      }
+    }
+    function copyInvite() {
+      navigator.clipboard?.writeText("https://bdggame-demo.app/register?invite=BDG9832026");
+      openModal("Link Copied", "Invite link copied to clipboard! Share with friends to earn ₹500.");
+    }
 
-        window.onload = renderProducts;
-    </script>
+    // Generic Modal
+    function openModal(title, body) {
+      document.getElementById("info-modal-title").innerText = title;
+      document.getElementById("info-modal-body").innerText = body;
+      document.getElementById("info-modal").classList.remove("hidden");
+    }
+    function closeModal() {
+      document.getElementById("info-modal").classList.add("hidden");
+    }
+
+    // Init
+    renderGames();
+    renderStaticLists();
+    // Pre-populate 4 initial history rows
+    for (let i = 0; i < 4; i++) { periodCounter--; resolveRound(); }
+    periodCounter = 20261123005;
+    startTimer();
+  </script>
 </body>
 </html>
