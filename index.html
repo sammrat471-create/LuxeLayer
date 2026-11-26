@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BDG GAME — Luxury Prediction Arcade</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
@@ -41,7 +40,7 @@
 </head>
 <body class="flex justify-center min-h-screen bg-black">
 
-  <!-- Mobile App Shell -->
+  <!-- Mobile App Container -->
   <div id="app" class="w-full max-w-[430px] bg-[#121212] min-h-screen relative pb-24 shadow-2xl border-x border-yellow-600/20 overflow-x-hidden">
 
     <!-- ================= TOP STICKY HEADER ================= -->
@@ -58,10 +57,10 @@
       </div>
 
       <div class="flex flex-col gap-1.5">
-        <button onclick="openInfoModal('Download APP', 'Add this web app to your home screen via browser menu (Add to Home Screen) for full-screen mobile app mode.')" class="gold-pill text-black font-bold text-[10px] px-2.5 py-1 rounded flex items-center gap-1 shadow">
+        <button onclick="openInfoModal('Download APP', 'Tap your browser options menu and select \"Add to Home Screen\" to use BDG Game like a full-screen mobile app.')" class="gold-pill text-black font-bold text-[10px] px-2.5 py-1 rounded flex items-center gap-1 shadow">
           <i class="fa-solid fa-download"></i> Download APP
         </button>
-        <button onclick="openInfoModal('Customer Service', 'Support Desk Active 24/7. For deposit UTR or withdrawal help, check Transaction History or contact Admin.')" class="gold-pill text-black font-bold text-[10px] px-2.5 py-1 rounded flex items-center gap-1 shadow">
+        <button onclick="openInfoModal('Customer Service', '24/7 Support Desk is active. For UTR approval or withdrawal updates, check Transaction History in Account tab or open Admin Panel.')" class="gold-pill text-black font-bold text-[10px] px-2.5 py-1 rounded flex items-center gap-1 shadow">
           <i class="fa-solid fa-headset"></i> Customer Service
         </button>
       </div>
@@ -75,7 +74,7 @@
         <div class="relative z-10 w-2/3">
           <span class="bg-yellow-500/20 border border-yellow-400/50 text-yellow-300 text-[10px] px-2 py-0.5 rounded-full font-semibold">VIP EXCLUSIVE</span>
           <h2 class="text-xl font-extrabold gold-text leading-tight mt-1">Member's First<br/>Deposit Bonus</h2>
-          <p class="text-[11px] text-gray-300 mt-1">Recharge via UPI & submit UTR in Account/Wallet to get credited.</p>
+          <p class="text-[11px] text-gray-300 mt-1">Pay via UPI & submit your UTR number in Account tab for instant review.</p>
           <button onclick="switchTab('account')" class="mt-2.5 gold-pill text-black text-xs font-bold px-3 py-1 rounded-full shadow">Go to Wallet</button>
         </div>
         <i class="fa-solid fa-coins text-7xl text-yellow-400/25 absolute right-3 bottom-2 rotate-12"></i>
@@ -90,7 +89,7 @@
             Please Remember The UPI ID Of Your Payment And Fill In The Correct UTR Number.
           </p>
         </div>
-        <button onclick="openInfoModal('Payment Notice', document.getElementById('marquee-text').textContent)" class="gold-pill text-black text-[10px] font-bold px-2.5 py-0.5 rounded-full flex items-center gap-1 shrink-0">
+        <button onclick="openInfoModal('Payment & System Notice', document.getElementById('marquee-text').textContent)" class="gold-pill text-black text-[10px] font-bold px-2.5 py-0.5 rounded-full flex items-center gap-1 shrink-0">
           <i class="fa-solid fa-fire text-red-600"></i> Detail
         </button>
       </div>
@@ -106,14 +105,14 @@
             <div class="text-2xl my-1">✈️</div>
             <div class="font-bold text-xs">Original</div>
           </div>
-          <div onclick="openInfoModal('Slots Lobby', 'Slots games coming soon in next module. Use Lottery (Win Go / Trx Win Go) to play live rounds now.')" class="gold-grad rounded-xl p-2 text-center text-black cursor-pointer active:scale-95 transition shadow">
+          <div onclick="openGameScreen('K3 1Min')" class="gold-grad rounded-xl p-2 text-center text-black cursor-pointer active:scale-95 transition shadow">
             <div class="text-2xl my-1">🎰</div>
             <div class="font-bold text-xs">Slots</div>
           </div>
         </div>
 
         <div class="grid grid-cols-3 gap-2">
-          <div onclick="openInfoModal('Sports', 'Sports prediction module scheduled for next phase.')" class="gold-grad rounded-xl p-2 text-center text-black cursor-pointer active:scale-95 transition shadow">
+          <div onclick="openGameScreen('MotoRace 1Min')" class="gold-grad rounded-xl p-2 text-center text-black cursor-pointer active:scale-95 transition shadow">
             <div class="text-2xl my-1">⚽</div>
             <div class="font-bold text-xs">Sports</div>
           </div>
@@ -121,18 +120,18 @@
             <div class="text-2xl my-1">👑</div>
             <div class="font-bold text-xs">Popular</div>
           </div>
-          <div onclick="openInfoModal('Casino', 'Live Casino tables scheduled for next phase.')" class="gold-grad rounded-xl p-2 text-center text-black cursor-pointer active:scale-95 transition shadow">
+          <div onclick="openGameScreen('K3 3Min')" class="gold-grad rounded-xl p-2 text-center text-black cursor-pointer active:scale-95 transition shadow">
             <div class="text-2xl my-1">🃏</div>
             <div class="font-bold text-xs">Casino</div>
           </div>
         </div>
 
         <div class="grid grid-cols-2 gap-2">
-          <div onclick="openInfoModal('Rummy', 'Rummy tables scheduled for next phase.')" class="gold-grad rounded-xl px-4 py-2.5 flex items-center justify-between text-black cursor-pointer active:scale-95 transition shadow">
+          <div onclick="openGameScreen('Trx Win Go 1Min')" class="gold-grad rounded-xl px-4 py-2.5 flex items-center justify-between text-black cursor-pointer active:scale-95 transition shadow">
             <span class="text-2xl">🂡</span>
             <span class="font-extrabold text-sm">Rummy</span>
           </div>
-          <div onclick="openInfoModal('Fishing', 'Fishing arcade scheduled for next phase.')" class="gold-grad rounded-xl px-4 py-2.5 flex items-center justify-between text-black cursor-pointer active:scale-95 transition shadow">
+          <div onclick="openGameScreen('MotoRace 1Min')" class="gold-grad rounded-xl px-4 py-2.5 flex items-center justify-between text-black cursor-pointer active:scale-95 transition shadow">
             <span class="text-2xl">🐠</span>
             <span class="font-extrabold text-sm">Fishing</span>
           </div>
@@ -155,7 +154,7 @@
           <button onclick="filterGames('5D', this)" class="filter-tab px-2.5 py-1 rounded text-gray-400">5D</button>
         </div>
 
-        <!-- 17 Lottery Cards Grid -->
+        <!-- 17 Lottery Game Cards Grid -->
         <div id="games-grid" class="grid grid-cols-3 gap-2"></div>
       </section>
 
@@ -205,7 +204,7 @@
         <div id="leaderboard-list" class="space-y-1.5 mt-2"></div>
 
         <div class="flex justify-center mt-4 mb-2">
-          <button onclick="openInfoModal('BDG Add to Desktop', 'Tap your browser options menu and select Add to Home Screen.')" class="gold-pill text-black font-bold text-xs px-6 py-2 rounded-full shadow-lg flex items-center gap-2">
+          <button onclick="openInfoModal('BDG Add to Desktop', 'Open browser menu and tap \"Add to Home Screen\" to keep BDG Game on your home screen.')" class="gold-pill text-black font-bold text-xs px-6 py-2 rounded-full shadow-lg flex items-center gap-2">
             <i class="fa-solid fa-crown"></i> BDG Add to Desktop
           </button>
         </div>
@@ -217,8 +216,9 @@
       <h2 class="text-base font-bold gold-text">Activity & Gift Codes</h2>
       <div class="bg-[#1c1c1c] border border-yellow-500/30 rounded-xl p-3 space-y-2">
         <h3 class="font-bold text-sm text-yellow-300">Redeem Gift Code</h3>
+        <p class="text-[11px] text-gray-400">Enter a valid code (default active code: <span class="text-yellow-400 font-bold">BDG500</span>).</p>
         <div class="flex gap-2">
-          <input id="gift-code-input" type="text" placeholder="Enter gift code (e.g. BDG500)" class="flex-1 bg-black border border-gray-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-yellow-400" />
+          <input id="gift-code-input" type="text" placeholder="Enter gift code" class="flex-1 bg-black border border-gray-700 rounded-lg px-3 py-2 text-xs text-white uppercase focus:outline-none focus:border-yellow-400" />
           <button onclick="handleRedeemGift()" class="gold-pill text-black font-bold text-xs px-4 py-2 rounded-lg">Redeem</button>
         </div>
       </div>
@@ -229,13 +229,17 @@
       <div class="gold-grad rounded-xl p-4 text-black text-center shadow-lg">
         <p class="text-xs font-bold uppercase">Agency & Referral Program</p>
         <h2 class="text-2xl font-extrabold mt-1">Invite & Earn</h2>
-        <p class="text-[11px] font-medium mt-1">Share your referral link and invite code with friends.</p>
+        <p class="text-[11px] font-medium mt-1">Share your invite code and referral link with new members.</p>
       </div>
 
       <div class="bg-[#1c1c1c] border border-yellow-500/30 rounded-xl p-3 space-y-2.5 text-xs">
         <div class="flex justify-between">
           <span class="text-gray-400">Your Invite Code:</span>
           <span id="promo-code" class="font-extrabold text-yellow-400">Login Required</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-gray-400">Referred Members:</span>
+          <span id="promo-team-count" class="font-extrabold text-emerald-400">0</span>
         </div>
         <input id="promo-link" type="text" readonly class="w-full bg-black border border-gray-800 rounded-lg px-2.5 py-2 text-[11px] text-gray-300" />
         <button onclick="copyPromoLink()" class="w-full gold-pill text-black font-bold text-xs py-2 rounded-lg">
@@ -253,7 +257,7 @@
         <div class="space-y-2 text-xs">
           <input id="auth-phone" type="tel" placeholder="10-digit mobile number" class="w-full bg-black border border-gray-700 rounded-lg px-3 py-2 text-white" />
           <input id="auth-password" type="password" placeholder="Password (min 6 chars)" class="w-full bg-black border border-gray-700 rounded-lg px-3 py-2 text-white" />
-          <input id="auth-invite" type="text" placeholder="Invite code (optional)" class="w-full bg-black border border-gray-800 rounded-lg px-3 py-2 text-white" />
+          <input id="auth-invite" type="text" placeholder="Invite code (optional)" class="w-full bg-black border border-gray-800 rounded-lg px-3 py-2 text-white uppercase" />
         </div>
         <div class="grid grid-cols-2 gap-2">
           <button onclick="handleLogin()" class="gold-pill text-black font-extrabold text-xs py-2 rounded-lg">Login</button>
@@ -281,19 +285,26 @@
 
         <!-- Wallet Balance Card -->
         <div class="bg-gradient-to-r from-[#2c2008] to-[#1a1a1a] border border-yellow-500/40 rounded-xl p-4 space-y-3">
-          <div>
-            <p class="text-xs text-gray-300">Wallet Balance</p>
-            <h2 class="text-2xl font-extrabold text-yellow-400 mt-0.5">₹<span class="wallet-balance">0.00</span></h2>
+          <div class="flex items-end justify-between">
+            <div>
+              <p class="text-xs text-gray-300">Wallet Balance</p>
+              <h2 class="text-2xl font-extrabold text-yellow-400 mt-0.5">₹<span class="wallet-balance">0.00</span></h2>
+            </div>
+            <div class="text-right text-[10px] text-gray-400">
+              <div>Deposits: <span id="stat-total-deposit" class="text-emerald-400 font-bold">₹0.00</span></div>
+              <div>Withdrawals: <span id="stat-total-withdraw" class="text-amber-400 font-bold">₹0.00</span></div>
+            </div>
           </div>
 
           <!-- Deposit UTR Form -->
           <div class="bg-black/50 border border-gray-800 rounded-xl p-2.5 space-y-2 text-xs">
-            <div class="text-[11px] text-yellow-300">
-              Pay to UPI: <strong id="deposit-upi-display" class="select-all">bdgarcade.demo@okicici</strong>
+            <div class="flex items-center justify-between text-[11px] text-yellow-300">
+              <span>Pay to UPI: <strong id="deposit-upi-display" class="select-all">bdgarcade@okicici</strong></span>
+              <button onclick="copyUpiId()" class="text-[10px] bg-yellow-500/20 border border-yellow-500/40 px-2 py-0.5 rounded text-yellow-300">Copy</button>
             </div>
             <div class="grid grid-cols-2 gap-2">
-              <input id="deposit-amount" type="number" placeholder="Amount ₹" class="bg-zinc-900 border border-zinc-700 rounded-lg px-2.5 py-1.5 text-white" />
-              <input id="deposit-utr" type="text" placeholder="12-digit UTR No." class="bg-zinc-900 border border-zinc-700 rounded-lg px-2.5 py-1.5 text-white" />
+              <input id="deposit-amount" type="number" placeholder="Amount ₹ (min 10)" class="bg-zinc-900 border border-zinc-700 rounded-lg px-2.5 py-1.5 text-white" />
+              <input id="deposit-utr" type="text" placeholder="UTR / Ref No." class="bg-zinc-900 border border-zinc-700 rounded-lg px-2.5 py-1.5 text-white" />
             </div>
             <button onclick="handleDepositSubmit()" class="w-full gold-pill text-black font-extrabold py-1.5 rounded-lg">Submit Deposit UTR</button>
           </div>
@@ -301,7 +312,7 @@
           <!-- Withdraw Form -->
           <div class="bg-black/50 border border-gray-800 rounded-xl p-2.5 space-y-2 text-xs">
             <div class="grid grid-cols-2 gap-2">
-              <input id="withdraw-amount" type="number" placeholder="Withdraw ₹" class="bg-zinc-900 border border-zinc-700 rounded-lg px-2.5 py-1.5 text-white" />
+              <input id="withdraw-amount" type="number" placeholder="Withdraw ₹ (min 100)" class="bg-zinc-900 border border-zinc-700 rounded-lg px-2.5 py-1.5 text-white" />
               <input id="withdraw-details" type="text" placeholder="Your UPI / Bank A/C" class="bg-zinc-900 border border-zinc-700 rounded-lg px-2.5 py-1.5 text-white" />
             </div>
             <button onclick="handleWithdrawSubmit()" class="w-full bg-[#2a2a2a] border border-yellow-500/40 text-yellow-300 font-bold py-1.5 rounded-lg">Request Withdrawal</button>
@@ -315,11 +326,11 @@
         </div>
       </div>
 
-      <!-- Direct Admin Panel Access Box (Easy mode while building) -->
+      <!-- Direct Admin Panel Access Box -->
       <div class="bg-[#18181b] border border-yellow-500/40 rounded-xl p-3 flex items-center justify-between">
         <div>
           <h3 class="text-xs font-extrabold text-yellow-400"><i class="fa-solid fa-shield-halved mr-1"></i> Admin Control Center</h3>
-          <p class="text-[10px] text-zinc-400">Open admin dashboard directly for setup & testing</p>
+          <p class="text-[10px] text-zinc-400">Open admin dashboard to manage overrides, UTRs & wallets</p>
         </div>
         <a href="admin.html" class="gold-pill text-black font-extrabold text-xs px-3 py-2 rounded-lg shadow">
           Open Admin
@@ -327,7 +338,7 @@
       </div>
     </section>
 
-    <!-- ================= PLAYABLE GAME ARENA (WIN GO / TRX WIN GO) ================= -->
+    <!-- ================= PLAYABLE GAME ARENA ================= -->
     <section id="view-game" class="hidden px-3 pt-3 space-y-3">
       <div class="flex items-center justify-between">
         <button onclick="exitGameScreen()" class="bg-[#222] text-yellow-400 px-3 py-1 rounded-lg text-xs font-bold">
@@ -357,38 +368,14 @@
         </div>
       </div>
 
-      <!-- Betting Board -->
-      <div class="bg-[#1c1c1c] p-3 rounded-xl space-y-3 border border-gray-800">
-        <div class="grid grid-cols-3 gap-2">
-          <button onclick="openBetSheet('Green', 'bg-green-600')" class="bg-green-600 hover:bg-green-500 text-white font-bold py-2 rounded-lg text-xs shadow">Green (2x)</button>
-          <button onclick="openBetSheet('Violet', 'bg-purple-600')" class="bg-purple-600 hover:bg-purple-500 text-white font-bold py-2 rounded-lg text-xs shadow">Violet (4.5x)</button>
-          <button onclick="openBetSheet('Red', 'bg-red-600')" class="bg-red-600 hover:bg-red-500 text-white font-bold py-2 rounded-lg text-xs shadow">Red (2x)</button>
-        </div>
-
-        <div class="grid grid-cols-5 gap-2 bg-[#121212] p-2.5 rounded-xl">
-          <button onclick="openBetSheet('0', 'bg-purple-600')" class="h-10 rounded-full bg-gradient-to-tr from-red-600 to-purple-600 font-extrabold text-sm shadow">0</button>
-          <button onclick="openBetSheet('1', 'bg-green-600')" class="h-10 rounded-full bg-green-600 font-extrabold text-sm shadow">1</button>
-          <button onclick="openBetSheet('2', 'bg-red-600')" class="h-10 rounded-full bg-red-600 font-extrabold text-sm shadow">2</button>
-          <button onclick="openBetSheet('3', 'bg-green-600')" class="h-10 rounded-full bg-green-600 font-extrabold text-sm shadow">3</button>
-          <button onclick="openBetSheet('4', 'bg-red-600')" class="h-10 rounded-full bg-red-600 font-extrabold text-sm shadow">4</button>
-          <button onclick="openBetSheet('5', 'bg-purple-600')" class="h-10 rounded-full bg-gradient-to-tr from-green-600 to-purple-600 font-extrabold text-sm shadow">5</button>
-          <button onclick="openBetSheet('6', 'bg-red-600')" class="h-10 rounded-full bg-red-600 font-extrabold text-sm shadow">6</button>
-          <button onclick="openBetSheet('7', 'bg-green-600')" class="h-10 rounded-full bg-green-600 font-extrabold text-sm shadow">7</button>
-          <button onclick="openBetSheet('8', 'bg-red-600')" class="h-10 rounded-full bg-red-600 font-extrabold text-sm shadow">8</button>
-          <button onclick="openBetSheet('9', 'bg-green-600')" class="h-10 rounded-full bg-green-600 font-extrabold text-sm shadow">9</button>
-        </div>
-
-        <div class="grid grid-cols-2 gap-2">
-          <button onclick="openBetSheet('Big', 'bg-amber-500')" class="bg-amber-500 text-black font-extrabold py-2 rounded-full text-xs">Big (2x)</button>
-          <button onclick="openBetSheet('Small', 'bg-blue-500')" class="bg-blue-500 text-white font-extrabold py-2 rounded-full text-xs">Small (2x)</button>
-        </div>
-      </div>
+      <!-- Dynamic Betting Controls (Rendered per game type) -->
+      <div id="game-bet-controls" class="bg-[#1c1c1c] p-3 rounded-xl space-y-3 border border-gray-800"></div>
 
       <!-- Settled Results History -->
       <div class="bg-[#1c1c1c] rounded-xl overflow-hidden border border-gray-800">
         <div class="bg-[#252525] px-3 py-2 text-xs font-bold grid grid-cols-4 text-center text-yellow-400">
           <span>Period</span>
-          <span>Number</span>
+          <span>Outcome</span>
           <span>Size</span>
           <span>Color</span>
         </div>
@@ -462,7 +449,7 @@
 
         <div class="flex justify-between items-center text-xs pt-1 border-t border-zinc-800">
           <span>Total Bet Amount:</span>
-          <span class="text-base font-extrabold text-yellow-400">₹<span id="bet-total-display">1</span></span>
+          <span class="text-base font-extrabold text-yellow-400">₹<span id="bet-total-display">1.00</span></span>
         </div>
 
         <div class="grid grid-cols-2 gap-2 pt-1">
@@ -483,12 +470,26 @@
 
   </div>
 
-  <!-- Scripts -->
-  <script src="config.js"></script>
-  <script src="auth.js"></script>
-  <script src="wallet.js"></script>
-  <script src="games-wingo.js"></script>
-  <script>
+  <script type="module">
+    import { AppState, formatINR, ensureDefaultSettingsAndGifts } from "./firebase-config.js";
+    import {
+      registerUserFS,
+      loginUserFS,
+      logoutUserFS,
+      watchAuthStateFS
+    } from "./firebase-auth.js";
+    import {
+      submitDepositFS,
+      submitWithdrawFS,
+      redeemGiftCodeFS,
+      loadUserTransactionsFS
+    } from "./firebase-wallet.js";
+    import {
+      placeGameBetFS,
+      startGameLoopFS,
+      stopGameLoopFS
+    } from "./firebase-games.js";
+
     let pendingSelection = "";
     let baseCoin = 1;
     let betQty = 1;
@@ -544,21 +545,6 @@
       `).join("");
     }
 
-    function filterGames(cat, btn) {
-      document.querySelectorAll(".filter-tab").forEach(b => {
-        b.classList.remove("bg-yellow-500", "text-black", "font-bold");
-        b.classList.add("text-gray-400");
-      });
-      btn.classList.add("bg-yellow-500", "text-black", "font-bold");
-      btn.classList.remove("text-gray-400");
-      renderGames(cat);
-    }
-
-    function scrollToLottery(cat) {
-      document.getElementById("lottery-section").scrollIntoView({ behavior: "smooth" });
-      renderGames(cat);
-    }
-
     function renderHomeLists() {
       document.getElementById("winners-list").innerHTML = winners.map(w => `
         <div class="bg-[#1c1c1c] rounded-lg px-3 py-2 flex items-center justify-between border border-gray-800/80">
@@ -586,47 +572,118 @@
       `).join("");
     }
 
-    function switchTab(tabName) {
-      if (tabName !== "game") stopWinGoLoop();
+    function renderBetBoard(gameMode) {
+      const box = document.getElementById("game-bet-controls");
+      if (gameMode.startsWith("K3")) {
+        box.innerHTML = `
+          <div class="grid grid-cols-2 gap-2">
+            <button onclick="openBetSheet('Big', 'bg-amber-500')" class="bg-amber-500 text-black font-extrabold py-2 rounded-lg text-xs">Big ≥11 (2x)</button>
+            <button onclick="openBetSheet('Small', 'bg-blue-600')" class="bg-blue-600 text-white font-extrabold py-2 rounded-lg text-xs">Small ≤10 (2x)</button>
+          </div>
+          <div class="grid grid-cols-3 gap-2">
+            <button onclick="openBetSheet('Odd', 'bg-emerald-600')" class="bg-emerald-600 text-white font-bold py-2 rounded-lg text-xs">Odd Sum (2x)</button>
+            <button onclick="openBetSheet('Even', 'bg-rose-600')" class="bg-rose-600 text-white font-bold py-2 rounded-lg text-xs">Even Sum (2x)</button>
+            <button onclick="openBetSheet('Triple', 'bg-purple-600')" class="bg-purple-600 text-white font-bold py-2 rounded-lg text-xs">Triple (4.5x)</button>
+          </div>
+        `;
+        return;
+      }
+
+      if (gameMode.startsWith("MotoRace")) {
+        box.innerHTML = `
+          <div class="grid grid-cols-3 gap-2">
+            <button onclick="openBetSheet('Green', 'bg-green-600')" class="bg-green-600 text-white font-bold py-2 rounded-lg text-xs">Green Bike (2x)</button>
+            <button onclick="openBetSheet('Red', 'bg-red-600')" class="bg-red-600 text-white font-bold py-2 rounded-lg text-xs">Red Bike (2x)</button>
+            <button onclick="openBetSheet('Big', 'bg-amber-500')" class="bg-amber-500 text-black font-bold py-2 rounded-lg text-xs">Lane 4–6 (2x)</button>
+          </div>
+          <div class="grid grid-cols-6 gap-1.5 bg-[#121212] p-2 rounded-xl">
+            ${[1,2,3,4,5,6].map(n => `
+              <button onclick="openBetSheet('${n}', 'bg-yellow-600')" class="h-9 rounded-full gold-pill text-black font-extrabold text-xs">#${n}</button>
+            `).join("")}
+          </div>
+        `;
+        return;
+      }
+
+      // Win Go & Trx Win Go
+      box.innerHTML = `
+        <div class="grid grid-cols-3 gap-2">
+          <button onclick="openBetSheet('Green', 'bg-green-600')" class="bg-green-600 hover:bg-green-500 text-white font-bold py-2 rounded-lg text-xs shadow">Green (2x)</button>
+          <button onclick="openBetSheet('Violet', 'bg-purple-600')" class="bg-purple-600 hover:bg-purple-500 text-white font-bold py-2 rounded-lg text-xs shadow">Violet (4.5x)</button>
+          <button onclick="openBetSheet('Red', 'bg-red-600')" class="bg-red-600 hover:bg-red-500 text-white font-bold py-2 rounded-lg text-xs shadow">Red (2x)</button>
+        </div>
+        <div class="grid grid-cols-5 gap-2 bg-[#121212] p-2.5 rounded-xl">
+          <button onclick="openBetSheet('0', 'bg-purple-600')" class="h-10 rounded-full bg-gradient-to-tr from-red-600 to-purple-600 font-extrabold text-sm shadow">0</button>
+          <button onclick="openBetSheet('1', 'bg-green-600')" class="h-10 rounded-full bg-green-600 font-extrabold text-sm shadow">1</button>
+          <button onclick="openBetSheet('2', 'bg-red-600')" class="h-10 rounded-full bg-red-600 font-extrabold text-sm shadow">2</button>
+          <button onclick="openBetSheet('3', 'bg-green-600')" class="h-10 rounded-full bg-green-600 font-extrabold text-sm shadow">3</button>
+          <button onclick="openBetSheet('4', 'bg-red-600')" class="h-10 rounded-full bg-red-600 font-extrabold text-sm shadow">4</button>
+          <button onclick="openBetSheet('5', 'bg-purple-600')" class="h-10 rounded-full bg-gradient-to-tr from-green-600 to-purple-600 font-extrabold text-sm shadow">5</button>
+          <button onclick="openBetSheet('6', 'bg-red-600')" class="h-10 rounded-full bg-red-600 font-extrabold text-sm shadow">6</button>
+          <button onclick="openBetSheet('7', 'bg-green-600')" class="h-10 rounded-full bg-green-600 font-extrabold text-sm shadow">7</button>
+          <button onclick="openBetSheet('8', 'bg-red-600')" class="h-10 rounded-full bg-red-600 font-extrabold text-sm shadow">8</button>
+          <button onclick="openBetSheet('9', 'bg-green-600')" class="h-10 rounded-full bg-green-600 font-extrabold text-sm shadow">9</button>
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+          <button onclick="openBetSheet('Big', 'bg-amber-500')" class="bg-amber-500 text-black font-extrabold py-2 rounded-full text-xs">Big (2x)</button>
+          <button onclick="openBetSheet('Small', 'bg-blue-500')" class="bg-blue-500 text-white font-extrabold py-2 rounded-full text-xs">Small (2x)</button>
+        </div>
+      `;
+    }
+
+    window.filterGames = (cat, btn) => {
+      document.querySelectorAll(".filter-tab").forEach(b => {
+        b.classList.remove("bg-yellow-500", "text-black", "font-bold");
+        b.classList.add("text-gray-400");
+      });
+      btn.classList.add("bg-yellow-500", "text-black", "font-bold");
+      btn.classList.remove("text-gray-400");
+      renderGames(cat);
+    };
+
+    window.scrollToLottery = (cat) => {
+      document.getElementById("lottery-section").scrollIntoView({ behavior: "smooth" });
+      renderGames(cat);
+    };
+
+    window.switchTab = async (tabName) => {
+      if (tabName !== "game") stopGameLoopFS();
       ["home", "activity", "promotion", "account", "game"].forEach(v => {
         document.getElementById("view-" + v).classList.add("hidden");
       });
       document.getElementById("view-" + tabName).classList.remove("hidden");
-      if (tabName === "account") loadUserTransactions();
+      if (tabName === "account") await loadUserTransactionsFS();
       window.scrollTo(0, 0);
-    }
+    };
 
-    async function openGameScreen(title) {
-      if (title.startsWith("K3") || title.startsWith("MotoRace")) {
-        openInfoModal(title, `${title} dedicated screen will be added next. Win Go & Trx Win Go are live now!`);
-        return;
-      }
+    window.openGameScreen = async (title) => {
       document.getElementById("active-game-title").textContent = title;
-      switchTab("game");
-      await startWinGoLoop(title);
-    }
+      renderBetBoard(title);
+      window.switchTab("game");
+      await startGameLoopFS(title);
+    };
 
-    function exitGameScreen() {
-      stopWinGoLoop();
-      switchTab("home");
-    }
+    window.exitGameScreen = () => {
+      stopGameLoopFS();
+      window.switchTab("home");
+    };
 
-    function openBetSheet(selection, colorClass) {
+    window.openBetSheet = (selection, colorClass) => {
       pendingSelection = selection;
       baseCoin = 1;
       betQty = 1;
       const hdr = document.getElementById("bet-modal-header");
       hdr.className = `${colorClass} text-white text-center py-2 rounded-lg font-bold text-sm`;
       hdr.textContent = `Predict: ${selection}`;
-      updateBetTotalUI();
+      document.getElementById("bet-total-display").textContent = formatINR(1);
       document.getElementById("bet-modal").classList.remove("hidden");
-    }
+    };
 
-    function closeBetSheet() {
+    window.closeBetSheet = () => {
       document.getElementById("bet-modal").classList.add("hidden");
-    }
+    };
 
-    function setBaseCoin(val, btn) {
+    window.setBaseCoin = (val, btn) => {
       baseCoin = val;
       document.querySelectorAll(".base-btn").forEach(b => {
         b.classList.remove("bg-yellow-500", "text-black");
@@ -634,10 +691,10 @@
       });
       btn.classList.remove("bg-[#2c2c2c]", "text-white");
       btn.classList.add("bg-yellow-500", "text-black");
-      updateBetTotalUI();
-    }
+      document.getElementById("bet-total-display").textContent = formatINR(baseCoin * betQty);
+    };
 
-    function setQty(q, btn) {
+    window.setQty = (q, btn) => {
       betQty = q;
       document.querySelectorAll(".qty-btn").forEach(b => {
         b.classList.remove("bg-yellow-500", "text-black");
@@ -645,109 +702,125 @@
       });
       btn.classList.remove("bg-[#2c2c2c]", "text-white");
       btn.classList.add("bg-yellow-500", "text-black");
-      updateBetTotalUI();
-    }
-
-    function updateBetTotalUI() {
       document.getElementById("bet-total-display").textContent = formatINR(baseCoin * betQty);
-    }
+    };
 
-    async function submitBetFromSheet() {
+    window.submitBetFromSheet = async () => {
       try {
-        await placeWinGoBet(pendingSelection, baseCoin * betQty);
-        closeBetSheet();
-        openInfoModal("Bet Placed", `Placed ₹${formatINR(baseCoin * betQty)} on ${pendingSelection}.`);
+        const total = baseCoin * betQty;
+        await placeGameBetFS(pendingSelection, total);
+        window.closeBetSheet();
+        window.openInfoModal("Bet Placed", `Placed ₹${formatINR(total)} on ${pendingSelection} in ${AppState.activeGame}.`);
       } catch (err) {
-        openInfoModal("Bet Error", err.message);
+        window.openInfoModal("Bet Error", err.message);
       }
-    }
+    };
 
-    async function handleLogin() {
+    window.handleLogin = async () => {
       try {
-        await loginUser(document.getElementById("auth-phone").value, document.getElementById("auth-password").value);
-        openInfoModal("Logged In", "Welcome back to BDG Game!");
+        await loginUserFS(
+          document.getElementById("auth-phone").value,
+          document.getElementById("auth-password").value
+        );
+        window.openInfoModal("Logged In", "Welcome back!");
       } catch (err) {
-        openInfoModal("Login Failed", err.message);
+        window.openInfoModal("Login Failed", err.message);
       }
-    }
+    };
 
-    async function handleRegister() {
+    window.handleRegister = async () => {
       try {
-        await registerUser(
+        await registerUserFS(
           document.getElementById("auth-phone").value,
           document.getElementById("auth-password").value,
           document.getElementById("auth-invite").value
         );
-        openInfoModal("Registered", "Account created with ₹100 welcome bonus!");
+        window.openInfoModal("Registered", "Account created with ₹100 welcome bonus!");
       } catch (err) {
-        openInfoModal("Registration Failed", err.message);
+        window.openInfoModal("Registration Failed", err.message);
       }
-    }
+    };
 
-    async function handleLogout() {
-      await logoutUser();
-      openInfoModal("Logged Out", "You have been logged out.");
-    }
+    window.handleLogout = async () => {
+      await logoutUserFS();
+      window.openInfoModal("Logged Out", "Signed out successfully.");
+    };
 
-    async function handleDepositSubmit() {
+    window.handleDepositSubmit = async () => {
       try {
-        await submitDepositRequest(document.getElementById("deposit-amount").value, document.getElementById("deposit-utr").value);
+        await submitDepositFS(
+          document.getElementById("deposit-amount").value,
+          document.getElementById("deposit-utr").value
+        );
         document.getElementById("deposit-amount").value = "";
         document.getElementById("deposit-utr").value = "";
-        openInfoModal("UTR Submitted", "Deposit request submitted for Admin approval.");
+        window.openInfoModal("UTR Submitted", "Deposit request submitted for Admin approval.");
       } catch (err) {
-        openInfoModal("Deposit Error", err.message);
+        window.openInfoModal("Deposit Error", err.message);
       }
-    }
+    };
 
-    async function handleWithdrawSubmit() {
+    window.handleWithdrawSubmit = async () => {
       try {
-        await submitWithdrawRequest(
+        await submitWithdrawFS(
           document.getElementById("withdraw-amount").value,
-          "UPI/BANK",
           document.getElementById("withdraw-details").value
         );
         document.getElementById("withdraw-amount").value = "";
         document.getElementById("withdraw-details").value = "";
-        openInfoModal("Withdrawal Requested", "Withdrawal submitted and balance deducted.");
+        window.openInfoModal("Withdrawal Requested", "Withdrawal submitted and balance deducted.");
       } catch (err) {
-        openInfoModal("Withdraw Error", err.message);
+        window.openInfoModal("Withdraw Error", err.message);
       }
-    }
+    };
 
-    async function handleRedeemGift() {
+    window.handleRedeemGift = async () => {
       try {
-        const amt = await redeemGiftCodeDB(document.getElementById("gift-code-input").value);
+        const amt = await redeemGiftCodeFS(document.getElementById("gift-code-input").value);
         document.getElementById("gift-code-input").value = "";
-        openInfoModal("Gift Redeemed", `₹${formatINR(amt)} added to your wallet!`);
+        window.openInfoModal("Gift Redeemed", `₹${formatINR(amt)} added to your wallet!`);
       } catch (err) {
-        openInfoModal("Gift Error", err.message);
+        window.openInfoModal("Gift Error", err.message);
       }
-    }
+    };
 
-    function copyPromoLink() {
+    window.copyPromoLink = () => {
       const inp = document.getElementById("promo-link");
+      if (!inp.value) return;
       navigator.clipboard?.writeText(inp.value);
-      openInfoModal("Copied", "Referral link copied!");
-    }
+      window.openInfoModal("Copied", "Referral link copied!");
+    };
 
-    function openInfoModal(title, body) {
+    window.copyUpiId = () => {
+      navigator.clipboard?.writeText(AppState.settings.upi_id);
+      window.openInfoModal("UPI Copied", `Copied UPI ID: ${AppState.settings.upi_id}`);
+    };
+
+    window.openInfoModal = (title, body) => {
       document.getElementById("info-modal-title").textContent = title;
       document.getElementById("info-modal-body").textContent = body;
       document.getElementById("info-modal").classList.remove("hidden");
-    }
+    };
 
-    function closeInfoModal() {
+    window.closeInfoModal = () => {
       document.getElementById("info-modal").classList.add("hidden");
+    };
+
+    // Prefill invite code from URL (?invite=BDG...)
+    const urlParams = new URLSearchParams(window.location.search);
+    const refParam = urlParams.get("invite");
+    if (refParam) {
+      const invInp = document.getElementById("auth-invite");
+      if (invInp) invInp.value = refParam.toUpperCase();
     }
 
-    document.addEventListener("DOMContentLoaded", async () => {
-      renderGames();
-      renderHomeLists();
-      await loadPlatformSettings();
-      const upiDisp = document.getElementById("deposit-upi-display");
-      if (upiDisp) upiDisp.textContent = AppState.settings.upi_id;
-      await refreshSessionData();
+    renderGames();
+    renderHomeLists();
+    await ensureDefaultSettingsAndGifts();
+    watchAuthStateFS(async () => {
+      if (!document.getElementById("view-account").classList.contains("hidden")) {
+        await loadUserTransactionsFS();
+      }
     });
   </script>
 </body>
